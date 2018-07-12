@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="初学笔记">
 <meta property="og:description" content="一、基础语法1.编码在开发过程，对应不同的语言使用不同的字符编码。英文    ISO-8859-1中文    gbk或gb2312目前Python为了统一编码格式，在3.0以上的版本使用了utf-8编码 2、print()函数[语法格式]：1$ print(value,...,sep=&apos; &apos;,end=&apos;\n&apos;) 其中，[value]代表我们要输出的内容，可以是字符串，可以是数值等内容[sep]代表">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-12T13:25:45.511Z">
+<meta property="og:updated_time" content="2018-07-12T14:04:35.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础">
 <meta name="twitter:description" content="一、基础语法1.编码在开发过程，对应不同的语言使用不同的字符编码。英文    ISO-8859-1中文    gbk或gb2312目前Python为了统一编码格式，在3.0以上的版本使用了utf-8编码 2、print()函数[语法格式]：1$ print(value,...,sep=&apos; &apos;,end=&apos;\n&apos;) 其中，[value]代表我们要输出的内容，可以是字符串，可以是数值等内容[sep]代表">
@@ -190,12 +190,153 @@
 <p>[%f]：代表了浮点数内容(注意，在Python中浮点数是一个近似值，所以结果也是近似)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">print</span>(<span class="string">'price %f'</span>%10.2)  <span class="comment"># 10.200000</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">'price %.1f'</span>%10.2)  <span class="comment">#  10.2</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">'prince %.1f'</span>%10.58) <span class="comment"># 10.6 当取一位小数位的时候，将小数位第二位进行舍入操作，但是Python的中间值不是5，导致当小数位第二位是5时，直接被舍去</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">'%5.1f'</span>%10.3)   <span class="comment"># 10.3</span></span><br><span class="line"><span class="comment"># 输出一个宽度为5的单位，其中整数3位，小数部分1位，小数点占一位</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="4、格式化输出"><a href="#4、格式化输出" class="headerlink" title="4、格式化输出"></a>4、格式化输出</h3><p>在Python3.0之后，推荐使用{0}来代替前期的%d,%s,%f等一系列的格式化参数，采用了字符串的format函数进行处理。写法如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">print</span>(<span class="string">'welcome &#123;0&#125;同学，加入&#123;1&#125;班级'</span>.format(<span class="string">'tom'</span>,<span class="string">'Python3班'</span>))</span><br></pre></td></tr></table></figure></p>
 <p>其中{0}，{1}分别映射format()中的’tom’和’Python3班’，如果前面占位符中的索引值变化，那么他们映射的值也随之变化</p>
-<h3 id="5、变量"><a href="#5、变量" class="headerlink" title="5、变量"></a>5、变量</h3><p>1）<em>变量的声明</em>：在Python没有变量类型，直接进行变量的声明，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ i = 10</span><br></pre></td></tr></table></figure></p>
-<p>2)<em>变量的赋值</em>：在python中，有两种赋值方式<br>第一种，单个变量赋值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ name = <span class="string">'tom'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="5、变量"><a href="#5、变量" class="headerlink" title="5、变量"></a>5、变量</h3><p>1）<strong>变量的声明</strong>：在Python没有变量类型，直接进行变量的声明，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ i = 10</span><br></pre></td></tr></table></figure></p>
+<p>2)<strong>变量的赋值</strong>：在python中，有两种赋值方式<br>第一种，单个变量赋值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ name = <span class="string">'tom'</span></span><br></pre></td></tr></table></figure></p>
 <p>第二种，多个变量同时赋值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ name, age, sex = <span class="string">'tom'</span>， 23， <span class="string">'男'</span></span><br></pre></td></tr></table></figure></p>
-<p>[变量在内存中的存在情况]<br>1）python中的变量，在声明和赋值时，不仅声明了变量的名字同时还<em>为这个变量指向了内存中的地址</em>，该地址用来存储变量的值。<br>2）python中整数、字符串、浮点数等其本身都属于常量，所以当赋值给一个变量时，如：<br>i = 10意味着将10这个常量在内存中的地址指向，因此，i = 10 ，j = 10 使用id(i),id(j）我们法向他们的id是相同的。<br>因为，他们的值10在内存中的地址时相同的。</p>
-<p>3）<em>变量与内存地址</em><br>当我们声明一个变量时，对其进行赋值。实际上就是将变量值所在的内存地址，赋值给该变量。也就是说这个变量指向其值所在的内存地址。<br>当我们改变变量的值的时候，说白了就是将变量指向的内存地址进行变化。<br>举例：我们日常购买商品，快递员通过你的邮寄地址将快递送到你本人手里。可以理解为，快递员拥有指向你这个变量的地址，通过地址，将快递商品赋值给你。<br>4）<em>变量与常量</em><br>变量：我们认为其内容是临时结果，可变的。供后续的程序代码进行调用。<br>常量：我们认为其内容是不变的，或者在程序运行的过程中也不发生改变。<br>在Python中，我们通过大写变量名，来表明这是一个常量，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CARDID = <span class="string">'12048377293'</span></span><br></pre></td></tr></table></figure></p>
-<p>5)<em>变量命名规则</em><br>首先，Python中的变量命名，必须由<em>字母、数字或下划线三者组成</em>，不能有其他的字符出现<br>其次，变量名的首个字符，必须是字母或下划线<br>然后，Python中的关键字不能作为变量名来使用，常用的关键字诸如：if,for,is,none等等。<br>Python是严格区分大小写的语言，其中A = 10 ，a = 10。我们认为这是两个不同的变量</p>
+<p>[变量在内存中的存在情况]<br>1）python中的变量，在声明和赋值时，不仅声明了变量的名字同时还<strong>为这个变量指向了内存中的地址</strong>，该地址用来存储变量的值。<br>2）python中整数、字符串、浮点数等其本身都属于常量，所以当赋值给一个变量时，如：<br>i = 10意味着将10这个常量在内存中的地址指向，因此，i = 10 ，j = 10 使用id(i),id(j）我们法向他们的id是相同的。<br>因为，他们的值10在内存中的地址时相同的。</p>
+<p>3）<strong>变量与内存地址</strong><br>当我们声明一个变量时，对其进行赋值。实际上就是将变量值所在的内存地址，赋值给该变量。也就是说这个变量指向其值所在的内存地址。<br>当我们改变变量的值的时候，说白了就是将变量指向的内存地址进行变化。<br>举例：我们日常购买商品，快递员通过你的邮寄地址将快递送到你本人手里。可以理解为，快递员拥有指向你这个变量的地址，通过地址，将快递商品赋值给你。<br>4）<strong>变量与常量</strong><br>变量：我们认为其内容是临时结果，可变的。供后续的程序代码进行调用。<br>常量：我们认为其内容是不变的，或者在程序运行的过程中也不发生改变。<br>在Python中，我们通过大写变量名，来表明这是一个常量，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CARDID = <span class="string">'12048377293'</span></span><br></pre></td></tr></table></figure></p>
+<p>5)<strong>变量命名规则</strong><br>首先，Python中的变量命名，必须由<strong>字母、数字或下划线三者组成</strong>，不能有其他的字符出现<br>其次，变量名的首个字符，必须是字母或下划线<br>然后，Python中的关键字不能作为变量名来使用，常用的关键字诸如：if,for,is,none等等。<br>Python是严格区分大小写的语言，其中A = 10 ，a = 10。我们认为这是两个不同的变量</p>
+<h3 id="6、基本数据类型"><a href="#6、基本数据类型" class="headerlink" title="6、基本数据类型"></a>6、基本数据类型</h3><p>1）<strong>常见的数据类型</strong>：<br>整型 :正整数，负整数，零<br>浮点型<br>布尔型 ：True、False<br>复数型<br>字符串型<br>我们工作中常用到整型、字符串</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>2）整型<br>我们通常根据计算机中数据编码格式，将整型分为：二进制、八进制、十进制、十六进制四种类型。<br>进制间的转换<br>二进制转十进制：bin(int)=&gt;将十进制转为二进制   int(bin)=&gt;将二进制转为十进制<br>八进制转十进制：oct(int)=&gt;将十进制转为八进制   int(oct)=&gt;将八进制转为十进制<br>十六进制转十进制： hex(int)=&gt;将十进制转为十六进制，int(hex)=&gt;将十六进制转为十进制</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>3）运算符<br>第一，<strong>算术运算符</strong>：+、-、<em>、/、%、//<br>在python中默认的数据类型时<strong>浮点型</strong>，因此在执行算术运算时5/2=2.5，而不是2.<br><strong>%</strong>：两数进行求余运算，如果分子大于分母，得余数；如果分子小于分母，直接得分子。注意：只有分子除尽分母时，结果才返回0<br><strong>//</strong>：两数相除取整数，注意，此处得到的整数，为结果的整数部分不进行四舍五入操作。<br>\</em>*：A**B 数A连续相乘B次，也可以说数A 的B次幂</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>补充：<br>1、对于数值运算的四舍五入操作<br>math包中的floor()和ceil()函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.floor(<span class="number">3</span>/<span class="number">2</span>)  <span class="comment"># 1   等同于 3//2    只舍不入</span></span><br><span class="line">math.ceil(<span class="number">3</span>/<span class="number">2</span>)  <span class="comment"># 2    此处，只要有小数位就进位，不管小数部分是否大于等于5  只入不舍</span></span><br></pre></td></tr></table></figure></p>
+<p>round()函数进行四舍五入操作，round(数值[,保留小数位数])<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">round(1.5)=&gt;2  </span><br><span class="line">round(1.2)=&gt;1</span><br><span class="line">round(1,4,1)=&gt;1.4  意味着保留小数点后一位</span><br></pre></td></tr></table></figure></p>
+<p>2、求幂运算<br><code>pow(2,3) =&gt;8 等同于2**3</code><br>3、求绝对值<br><code>abs(-10) =&gt; 10</code><br>4、求两数相除的商与余数<br><code>divmod(5,3) =&gt;(1,2)    类似5%3=&gt;2</code><br>5、运算符<br>i = 10<br>i = i + 5  等同于  i+=5<br>i = i - 5  等同于  i-=5<br>i = i <em> 5  等同于  i</em>=5<br>i = i / 5  等同于  i/=5<br>i = i//5   等同于  i//=5<br>i = i <strong> 2 等同于  i</strong>=2<br>i = i % 3  等同于  i%=3</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4)布尔型<br>1、python中布尔型分为True和False两种，但是在实际操作中我们也可以将其与1和0等同。<br>2、布尔型常用在逻辑运算和判断条件中，作为结果来使用。但是也可以参与算术运算，当进行算术运算时，True作为1、False作为0参与运算。<br>3、a = True     a + 1 =&gt; 2<br>b = False b + 1 =&gt;1<br>a + b =&gt; 1<br>注意：通常我们在python，不能将布尔型参与算术运算的。布尔型一般参加比较运算或逻辑运算，其返回值还是布尔型。<br>布尔型求非： not (与 and 或 or)<br>not a =&gt; False<br>not b =&gt; True</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>5)精确的十进制<br>在python中，我们通过阅读官方文档了解到，浮点数是一种近似值的表示，因此直接使用浮点数时常常出现精度丢失或不匹配情况发生。<br>python中提出了Decimal对象来进行解决，通过引入 import decimal生成一个decimal对象，将浮点数转换为decimal类型，可以支持完成对应的算术运算。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal   <span class="comment"># 引入decimal包中的Deciaml对象</span></span><br><span class="line">f1 = <span class="number">12.4556</span></span><br><span class="line">f2 = <span class="number">24.3</span></span><br><span class="line">c = Decimal.from_float(f1)    <span class="comment"># 将浮点数转换为decimal对象</span></span><br><span class="line">a = Decimal(f1).quantize(Decimal(<span class="string">'0.00'</span>)) <span class="comment">#将浮点数转换为decimal对象，同时指定该数值的精度，保留小数点后两位，并自动完成四舍五入。</span></span><br><span class="line">b = Decimal(f2).quantize(Decimal(<span class="string">'0.00'</span>))</span><br><span class="line">print((a*b).quantize(Decimal(<span class="string">'0.00'</span>)))</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>6）字符串<br>1、字符串声明，可以使用’’也可以使用””，他们都可以表示字符串内容。<br>2、<strong>比较运算符</strong>：&gt;、&lt;、==、!=、&gt;=、&lt;=<br>他们的返回值为布尔型，即True或False<br>字符串进行比较时，采用<strong>对应位置的逐字母</strong>进行比较，首先将字母转成ASCII码，然后根据码值进行比较大小。如果一旦出现一方的字母码值大于另一方，就结束比较。<br>提示：在键盘上，所有的字符的ASCII码值都小于a,b,c…..这些字母的码值<br>只有这四个字符的ASCII码值大于字母z的码值：’{‘、’|’、’}’、’~’，它们的码值从123-126<br>3、我们使用input()，允许进行交互式输入，默认input()输入的值类型为str字符串类型。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="4、字符串常用的方法"><a href="#4、字符串常用的方法" class="headerlink" title="4、字符串常用的方法"></a>4、字符串常用的方法</h4><blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>1）find() 查找</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>函数格式：str.find(子字符串[,开始索引位，结束索引位])<br>返回值：如果查找成功，则返回所查找内容在字符串中的索引位置，如果没有找到，返回-1.</p>
+<p>注意：如果所查找的内容中，有多个相同的字母，只会返回第一个字母所在的索引位。比如：<br>str1 = ‘hello’<br>str1.find(‘ll’) =&gt; 2  该例中，’ll’在字符串中出现了两次，但<strong>只会返回第一次出现的索引位置</strong>。</p>
+<p>为什么查找时，没有找到目标字符串的情况下会返回-1。其实，在find操作中，会对字符串进行扫描从字符串的索引位0开始，一直到字符串结尾，如果在字符串最后一位没有找到匹配的内容，将指向字符串结束符(EOF)，该结束符为-1。所以找不到时，find返回值为-1.</p>
+<p>更多用法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">string1 = <span class="string">'apple,banana,apple,apple'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.find(<span class="string">'apple'</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.find(<span class="string">'apple'</span>,<span class="number">5</span>)</span><br><span class="line"><span class="number">13</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.find(<span class="string">'apple'</span>,<span class="number">7</span>,<span class="number">20</span>)</span><br><span class="line"><span class="number">13</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.find(<span class="string">'apple'</span>,<span class="number">14</span>,<span class="number">20</span>)</span><br><span class="line"><span class="number">-1</span></span><br></pre></td></tr></table></figure></p>
+<p>对比：<br>index() 返回指定字符的索引位<br>函数格式：index(子字符串[,开始索引位，结束索引位])<br>返回值：如果找到指定的字符串，则返回其索引位；如果找不到就报错ValueError</p>
+<p><strong>find()与index()函数的区别</strong><br>第一，两者在执行结果时类似的，如果找到指定的字符就会返回其索引位<br>第二，find()如果找不到指定的字符时，返回-1；而index()找不到指定的字符，raise ValueError.<br>第三，从效率上来讲，index的查询速度要优于find,因为在python中对于像字符串这样的有序数据类型，会产生一个索引对象来自动维护其序列，find()函数不管是否有这样的序列，都需要在字符串本身进行逐一查找，而index()会通过这个索引对象的映射方式，来快速找到对应的索引位。</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>2）split() 拆分字符串<br>函数格式：str.split([分隔符])<br>返回值：根据指定的分隔符，对字符串进行拆分，返回一个列表；如果不指定分隔符，那么会将整个字符串，作为列表的一个元素。<br>例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string1 = <span class="string">'tv,pc,notebook,phone'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.split(<span class="string">','</span>)</span><br><span class="line">[<span class="string">'tv'</span>, <span class="string">'pc'</span>, <span class="string">'notebook'</span>, <span class="string">'phone'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.split()</span><br><span class="line">[<span class="string">'tv,pc,notebook,phone'</span>]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>注意：split中的分隔符，我们根据字符串中的实际情况而定。如果使用了不正确的分隔符，str.split(‘错误分隔符’)操作结果str.split(),会将整个字符串作为列表的一个元素。</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>3）strip() 字符串左右两端去除指定字符（默认情况，去除空格）</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>函数格式：str.strip([指定字符])<br>返回值：根据指定的字符，对字符串进行两端去除其内容，返回一个新的字符串。如果字符串中间有空格或指定字符，那么该函数不起作用。如果指定的字符在字符串左右两端不存在，那么将返回字符串本身。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 缺省情况</span></span><br><span class="line">string1 = <span class="string">'  hello world  '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.strip()</span><br><span class="line"><span class="string">'hello world'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(string1)</span><br><span class="line">  hello world  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定字符</span></span><br><span class="line">string1 = <span class="string">'awelcom to zhengzhoua'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.strip(<span class="string">'a'</span>)</span><br><span class="line"><span class="string">'welcom to zhengzhou'</span></span><br></pre></td></tr></table></figure></p>
+<p>注意：<br>1）字符串类型，一旦被声明赋值后，其内容是不可被改变的，如果需要改变原字符串变量的值，必须对其进行重新赋值。<br>2）如果指定字符内容为一个字符序列，那么意味着使用strip去除左右两端指定字符时，只要符合字符序列中的某一位，就进行去除<br>string1 = ‘ awelcom to zhengzhouab’</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>string1.strip(‘ ab’)<br>‘welcom to zhengzhou’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4）replace()替换函数<br>函数格式：str.replace(old,new[,max])<br>返回值：将指定字符串（old）替换为新字符串（new）,最大可以替换max次。替换完成后，返回一个新字符串。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>注意：此处的max参数，主要用来指定替换的次数，如果该参数缺省，表示替换里面所有符合条件的字符串。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string1 = <span class="string">'honor,oppo,vivo,apple,oppo,oppo'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>old_str = <span class="string">'oppo'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>new_str = <span class="string">'xiaomi'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.replace(old_str, new_str)     <span class="comment"># 替换所有的oppo</span></span><br><span class="line"><span class="string">'honor,xiaomi,vivo,apple,xiaomi,xiaomi'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string1.replace(old_str, new_str,<span class="number">2</span>)   <span class="comment">#替换指定次数，即两处oppo</span></span><br><span class="line"><span class="string">'honor,xiaomi,vivo,apple,xiaomi,oppo'</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>5）isalnum()、isalpha()、isdigit()<br>函数格式：str.isalnum()    判断字符串内容，是否有数字或字母组成<br>          str.isalpha()    判断字符串内容，是否由字母组成<br>          str.isdigit()    判断字符串内容，是否由数字组成<br>返回值：如果符合条件，返回True；如果不符合，返回False。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>6）[] 字符串运算符<br><strong>使用方法</strong>：str[索引位] =&gt; 返回指定索引位的字符，</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>索引位有两种表示方式：<br>string1 = hello world<br>第一种：string1[0] =&gt; h    到string1[10] =&gt; d<br>第二种：string1[-1] =&gt; d   到string1[-11] =&gt; h<br><strong>切片操作</strong>:<br>格式：str[start,end,step]<br>start：代表切片开始的索引位<br>end: 代表切片结束的索引位（但是不会输出该索引位指向的字符）<br>step：代表每隔次几个字符个数截取一个</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">string1 = hello world</span><br><span class="line">string1[<span class="number">0</span>:<span class="number">3</span>]  <span class="comment">#  hel   从索引位为0的字符开始，到索引位3结束，但不包括索引位3所指向的字符。</span></span><br><span class="line">string1[<span class="number">2</span>:<span class="number">4</span>]  <span class="comment"># ll</span></span><br><span class="line">string1[<span class="number">0</span>:<span class="number">-1</span>]  <span class="comment"># hello worl </span></span><br><span class="line">string1[<span class="number">0</span>:<span class="number">8</span>:<span class="number">2</span>]  <span class="comment"># hlow</span></span><br><span class="line"></span><br><span class="line">str1[:]   <span class="comment">#  'hello world' 等于将字符串进行复制</span></span><br><span class="line">str1[:<span class="number">5</span>]  <span class="comment">#  'hello'       如果没有标明开始索引位，默认从0开始</span></span><br><span class="line">str1[::]  <span class="comment"># 'hello world'  等同于str1[:]</span></span><br></pre></td></tr></table></figure>
+<p><strong>使用步长，实现字符串反转</strong><br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string1[<span class="number">-1</span>::<span class="number">-1</span>]   <span class="comment"># dlrow olleh    从索引位-1开始，一直到字符串结束，反向输出字符</span></span><br><span class="line"><span class="comment"># 但是下列操作，会返回一个空字符串：</span></span><br><span class="line">string1[<span class="number">-1</span>:<span class="number">4</span>]  <span class="comment">#  ''</span></span><br><span class="line">string1[<span class="number">-1</span>:<span class="number">-5</span>]  <span class="comment">#  ''</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>7）连接符与重复操作符<br>+：在字符串中使用时，作为连接两个字符串，并返回一个新字符串的作用来使用。<br><em>：重复操作指定的次数，即将字符串重复输出N次。返回一个新字符串。<br>注意：在重复操作中，必须遵循：字符串</em>正整数这样的格式，如果数值不是正整数，其结果返回一个空字符串，如果不是数值类型，程序报错。<br>8）in运算符<br>用来检测指定的内容，是否在字符串中，如果存在则返回True，反之返回False<br>例如:<br>string1 = ‘hello world’<br>substr = ‘e’<br>substr in string1<br>True<br>substr = ‘ll’<br>substr in string1<br>True<br>substr = ‘wr’<br>substr in string1<br>False</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>7、控制语句<br>1）条件语句<br>单判断：<br>if 条件:<br>   代码<br>双分支：<br>if 条件：<br>   代码<br>else:<br>   代码<br>多分支：<br>if 条件：<br>   代码<br>elif 条件：<br>   代码<br>elif 条件：<br>   代码<br>…<br>else:<br>   代码</p>
+<p>2）逻辑运算符： and、or、not<br>and:左右两端都是布尔型，其结果也为布尔型。当左右两端的值都为True，其结果才为True，有一方为False，其结果一定为False。<br>or:左右两端都是布尔型，其结果也为布尔型。当左右两端的值有一方为True时，其结果就为True，只有在双方都为False时，其结果才为False。<br>not：属于单目运算，其结果也是布尔型。其作用就是求反，如果变量为True，结果为False，如果为False，其结果为True。<br>逻辑运算、比较运算常用在条件中使用。同时，这两种运算符经常配合使用。</p>
+<p>3）循环控制语句<br>for循环<br>第一种：（推荐）<br>for 变量 in 集合：<br>    代码<br>说明：这种循环方式，我们称为快速迭代循环，能够对集合数据进行遍历。<br>注意：这种方式只能用在集合数据上，比如：字符串、列表、元组、字典等内容。<br>例如：<br>string1 = ‘hello world’<br>for item in string1:<br>    print(item)<br>h<br>e<br>l<br>l<br>o</p>
+<p>w<br>o<br>r<br>l<br>d<br>第二种：传统式，配合range()函数使用。通过range()函数指定了循环的范围。<br>for i range(循环次数):<br>    代码</p>
+<p>说明：这种循环方式，采用指定循环次数，对目标集合进行遍历。其做法主要是让循环与集合的下标同步，在循环次数时一同取出集合指定下标的对应值。<br>range()函数：<br>函数格式：<br>range(stop) :缺省情况下，表示从0开始，循环n次<br>range(star,stop[,step])<br>其中，star：循环开始的值，stop：循环次数，step：循环步长。注意此处循环，会根据stop中的值循环规定的次数，但是显示时会从start位置开始。<br>例如：<br>for i in range(3,10):<br>    print(i,end=’ ‘)<br>3 4 5 6 7 8 9<br>for i in range(5,10):<br>    print(i,end=’ ‘)<br>5 6 7 8 9<br>range(1,10)  </p>
+<p>for循环的常用方式：嵌套<br>for i in range(次数):</p>
+<pre><code>for j in range(次数):
+</code></pre><p>注意：在这种嵌套表示的过程中，变量的位置尤为重要，通用原则为：如果变量的值需要通过外层循环来获取或生成，那么我们可以将其设为全局变量，即与外层循环for同等级的变量，如果变量需要在内层循环中生成或获取，我们通常会在外循环中声明，即与内循环同级。<br>while循环<br>格式：while 条件：<br>           代码</p>
+<p>break与continue<br>break：当满足指定条件时，break表示中断（中止）此循环，如果循环外部还有其他代码则继续向下执行。<br>continue：当满足指定条件时，continue表示结束本次循环，开始下一次循环。注意continue并没有退出循环。<br>同时，这两个关键字都是必须配合循环语句来使用，不能单独用在其他地方，比如：if</p>
 
       
 
