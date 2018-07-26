@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>迭代器和生成器 | 初学笔记</title>
+  <title>初学笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="迭代器（Iterator）1）概念：迭代器访问元素，是从第一个元素开始，依次访问后续元素直到结束。其中迭代器只能向前不能回退。其包含两个方法iter()和next():  iter()用来创建一个迭代器，next()用来访问下一个元素。  目前我们所学的字符串、列表、元组都可以创建迭代器，那么他们也是可迭代化的对象。  迭代器两个步骤：1、当调用next()函数，会将迭代器当前位置状态进行改变2、">
+  <meta name="description" content="copy()(浅拷贝)和deepcopy()（深拷贝）1、浅拷贝：我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。例如：123ls1 = [1,2,3,4,5]ls2 = ls1.copy()  # 将ls1中的元素赋值给ls2,此时他们的值相等的ls1[3] = 6        #此时，对ls1中索引位3的值进">
 <meta name="keywords" content="Python、爬虫、Web开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="迭代器和生成器">
-<meta property="og:url" content="http://yoursite.com/2018/07/19/iterator/index.html">
+<meta property="og:title" content="初学笔记">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/copy/index.html">
 <meta property="og:site_name" content="初学笔记">
-<meta property="og:description" content="迭代器（Iterator）1）概念：迭代器访问元素，是从第一个元素开始，依次访问后续元素直到结束。其中迭代器只能向前不能回退。其包含两个方法iter()和next():  iter()用来创建一个迭代器，next()用来访问下一个元素。  目前我们所学的字符串、列表、元组都可以创建迭代器，那么他们也是可迭代化的对象。  迭代器两个步骤：1、当调用next()函数，会将迭代器当前位置状态进行改变2、">
+<meta property="og:description" content="copy()(浅拷贝)和deepcopy()（深拷贝）1、浅拷贝：我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。例如：123ls1 = [1,2,3,4,5]ls2 = ls1.copy()  # 将ls1中的元素赋值给ls2,此时他们的值相等的ls1[3] = 6        #此时，对ls1中索引位3的值进">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-19T12:59:03.010Z">
+<meta property="og:updated_time" content="2018-07-24T13:36:12.987Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="迭代器和生成器">
-<meta name="twitter:description" content="迭代器（Iterator）1）概念：迭代器访问元素，是从第一个元素开始，依次访问后续元素直到结束。其中迭代器只能向前不能回退。其包含两个方法iter()和next():  iter()用来创建一个迭代器，next()用来访问下一个元素。  目前我们所学的字符串、列表、元组都可以创建迭代器，那么他们也是可迭代化的对象。  迭代器两个步骤：1、当调用next()函数，会将迭代器当前位置状态进行改变2、">
+<meta name="twitter:title" content="初学笔记">
+<meta name="twitter:description" content="copy()(浅拷贝)和deepcopy()（深拷贝）1、浅拷贝：我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。例如：123ls1 = [1,2,3,4,5]ls2 = ls1.copy()  # 将ls1中的元素赋值给ls2,此时他们的值相等的ls1[3] = 6        #此时，对ls1中索引位3的值进">
   
     <link rel="alternative" href="/atom.xml" title="初学笔记" type="application/atom+xml">
   
@@ -159,42 +159,18 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-iterator" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-copy" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      迭代器和生成器
-    </h1>
-  
-
-        
-        <a href="/2018/07/19/iterator/" class="archive-article-date">
-  	<time datetime="2018-07-19T12:48:02.940Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="迭代器（Iterator）"><a href="#迭代器（Iterator）" class="headerlink" title="迭代器（Iterator）"></a>迭代器（Iterator）</h3><h4 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h4><p>迭代器访问元素，是从第一个元素开始，依次访问后续元素直到结束。其中迭代器只能向前不能回退。<br>其包含两个方法iter()和next():</p>
-<blockquote>
-<p>iter()用来创建一个迭代器，next()用来访问下一个元素。</p>
-</blockquote>
-<p>目前我们所学的字符串、列表、元组都可以创建迭代器，那么他们也是可迭代化的对象。</p>
-<blockquote>
-<p>迭代器两个步骤：<br>1、当调用next()函数，会将迭代器当前位置状态进行改变<br>2、会将下一个元素进行返回</p>
-</blockquote>
-<p><strong>迭代器的延迟作用</strong>：迭代器生成的元素并不是在迭代器声明时，就准备好了的。通常时在调用迭代器需要提供该元素时生成的，也就是说只有在我们需要的时候迭代器才产生相关元素，不需要时并不会主动的生成相关元素。我们可以把迭代器看成一个容器，到我们需要时使用next()方法返回容器中的下一个值。<br>迭代器实现了工厂模式的对象，它在你每次访问下一个值的时候给你返回。</p>
-<p><strong>可迭代化（iterable）</strong>：表明相关的对象可以创建迭代器对象，同时他们自身都是可以进行for数据遍历的。我们可以使用isinstance()来判断对象是否为可迭代化</p>
-<p><strong>instance()函数</strong>：<br>函数格式：isinstance(对象，类型)<br>返回值：布尔值<br>结果：如果指定的对象属于指定的类型，那么返回True，反之返回False<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line">string = <span class="string">'hello'</span></span><br><span class="line">print(isinstance(string, Iterable))  =&gt; True</span><br></pre></td></tr></table></figure></p>
-<p><strong>enumerate()函数</strong><br>函数格式：enumerate(iterable)<br>返回值：生成一个枚举对象<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">enum = enumberate([<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> enum:</span><br><span class="line">    print(i)</span><br><span class="line">    </span><br><span class="line">(<span class="number">0</span>, <span class="string">'one'</span>)</span><br><span class="line">(<span class="number">1</span>, <span class="string">'two'</span>)</span><br><span class="line">(<span class="number">2</span>, <span class="string">'three'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i,value <span class="keyword">in</span> enum:</span><br><span class="line">    print(i, value)</span><br><span class="line">   </span><br><span class="line"><span class="number">0</span> one</span><br><span class="line"><span class="number">1</span> two</span><br><span class="line"><span class="number">2</span> three</span><br></pre></td></tr></table></figure></p>
-<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><h4 id="1、创建方式"><a href="#1、创建方式" class="headerlink" title="1、创建方式"></a>1、创建方式</h4><p>第一种，使用列表推导式，将[]改为()，生成一个generator对象<br>第二种，使用函数方式，采用<strong>yield关键字</strong>来实现<br>2、使用<br>生成器我们通常可以认为一种特殊的迭代器，但是它不需要像迭代器一样去实现<strong>iter</strong>,<strong>next</strong>方法。只需要使用yield关键字，该关键字可以在每次调用生成器函数时起到暂停作用，并将其值进行返回。同时还会记录当前运行值的状态。</p>
-<blockquote>
-<p>总结：迭代器和生成器<br>1、容器是一系列的元素集合，str、list、set、dict对象都可以看作是容器，容器都可以进行迭代（即用在while或for循环），凡是这样的容器我们都称为可迭代化对象（Iterable）。<br>2、可迭代化对象都实现了<strong>iter</strong>方法，该方法返回一个迭代器对象。<br>3、迭代器都拥有一个状态字段，用于记录下次迭代返回值。它实现了<strong>next</strong>和<strong>iter</strong>方法，迭代器不会一次性把所有的元素都加载到内存中，而是在需要的时候才生成返回结果。<br>4、生成器是一种特殊的迭代器，它的返回值不是通过return来返回的，而是通过yield来返回的。</p>
-</blockquote>
+        <h2 id="copy-浅拷贝-和deepcopy-（深拷贝）"><a href="#copy-浅拷贝-和deepcopy-（深拷贝）" class="headerlink" title="copy()(浅拷贝)和deepcopy()（深拷贝）"></a>copy()(浅拷贝)和deepcopy()（深拷贝）</h2><h3 id="1、浅拷贝："><a href="#1、浅拷贝：" class="headerlink" title="1、浅拷贝："></a>1、浅拷贝：</h3><p>我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">ls2 = ls1.copy()  <span class="comment"># 将ls1中的元素赋值给ls2,此时他们的值相等的</span></span><br><span class="line">ls1[<span class="number">3</span>] = <span class="number">6</span>        <span class="comment">#此时，对ls1中索引位3的值进行修改，变为6</span></span><br></pre></td></tr></table></figure></p>
+<p><code>观察其结果，我们可以发现ls1 =&gt; [1,2,3,6,5],但是ls2 =&gt;[1,2,3,4,5]没有发生改变</code></p>
+<p>一旦，ls1的列表元素结构发生变化，出现子列表嵌套。<br>如：ls1 = [1,2,3,[‘one’,’two’],5]，这是再使用copy()对ls2赋值，我们进行如下修改：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">'one'</span>,<span class="string">'two'</span>],<span class="number">5</span>]</span><br><span class="line">ls2 = ls1.copy()</span><br><span class="line">ls1[<span class="number">3</span>][<span class="number">0</span>] = <span class="string">'three'</span></span><br></pre></td></tr></table></figure></p>
+<p><code>我们观察其结果，可以发现ls1 =&gt; [1,2,3,[&#39;three&#39;,&#39;two&#39;],5],同时ls2也会随之变化 ls2 =&gt; [1,2,3,[&#39;three&#39;,&#39;two&#39;],5]。</code></p>
+<p><strong>总结</strong>：这种现象我们成为浅拷贝，copy()函数进行组合数据类型拷贝时，只能控制第一层元素进行值传递，一旦出现嵌套的子列表、子字典等内容，将不再拷贝其内容的值，而是直接将这个嵌套的内存地址，赋值给ls2。所以会造成一旦原列表改变子列表内容后，目标列表中对应的子列表也发生改变。</p>
+<p>###　2、深拷贝：<br>我们需要引入copy这个模块，调用deepcopy()函数。写法如下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">'one'</span>,<span class="string">'two'</span>],<span class="number">5</span>]</span><br><span class="line">ls2 = copy.deepcopy(ls1)</span><br><span class="line">ls1[<span class="number">3</span>][<span class="number">0</span>] = <span class="string">'three'</span></span><br></pre></td></tr></table></figure></p>
+<p>此时，我们发现ls1内容发生改变后，但是ls2并没有随之改变，那么也就是意味着deepcopy()将ls1中内容，包括嵌套里面的元素都进行了副本赋值，给ls2。因此，<strong>他们只是值相同，并没有指向同一个内存地址</strong>。</p>
 
       
 
@@ -274,7 +250,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/19/iterator/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/24/copy/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -288,18 +264,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/24/function/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/17/sort/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">排序</div>
+    <a href="/2018/07/24/function/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   
