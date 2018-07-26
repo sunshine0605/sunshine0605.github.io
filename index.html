@@ -160,14 +160,29 @@
     <article id="post-copy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/copy/">copy()(浅拷贝)和deepcopy()（深拷贝）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/24/copy/" class="archive-article-date">
+  	<time datetime="2018-07-24T13:27:21.934Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="copy-浅拷贝-和deepcopy-（深拷贝）"><a href="#copy-浅拷贝-和deepcopy-（深拷贝）" class="headerlink" title="copy()(浅拷贝)和deepcopy()（深拷贝）"></a>copy()(浅拷贝)和deepcopy()（深拷贝）</h2><h3 id="1、浅拷贝："><a href="#1、浅拷贝：" class="headerlink" title="1、浅拷贝："></a>1、浅拷贝：</h3><p>我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">ls2 = ls1.copy()  <span class="comment"># 将ls1中的元素赋值给ls2,此时他们的值相等的</span></span><br><span class="line">ls1[<span class="number">3</span>] = <span class="number">6</span>        <span class="comment">#此时，对ls1中索引位3的值进行修改，变为6</span></span><br></pre></td></tr></table></figure></p>
+        <h3 id="1、浅拷贝："><a href="#1、浅拷贝：" class="headerlink" title="1、浅拷贝："></a>1、浅拷贝：</h3><p>我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">ls2 = ls1.copy()  <span class="comment"># 将ls1中的元素赋值给ls2,此时他们的值相等的</span></span><br><span class="line">ls1[<span class="number">3</span>] = <span class="number">6</span>        <span class="comment">#此时，对ls1中索引位3的值进行修改，变为6</span></span><br></pre></td></tr></table></figure></p>
 <p><code>观察其结果，我们可以发现ls1 =&gt; [1,2,3,6,5],但是ls2 =&gt;[1,2,3,4,5]没有发生改变</code></p>
 <p>一旦，ls1的列表元素结构发生变化，出现子列表嵌套。<br>如：ls1 = [1,2,3,[‘one’,’two’],5]，这是再使用copy()对ls2赋值，我们进行如下修改：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">'one'</span>,<span class="string">'two'</span>],<span class="number">5</span>]</span><br><span class="line">ls2 = ls1.copy()</span><br><span class="line">ls1[<span class="number">3</span>][<span class="number">0</span>] = <span class="string">'three'</span></span><br></pre></td></tr></table></figure></p>
 <p><code>我们观察其结果，可以发现ls1 =&gt; [1,2,3,[&#39;three&#39;,&#39;two&#39;],5],同时ls2也会随之变化 ls2 =&gt; [1,2,3,[&#39;three&#39;,&#39;two&#39;],5]。</code></p>
 <p><strong>总结</strong>：这种现象我们成为浅拷贝，copy()函数进行组合数据类型拷贝时，只能控制第一层元素进行值传递，一旦出现嵌套的子列表、子字典等内容，将不再拷贝其内容的值，而是直接将这个嵌套的内存地址，赋值给ls2。所以会造成一旦原列表改变子列表内容后，目标列表中对应的子列表也发生改变。</p>
-<p>###　2、深拷贝：<br>我们需要引入copy这个模块，调用deepcopy()函数。写法如下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">'one'</span>,<span class="string">'two'</span>],<span class="number">5</span>]</span><br><span class="line">ls2 = copy.deepcopy(ls1)</span><br><span class="line">ls1[<span class="number">3</span>][<span class="number">0</span>] = <span class="string">'three'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2、深拷贝："><a href="#2、深拷贝：" class="headerlink" title="2、深拷贝："></a>2、深拷贝：</h3><p>我们需要引入copy这个模块，调用deepcopy()函数。写法如下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">'one'</span>,<span class="string">'two'</span>],<span class="number">5</span>]</span><br><span class="line">ls2 = copy.deepcopy(ls1)</span><br><span class="line">ls1[<span class="number">3</span>][<span class="number">0</span>] = <span class="string">'three'</span></span><br></pre></td></tr></table></figure></p>
 <p>此时，我们发现ls1内容发生改变后，但是ls2并没有随之改变，那么也就是意味着deepcopy()将ls1中内容，包括嵌套里面的元素都进行了副本赋值，给ls2。因此，<strong>他们只是值相同，并没有指向同一个内存地址</strong>。</p>
 
       
@@ -214,9 +229,24 @@
     <article id="post-function" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/function/">函数</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/24/function/" class="archive-article-date">
+  	<time datetime="2018-07-24T13:13:13.948Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="9、函数"><a href="#9、函数" class="headerlink" title="9、函数"></a>9、函数</h2><p>一、自定义函数</p>
+        <p>一、自定义函数</p>
 <h3 id="1、函数的定义"><a href="#1、函数的定义" class="headerlink" title="1、函数的定义"></a>1、函数的定义</h3><p>函数的格式：<br>def 函数名([参数列表]):<br>    执行代码</p>
 <p>其中，函数名的命名方式与变量名的要求相同，即只能是数字、字符、下划线三者构成，同时不能由数字开头。<br>另外，函数的参数根据情况，可以有参，也可以无参。同时，参数的个数，可以是1到N个。最后，调用函数时，一定要保证该函数已经被定义。调用的函数名与定义的函数名一致。</p>
 <h3 id="2、函数的调用"><a href="#2、函数的调用" class="headerlink" title="2、函数的调用"></a>2、函数的调用</h3><p>函数在外部调用时，直接写函数名以及函数参数即可，不需要将函数体写出来。同时，函数是否有返回值，由其函数体最后一句代码是否为return来决定的。如果由return语句，那么就意味着该函数有返回值，如果没有返回值就意味着返回值为None。</p>
