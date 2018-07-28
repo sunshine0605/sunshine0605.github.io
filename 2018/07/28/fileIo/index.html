@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>copy()(浅拷贝)和deepcopy()（深拷贝） | 初学笔记</title>
+  <title>文件输入输出（IO） | 初学笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、浅拷贝：我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。例如：123ls1 = [1,2,3,4,5]ls2 = ls1.copy()  # 将ls1中的元素赋值给ls2,此时他们的值相等的ls1[3] = 6        #此时，对ls1中索引位3的值进行修改，变为6 观察其结果，我们可以发现ls1 =&amp;g">
+  <meta name="description" content="1）格式化函数repr()函数格式：repr(Object)返回值：返回一个字符串类型的数据 说明：该函数将参数中的对象进行处理，变为字符串类型，其中如果参数为字符串仍然会在外部加上“”，其内部的字符串的边界符仍然存在。例如：12repr(&apos;hello world&apos;)&quot;&apos;hello world&apos;&quot; 居左、居右、居中函数rjust()/ljust()/center()函数格式：rjust(int)">
 <meta name="keywords" content="Python、爬虫、Web开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="copy()(浅拷贝)和deepcopy()（深拷贝）">
-<meta property="og:url" content="http://yoursite.com/2018/07/24/copy/index.html">
+<meta property="og:title" content="文件输入输出（IO）">
+<meta property="og:url" content="http://yoursite.com/2018/07/28/fileIo/index.html">
 <meta property="og:site_name" content="初学笔记">
-<meta property="og:description" content="1、浅拷贝：我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。例如：123ls1 = [1,2,3,4,5]ls2 = ls1.copy()  # 将ls1中的元素赋值给ls2,此时他们的值相等的ls1[3] = 6        #此时，对ls1中索引位3的值进行修改，变为6 观察其结果，我们可以发现ls1 =&amp;g">
+<meta property="og:description" content="1）格式化函数repr()函数格式：repr(Object)返回值：返回一个字符串类型的数据 说明：该函数将参数中的对象进行处理，变为字符串类型，其中如果参数为字符串仍然会在外部加上“”，其内部的字符串的边界符仍然存在。例如：12repr(&apos;hello world&apos;)&quot;&apos;hello world&apos;&quot; 居左、居右、居中函数rjust()/ljust()/center()函数格式：rjust(int)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-26T12:53:41.186Z">
+<meta property="og:updated_time" content="2018-07-28T09:47:10.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="copy()(浅拷贝)和deepcopy()（深拷贝）">
-<meta name="twitter:description" content="1、浅拷贝：我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。例如：123ls1 = [1,2,3,4,5]ls2 = ls1.copy()  # 将ls1中的元素赋值给ls2,此时他们的值相等的ls1[3] = 6        #此时，对ls1中索引位3的值进行修改，变为6 观察其结果，我们可以发现ls1 =&amp;g">
+<meta name="twitter:title" content="文件输入输出（IO）">
+<meta name="twitter:description" content="1）格式化函数repr()函数格式：repr(Object)返回值：返回一个字符串类型的数据 说明：该函数将参数中的对象进行处理，变为字符串类型，其中如果参数为字符串仍然会在外部加上“”，其内部的字符串的边界符仍然存在。例如：12repr(&apos;hello world&apos;)&quot;&apos;hello world&apos;&quot; 居左、居右、居中函数rjust()/ljust()/center()函数格式：rjust(int)">
   
     <link rel="alternative" href="/atom.xml" title="初学笔记" type="application/atom+xml">
   
@@ -159,33 +159,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-copy" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-fileIo" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      copy()(浅拷贝)和deepcopy()（深拷贝）
+      文件输入输出（IO）
     </h1>
   
 
         
-        <a href="/2018/07/24/copy/" class="archive-article-date">
-  	<time datetime="2018-07-24T13:27:21.934Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
+        <a href="/2018/07/28/fileIo/" class="archive-article-date">
+  	<time datetime="2018-07-28T09:30:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1、浅拷贝："><a href="#1、浅拷贝：" class="headerlink" title="1、浅拷贝："></a>1、浅拷贝：</h3><p>我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">ls2 = ls1.copy()  <span class="comment"># 将ls1中的元素赋值给ls2,此时他们的值相等的</span></span><br><span class="line">ls1[<span class="number">3</span>] = <span class="number">6</span>        <span class="comment">#此时，对ls1中索引位3的值进行修改，变为6</span></span><br></pre></td></tr></table></figure></p>
-<p><code>观察其结果，我们可以发现ls1 =&gt; [1,2,3,6,5],但是ls2 =&gt;[1,2,3,4,5]没有发生改变</code></p>
-<p>一旦，ls1的列表元素结构发生变化，出现子列表嵌套。<br>如：ls1 = [1,2,3,[‘one’,’two’],5]，这是再使用copy()对ls2赋值，我们进行如下修改：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">'one'</span>,<span class="string">'two'</span>],<span class="number">5</span>]</span><br><span class="line">ls2 = ls1.copy()</span><br><span class="line">ls1[<span class="number">3</span>][<span class="number">0</span>] = <span class="string">'three'</span></span><br></pre></td></tr></table></figure></p>
-<p><code>我们观察其结果，可以发现ls1 =&gt; [1,2,3,[&#39;three&#39;,&#39;two&#39;],5],同时ls2也会随之变化 ls2 =&gt; [1,2,3,[&#39;three&#39;,&#39;two&#39;],5]。</code></p>
-<p><strong>总结</strong>：这种现象我们成为浅拷贝，copy()函数进行组合数据类型拷贝时，只能控制第一层元素进行值传递，一旦出现嵌套的子列表、子字典等内容，将不再拷贝其内容的值，而是直接将这个嵌套的内存地址，赋值给ls2。所以会造成一旦原列表改变子列表内容后，目标列表中对应的子列表也发生改变。</p>
-<h3 id="2、深拷贝："><a href="#2、深拷贝：" class="headerlink" title="2、深拷贝："></a>2、深拷贝：</h3><p>我们需要引入copy这个模块，调用deepcopy()函数。写法如下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">'one'</span>,<span class="string">'two'</span>],<span class="number">5</span>]</span><br><span class="line">ls2 = copy.deepcopy(ls1)</span><br><span class="line">ls1[<span class="number">3</span>][<span class="number">0</span>] = <span class="string">'three'</span></span><br></pre></td></tr></table></figure></p>
-<p>此时，我们发现ls1内容发生改变后，但是ls2并没有随之改变，那么也就是意味着deepcopy()将ls1中内容，包括嵌套里面的元素都进行了副本赋值，给ls2。因此，<strong>他们只是值相同，并没有指向同一个内存地址</strong>。</p>
+        <h3 id="1）格式化函数"><a href="#1）格式化函数" class="headerlink" title="1）格式化函数"></a>1）格式化函数</h3><p><strong>repr()</strong><br>函数格式：repr(Object)<br>返回值：返回一个字符串类型的数据</p>
+<p>说明：该函数将参数中的对象进行处理，变为<strong>字符串类型</strong>，其中如果参数为字符串仍然会在外部加上“”，其内部的字符串的边界符仍然存在。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">repr(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="string">"'hello world'"</span></span><br></pre></td></tr></table></figure></p>
+<p>居左、居右、居中函数<br><strong>rjust()/ljust()/center()</strong><br>函数格式：rjust(int) /ljust(int)/center()<br>返回值：无<br>说明：该函数，将输出的字符串居右(居左/居中)对其，左侧(右侧/两侧)使用参数中规定的空格数来对齐</p>
+<h3 id="2）文本文件的输入输出"><a href="#2）文本文件的输入输出" class="headerlink" title="2）文本文件的输入输出"></a>2）文本文件的输入输出</h3><p>文本文件的操作步骤：</p>
+<h4 id="1、打开文件"><a href="#1、打开文件" class="headerlink" title="1、打开文件"></a>1、打开文件</h4><p>函数格式：<strong>open(file,mode,buffering,encoding)</strong><br>返回值：返回一个文件对象，用来对文件进行操作。<br>说明：该函数主要是进行文件打开操作，如果文件不存在就新建一个文件。如果存在就打开原有文件。</p>
+<h4 id="2、操作文件"><a href="#2、操作文件" class="headerlink" title="2、操作文件"></a>2、操作文件</h4><p><strong>1）写文件</strong><br>函数格式：write(str)<br>返回值：返回所写入文件的字符串中的字符数。<br>说明：该函数可以一次性写入一个字符串内容，到文件中。每次写入文件是，如果使用的<em>模式为w</em>，那么因为着本次写入为<strong>覆盖式写入</strong>，即写入内容会替换掉原有文件内容。</p>
+<p>函数格式：writelines(sequence)<br>返回值：无<br>说明：该函数可以使用列表、字符串、元组、集合、字典等作为参数，其中这些序列中的元素必须为字符串类型，同时也可以一次性写入多行字符串。<br><strong>2）读文件</strong><br>函数格式：read([size])<br>返回值：返回按字节逐一读取的数据。<br>说明：该函数按照字节个数，<strong>逐一读取</strong>文件中的数据。如果没有规定读取数据的字节大小即size，一直读完文件中全部数据，如果规定了数据的字节大小，只读取规定字节数的内容。</p>
+<p>函数格式：readline()<br>返回值：返回读取的一行字符串<br>说明：该函数一次能够<strong>读取文件中一行内容</strong>，如果需要读取全部内容，需要配合while循环使用，注意使用读取到的文件内容作为条件判断，即文件内容为空字符串时，退出循环。</p>
+<p>函数格式：readlines()<br>返回值：<strong>返回</strong>一个包含多个字符串的<strong>列表</strong>。<br>说明：该函数能够一次性将文件中的数据全部读取出来，然后将文件中每行字符串，作为一个列表的元素，将其组装成一个列表返回。</p>
+<h4 id="3、关闭文件"><a href="#3、关闭文件" class="headerlink" title="3、关闭文件"></a>3、关闭文件</h4><p>函数格式：close()<br>返回值：无<br>说明：当我们操作文件时，进行相关的写入操作，<strong>Python将数据写入文件之前，会将文件保存在文件缓冲区中</strong>，在我们调用close()函数时，首先会将文件缓冲区内还没有写入到文件中的数据进行刷新并强制写入文件，然后关闭Python与文件的通道，释放相关资源。</p>
+<h4 id="4、json格式处理"><a href="#4、json格式处理" class="headerlink" title="4、json格式处理"></a>4、json格式处理</h4><p>在Python中，提供了json模块可以实现对特殊数据结构的读写。比如：列表和字典。<br>1）将嵌套列表或字典转为json格式数据<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">item = json.dumps(list/dict)</span><br><span class="line">file.writelines(item)</span><br><span class="line"><span class="comment"># 将列表转化为json数据后加入到文件中</span></span><br><span class="line">json.dump(list, file)</span><br></pre></td></tr></table></figure></p>
+<p>2)将文件中的列表或字典json字符串读取出来<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f= open(file,mode)</span><br><span class="line">json.load(f)</span><br></pre></td></tr></table></figure></p>
+<h4 id="5、文件及路径操作函数"><a href="#5、文件及路径操作函数" class="headerlink" title="5、文件及路径操作函数"></a>5、文件及路径操作函数</h4><p>1）<strong>isfile()与isdir()</strong> （os.path模块）<br>函数格式：os.path.isfile(file)<br>返回值：bool<br>说明：根据传入的参数，判断该内容是否为文件类型。如果是文件类型返回True，如果不是返回False</p>
+<p><strong>isdir()</strong><br>函数格式：os.path.isdir(path)<br>返回值：bool<br>说明：根据传入的参数，判断内容是否为目录类型，如果是目录就返回True，如果不是返回False</p>
+<p>2）<strong>创建路径 mkdir()、删除路径removedirs() (os模块)</strong><br>函数格式：os.mkdir(path)<br>返回值：无<br>说明：如果指定路径中不存在该目录，那么创建该目录。注意，如果存在同名目录，则报错</p>
+<p>函数格式：os.removedirs(path)，os.rmdir(path)<br>返回值：无<br>说明：删除指定的目录，如果该目录中存在文件或子目录，都不允许删除。否则报错。</p>
+<p>3）<strong>删除文件 remove() （os模块）</strong><br>函数格式：os.remove(file)<br>返回值：无<br>说明：删除指定的文件，如果该文件不存在则报错。如果文件存在就删除。</p>
+<p>4）<strong>判断文件/目录是否存在 exists()</strong><br>函数格式：os.path.exists(file/path)<br>返回值：bool<br>说明：判断指定的文件或路径是否存在，如果存在返回True，如果不存在返回False。</p>
+<p>5)<strong>返回指定路径下，所有子路径 listdir()</strong><br>函数格式：os.listdir(path)<br>返回值：list<br>说明：返回指定路径下，所有的子路径。</p>
+<p>6）<strong>返回当前路径 getcwd()</strong><br>函数格式：os.getcwd()<br>返回值：path<br>说明：返回当前程序所在的绝对路径</p>
+<p>7）<strong>返回文件大小 getsize()</strong><br>函数格式：path.getsize()<br>返回值：int<br>说明：返回指定文件的大小，单位是字节</p>
+<p>8）<strong>重命名 rename()</strong><br>函数格式：os.rename(oldfilename/oldpath,newfilename/newpath)<br>返回值：无<br>说明:将指定的文件名或目录名进行重命名。</p>
+<p>9）<strong>替换 replace()</strong><br>函数格式：os.replace(src,dst)<br>返回值：无<br>说明：使用目标文件替换掉原文件</p>
+<p><strong>注意</strong>：在Python3.x版本中，将pathlib作为内置模块进行了引入。<br>我们可以通过使用from pathlib import Path，使用。<br>其使用的前提为：需要先创建一个path对象，然后对其进行操作。<br><code>p = Path(&#39;c:\pythoncode\etc&#39;)</code><br>具体方法，大家自行学习。</p>
 
       
 
@@ -265,7 +282,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/24/copy/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/28/fileIo/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -279,18 +296,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/28/fileIo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          文件输入输出（IO）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/24/function/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">函数</div>
+    <a href="/2018/07/24/copy/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">copy()(浅拷贝)和deepcopy()（深拷贝）</div>
       <i class="icon-circle-right"></i>
     </a>
   
