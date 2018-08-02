@@ -6,20 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>文件输入输出（IO） | 初学笔记</title>
+  <title>初学笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1）格式化函数repr()函数格式：repr(Object)返回值：返回一个字符串类型的数据 说明：该函数将参数中的对象进行处理，变为字符串类型，其中如果参数为字符串仍然会在外部加上“”，其内部的字符串的边界符仍然存在。例如：12repr(&apos;hello world&apos;)&quot;&apos;hello world&apos;&quot; 居左、居右、居中函数rjust()/ljust()/center()函数格式：rjust(int)">
-<meta name="keywords" content="Python、爬虫、Web开发">
-<meta property="og:type" content="article">
-<meta property="og:title" content="文件输入输出（IO）">
-<meta property="og:url" content="http://yoursite.com/2018/07/28/fileIo/index.html">
+  <meta name="keywords" content="Python、爬虫、Web开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="初学笔记">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="初学笔记">
-<meta property="og:description" content="1）格式化函数repr()函数格式：repr(Object)返回值：返回一个字符串类型的数据 说明：该函数将参数中的对象进行处理，变为字符串类型，其中如果参数为字符串仍然会在外部加上“”，其内部的字符串的边界符仍然存在。例如：12repr(&apos;hello world&apos;)&quot;&apos;hello world&apos;&quot; 居左、居右、居中函数rjust()/ljust()/center()函数格式：rjust(int)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-01T14:01:10.638Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="文件输入输出（IO）">
-<meta name="twitter:description" content="1）格式化函数repr()函数格式：repr(Object)返回值：返回一个字符串类型的数据 说明：该函数将参数中的对象进行处理，变为字符串类型，其中如果参数为字符串仍然会在外部加上“”，其内部的字符串的边界符仍然存在。例如：12repr(&apos;hello world&apos;)&quot;&apos;hello world&apos;&quot; 居左、居右、居中函数rjust()/ljust()/center()函数格式：rjust(int)">
+<meta name="twitter:title" content="初学笔记">
   
     <link rel="alternative" href="/atom.xml" title="初学笔记" type="application/atom+xml">
   
@@ -159,81 +155,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-fileIo" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      文件输入输出（IO）
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/09/hello-world/">Hello World</a>
     </h1>
   
 
         
-        <a href="/2018/07/28/fileIo/" class="archive-article-date">
-  	<time datetime="2018-07-28T09:30:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
+        <a href="/2018/07/09/hello-world/" class="archive-article-date">
+  	<time datetime="2018-07-09T12:26:52.135Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1）格式化函数"><a href="#1）格式化函数" class="headerlink" title="1）格式化函数"></a>1）格式化函数</h3><p><strong>repr()</strong><br>函数格式：repr(Object)<br>返回值：返回一个字符串类型的数据</p>
-<p>说明：该函数将参数中的对象进行处理，变为<strong>字符串类型</strong>，其中如果参数为字符串仍然会在外部加上“”，其内部的字符串的边界符仍然存在。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">repr(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="string">"'hello world'"</span></span><br></pre></td></tr></table></figure></p>
-<p>居左、居右、居中函数<br><strong>rjust()/ljust()/center()</strong><br>函数格式：rjust(int) /ljust(int)/center()<br>返回值：无<br>说明：该函数，将输出的字符串居右(居左/居中)对齐，左侧(右侧/两侧)使用参数中规定的空格数来对齐<br><strong>参数int是输出的字符串的宽度</strong>,rjust()方法是字符串才可调用的方法<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>):</span><br><span class="line">	print(repr(i).rjust(<span class="number">3</span>),repr(i*i).rjust(<span class="number">4</span>),repr(i**<span class="number">3</span>).rjust(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">  <span class="number">1</span>    <span class="number">1</span>     <span class="number">1</span></span><br><span class="line">  <span class="number">2</span>    <span class="number">4</span>     <span class="number">8</span></span><br><span class="line">  <span class="number">3</span>    <span class="number">9</span>    <span class="number">27</span></span><br><span class="line">  <span class="number">4</span>   <span class="number">16</span>    <span class="number">64</span></span><br><span class="line">  <span class="number">5</span>   <span class="number">25</span>   <span class="number">125</span></span><br><span class="line">  <span class="number">6</span>   <span class="number">36</span>   <span class="number">216</span></span><br><span class="line">  <span class="number">7</span>   <span class="number">49</span>   <span class="number">343</span></span><br><span class="line">  <span class="number">8</span>   <span class="number">64</span>   <span class="number">512</span></span><br><span class="line">  <span class="number">9</span>   <span class="number">81</span>   <span class="number">729</span></span><br><span class="line"> <span class="number">10</span>  <span class="number">100</span>  <span class="number">1000</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2）文本文件的输入输出"><a href="#2）文本文件的输入输出" class="headerlink" title="2）文本文件的输入输出"></a>2）文本文件的输入输出</h3><p>文本文件的操作步骤：</p>
-<h4 id="1、打开文件"><a href="#1、打开文件" class="headerlink" title="1、打开文件"></a>1、打开文件</h4><p>函数格式：<strong>open(file,mode,buffering,encoding)</strong><br>返回值：返回一个文件对象，用来对文件进行操作。<br>说明：该函数主要是进行文件打开操作，如果文件不存在就新建一个文件。如果存在就打开原有文件。</p>
-<h4 id="2、操作文件"><a href="#2、操作文件" class="headerlink" title="2、操作文件"></a>2、操作文件</h4><p><strong>1）写文件</strong><br>函数格式：write(str)<br>返回值：返回所写入文件的字符串中的字符数。<br>说明：该函数可以一次性写入一个字符串内容，到文件中。每次写入文件是，如果使用的<em>模式为w</em>，那么因为着本次写入为<strong>覆盖式写入</strong>，即写入内容会替换掉原有文件内容。</p>
-<p>函数格式：writelines(sequence)<br>返回值：无<br>说明：该函数可以使用列表、字符串、元组、集合、字典等作为参数，其中这些序列中的元素必须为字符串类型，同时也可以一次性写入多行字符串。<br><strong>2）读文件</strong><br>函数格式：read([size])<br>返回值：返回按字节逐一读取的数据。<br>说明：该函数按照字节个数，<strong>逐一读取</strong>文件中的数据。如果没有规定读取数据的字节大小即size，一直读完文件中全部数据，如果规定了数据的字节大小，只读取规定字节数的内容。</p>
-<p>函数格式：readline()<br>返回值：返回读取的一行字符串<br>说明：该函数一次能够<strong>读取文件中一行内容</strong>，如果需要读取全部内容，需要配合while循环使用，注意使用读取到的文件内容作为条件判断，即文件内容为空字符串时，退出循环。</p>
-<p>函数格式：readlines()<br>返回值：<strong>返回</strong>一个包含多个字符串的<strong>列表</strong>。<br>说明：该函数能够一次性将文件中的数据全部读取出来，然后将文件中每行字符串，作为一个列表的元素，将其组装成一个列表返回。</p>
-<h4 id="3、关闭文件"><a href="#3、关闭文件" class="headerlink" title="3、关闭文件"></a>3、关闭文件</h4><p>函数格式：close()<br>返回值：无<br>说明：当我们操作文件时，进行相关的写入操作，<strong>Python将数据写入文件之前，会将文件保存在文件缓冲区中</strong>，在我们调用close()函数时，首先会将文件缓冲区内还没有写入到文件中的数据进行刷新并强制写入文件，然后关闭Python与文件的通道，释放相关资源。</p>
-<h4 id="4、json格式处理"><a href="#4、json格式处理" class="headerlink" title="4、json格式处理"></a>4、json格式处理</h4><p>在Python中，提供了json模块可以实现对特殊数据结构的读写。比如：列表和字典。<br>字典在使用普通方法写入到文件中时，只能将key写入进去。<br>1）将嵌套列表或字典转为json格式数据<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="comment"># dumps()将列表或字典先转化为json对象</span></span><br><span class="line">item = json.dumps(list/dict)</span><br><span class="line"><span class="comment"># 使用writelines()将json对象写入到文件中</span></span><br><span class="line">file.writelines(item)</span><br><span class="line"><span class="comment"># 使用dump()可以将列表转化为json数据后直接加入到文件中</span></span><br><span class="line">json.dump(list, file)</span><br></pre></td></tr></table></figure></p>
-<p>2)将文件中的列表或字典json字符串读取出来<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f= open(file,mode)</span><br><span class="line">json.load(f)</span><br></pre></td></tr></table></figure></p>
-<h4 id="5、文件及路径操作函数"><a href="#5、文件及路径操作函数" class="headerlink" title="5、文件及路径操作函数"></a>5、文件及路径操作函数</h4><p>1）<strong>isfile()与isdir()</strong> （os.path模块）<br>函数格式：os.path.isfile(file)<br>返回值：bool<br>说明：根据传入的参数，判断该内容是否为文件类型。如果是文件类型返回True，如果不是返回False</p>
-<p><strong>isdir()</strong><br>函数格式：os.path.isdir(path)<br>返回值：bool<br>说明：根据传入的参数，判断内容是否为目录类型，如果是目录就返回True，如果不是返回False</p>
-<p>2）<strong>创建路径 mkdir()、删除路径removedirs() (os模块)</strong><br>函数格式：os.mkdir(path)<br>返回值：无<br>说明：如果指定路径中不存在该目录，那么创建该目录。注意，如果存在同名目录，则报错</p>
-<p>函数格式：os.removedirs(path)，os.rmdir(path)<br>返回值：无<br>说明：删除指定的目录，如果该目录中存在文件或子目录，都不允许删除。否则报错。</p>
-<p>3）<strong>删除文件 remove() （os模块）</strong><br>函数格式：os.remove(file)<br>返回值：无<br>说明：删除指定的文件，如果该文件不存在则报错。如果文件存在就删除。</p>
-<p>4）<strong>判断文件/目录是否存在 exists()</strong><br>函数格式：os.path.exists(file/path)<br>返回值：bool<br>说明：判断指定的文件或路径是否存在，如果存在返回True，如果不存在返回False。</p>
-<p>5)<strong>返回指定路径下，所有子路径 listdir()</strong><br>函数格式：os.listdir(path)<br>返回值：list<br>说明：返回指定路径下，所有的子路径。</p>
-<p>6）<strong>返回当前路径 getcwd()</strong><br>函数格式：os.getcwd()<br>返回值：path<br>说明：返回当前程序所在的绝对路径</p>
-<p>7）<strong>返回文件大小 getsize()</strong><br>函数格式：path.getsize()<br>返回值：int<br>说明：返回指定文件的大小，单位是字节</p>
-<p>8）<strong>重命名 rename()</strong><br>函数格式：os.rename(oldfilename/oldpath,newfilename/newpath)<br>返回值：无<br>说明:将指定的文件名或目录名进行重命名。</p>
-<p>9）<strong>替换 replace()</strong><br>函数格式：os.replace(src,dst)<br>返回值：无<br>说明：使用目标文件替换掉原文件</p>
-<p><strong>注意</strong>：在Python3.x版本中，将pathlib作为内置模块进行了引入。<br>我们可以通过使用from pathlib import Path，使用。<br>其使用的前提为：需要先创建一个path对象，然后对其进行操作。<br><code>p = Path(&#39;c:\pythoncode\etc&#39;)</code><br>具体方法，大家自行学习。</p>
-<h3 id="3、二进制文件的输入输出"><a href="#3、二进制文件的输入输出" class="headerlink" title="3、二进制文件的输入输出"></a>3、二进制文件的输入输出</h3><h4 id="1）struct和pickle"><a href="#1）struct和pickle" class="headerlink" title="1）struct和pickle"></a>1）struct和pickle</h4><p><strong>使用struct模块</strong>，进行数据的输入输出<br>使用步骤：<br>第一，对要写入到文件中的各种类型数据，进行统一打包<br><code>struct.pack(&#39;if&#39;,10,12.4),其中，i:代表了整数，f：代表了浮点数 ？：代表布尔型</code><br>第二，使用<strong>write()写入</strong>，写入后以二进制的方式进行文件存储。<br>第三，读取时，首先采用<strong>struct.unpack()来解包</strong>里面包含的相关数据，返回一个序列，即写入时的顺序，与读取时的顺序应该一致。<br>注意：需要将所有写入的数据，一次性都封装到一个bytes中，因为在Python中没有byte的概念，所以需要第三方的模块进行封装。</p>
-<p><strong>使用pickel模块</strong>，进行数据的输入输出<br>使用步骤：<br>第一，对要写入文件中的数据，进行逐一的写入。例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'myfile.dat'</span>,<span class="string">'wb'</span>)</span><br><span class="line">pickle.dump(<span class="number">10</span>, f)</span><br></pre></td></tr></table></figure></p>
-<p>第二，读取数据时，同理，需要逐一的读取。例如：<br><code>pickle.load(f)</code><br>注意，在使用时，我们能够观察到该模块的dump和load函数，与前面所学的json模块的函数一致，在Python中json与pickle都能够实现序列化和反序列化的两个模块。<br>在实际的使用中，推荐使用pickle 模块。</p>
-<h4 id="2）文件定位"><a href="#2）文件定位" class="headerlink" title="2）文件定位"></a>2）文件定位</h4><p>函数格式：<strong>seek(n)</strong><br>返回值：返回指定的位置<br>说明：通过指定元素的位置，将文件指针移动到该位置。<br>seek()函数有三个固定值，分别为：0,1,2<br>0：文件的开头<br>1：文件当前的位置<br>2：文件的结尾位置<br>seek(0,2):代表着将指针定位到文件尾，然后进行添加操作<br>seek(0,1):代表着在当前指针的位置，进行替换</p>
-<blockquote>
-<p>补充：对文件的读取时，如果文件大小未知，切忌不要使用read(),readline()，readlines()将文件内容一次性读取到内存中。因为有可能文件内容过多，造成读取时的IO阻塞。建议，将文件分多次分批读入内存中。<br>我们通常可以先获取到文件大小，使用path.getsize()函数来获取文件的大小,根据其大小来判断我们采用何种方式进行读取数据内容。<br><code>size = path.getsize(&#39;myfile.txt&#39;)</code></p>
-</blockquote>
+        <!-- []高亮 -->
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<!-- ## 二级标题 -->
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><!-- ···bash 里面是可显示的命令 -->
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -242,84 +200,16 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/09/hello-world/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/28/fileIo/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/08/01/excelparsexml/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Python对Excel文件的操作
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/07/24/copy/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">copy()(浅拷贝)和deepcopy()（深拷贝）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -339,14 +229,12 @@
 
 
 
-  
-  
-  
 
   
-
   
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -369,8 +257,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
