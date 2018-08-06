@@ -157,6 +157,166 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-object" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/06/object/">15、面向对象</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/06/object/" class="archive-article-date">
+  	<time datetime="2018-08-06T12:21:44.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、面向对象的概念"><a href="#一、面向对象的概念" class="headerlink" title="一、面向对象的概念"></a>一、面向对象的概念</h2><h3 id="1、类、对象"><a href="#1、类、对象" class="headerlink" title="1、类、对象"></a>1、类、对象</h3><p>类：指具有相同属性或行为的一组事物。<br>对象：是指类的具体化。<br>类与对象的关系:类是一组对象的抽象表示，而对象是类的具体化表现。</p>
+<h3 id="2、类的语法结构"><a href="#2、类的语法结构" class="headerlink" title="2、类的语法结构"></a>2、类的语法结构</h3><p>class 类名：<br>     变量声明语句<br>     执行语句<br>     def func(self):<br>         执行语句<br>其中，类名首字母要求大写（约定俗成），遵守Python命名规则，不能以数字开头，通常我们都是字母开头。<br><strong>注意</strong>：<br>1）如果类中声明了函数，其函数的参数，必须有一个默认的参数为self，self代表了该类的实例化对象。<br>2）如果在类中声明了变量，且该变量位于函数体之外，这个变量我们成为类变量，类变量是公共的。类变量的调用可以直接使用类名进行调用，比如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>:</span>  <span class="comment"># 定义一个类，类名Animal</span></span><br><span class="line">    color = <span class="string">'灰色'</span></span><br><span class="line">    leg_num = <span class="number">4</span></span><br><span class="line">    weight = <span class="number">20</span></span><br><span class="line">    width = <span class="number">150</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wangwang</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'wangwangwangwang'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'一顿饭20块钱'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'非常快'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">husky = Dog()  <span class="comment"># 将类实例化成对象，对象为dog</span></span><br><span class="line">husky.run()</span><br><span class="line">Dog.color</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>类变量，作为公共的变量，<strong>不管类实例化多少个对象，都只实例一份类变量</strong>。而且类变量会在对象实例化之前载入内容，一旦改变了类变量中的内容，所有对象中调用这个类变量的值都会随之改变。</p>
+</blockquote>
+<p>3)在类实例化对象时，会将其定义的属性和行为，生成一份副本给具体的实例化对象。对象与对象之间，他们的属性和行为是不相互干扰的。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>:</span>  <span class="comment"># 定义一个类，类名Animal</span></span><br><span class="line">    color = <span class="string">'灰色'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        self.num = num</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getNum</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(self.num)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">husky = Dog(<span class="number">5</span>)  <span class="comment"># 将类实例化成对象，对象为dog</span></span><br><span class="line">samoye = Dog(<span class="number">3</span>)</span><br><span class="line">husky.getNum()</span><br><span class="line">samoye.getNum()</span><br></pre></td></tr></table></figure></p>
+<p>我们在实例化Dog类时，生成两个对象husky、samoye，这两对象在实例化的过程中会生成两套成员变量和函数，他们的相互不干扰的。我们可以观察上面的代码，发现num变量属于成员变量，即husky和samoye各有持有相同的成员变量，但是修改num的值，husky为5，而samoye为3。结果表明他们的成员变量只能归各自的对象所拥有，并进行改变。<strong>对象与对象之间不会相互影响</strong>。<br>4）<strong>使用构造函数，来初始化成员变量</strong><br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span>  <span class="comment"># 构造函数，在实例化对象时被默认调用，用来给对象的成员变量赋值</span></span><br><span class="line">        self.name = <span class="string">'tom'</span></span><br><span class="line">        self.age = <span class="number">21</span></span><br><span class="line">        self.tel = <span class="string">'1350000000'</span></span><br><span class="line">        self.address = <span class="string">'北京'</span></span><br><span class="line">        self.sex = <span class="string">'男'</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setName</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getName</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line">p1 = Person()</span><br><span class="line">p1.name</span><br></pre></td></tr></table></figure></p>
+<p>使用<strong>init</strong>()函数，用来初始化成员变量。对象在实例化时，会默认的调用<strong>init</strong>()函数，同时将成员变量进行初始化。同时，在构造函数中，使用self.变量名进行初始化的成员变量，都是公有的。即在类外可以通过实例化的对象调用。</p>
+<p><strong>类变量与成员变量的区别</strong><br>1、类变量是声明在类中，位于函数之外声明的变量。这些变量时公共的，即在类外使用类名.类变量的方式进行调用。我们一旦修改类变量的值，所有调用类变量的内容均发生改变。<br>2、成员变量，是声明在类中的构造函数中，通过self.变量来进行声明赋值的。这些成员变量是公有的，即在类外可以通过对象名.成员变量的方式进行调用。所有的对象都有自己的成员变量，也就意味着每个对象的成员变量都是独立的，不会相互干扰。<br>3、类变量是该类所有实例化对象所公有的，它会早于对象实例化之前被载入内容中。<br><strong>成员变量</strong>都是跟随对象实例化的过程中，被声明出来的。<strong>它是伴随着对象的产生而产生，消亡而消亡的</strong>。<br>4、成员变量和方法，默认情况下都是公有的。也就是说在类外可以直接使用对象进行调用。<br>我们可以通过为成员变量设置双下划线，将其标识为私有的成员变量，<br>例如：<br><code>self.__name = &#39;tom&#39;</code><br><strong>私有的成员变量只能在类内进行直接使用，类外必须通过相关方法进行间接调用</strong>。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/06/object/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-exception" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/03/exception/">异常</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/03/exception/" class="archive-article-date">
+  	<time datetime="2018-08-03T01:25:33.666Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h2><p>指因程序出错在正常的执行流程之外，采取的行为。异常是一个事件，会在程序的执行过程中执行，并影响程序的执行。</p>
+<h2 id="2）异常的阶段"><a href="#2）异常的阶段" class="headerlink" title="2）异常的阶段"></a>2）异常的阶段</h2><p>第一、产生异常（比如：代码错误、业务逻辑错误）<br>第二、处理异常（比如：将异常提示更加可理解、增强代码的健壮性）</p>
+<h2 id="3）常见的异常类"><a href="#3）常见的异常类" class="headerlink" title="3）常见的异常类"></a>3）常见的异常类</h2><p>Exception：Python中所有异常的父类。<br>NameError：访问了一个未声明的变量。<br>keyError:访问一个不存在的字典key<br>IndexError：索引超出序列的范围<br>ValueError：传给函数的参数类型不正确。<br>IOError：文件操作时输入输出错误</p>
+<h2 id="4）异常处理流程"><a href="#4）异常处理流程" class="headerlink" title="4）异常处理流程"></a>4）异常处理流程</h2><p>基本语法：</p>
+<blockquote>
+<p>try：<br>   可能会产生异常的代码<br>except  对应的异常 as 别名：<br>   异常处理语句<br>说明：在try中，放置可能会产生错误的相关代码；except后标明对应的异常类型，一旦try中产生相关异常，except后声明的异常类能够对应捕获，执行相关异常处理语句。如果try外面后续还要其他语句，会继续执行。在产生异常是，出现异常的语句后，如果还有其他语句则不会执行。</p>
+</blockquote>
+<blockquote>
+<p>try:<br>   可能会产生异常的代码<br>except 对应的异常 as 别名：<br>   异常处理语句<br>else:<br>   程序代码<br>说明：在此结构中，如果try中的代码出现异常，则使用except后面声明的异常类进行捕获处理，如果没有异常出现，则执行else内部的代码。</p>
+</blockquote>
+<blockquote>
+<p>try:<br>   可能会产生异常的代码<br>except 对应的异常 as 别名：<br>    异常处理语句<br>except 对应的异常 as 别名：<br>    异常处理语句<br>说明：当try中有多行代码可能会出现不同的异常，那么使用多个except与之对应，根据产生异常的顺序来依次捕获处理。</p>
+</blockquote>
+<blockquote>
+<p>try：<br>   可能会出产生异常的代码<br>except 对应的异常 as 别名：<br>   异常处理语句<br>finally：<br>   代码<br>说明：当异常捕获处理流程中，使用了finally来控制，表明不管是否出现异常进行捕获，最后代码都将允许finally内部的语句。<br>注意：finally中的语句，不管前面的代码出现何种操作，比如：break、return、exit等都会执行完finally内部的代码后，才会实现。</p>
+</blockquote>
+<h2 id="5）异常的分类"><a href="#5）异常的分类" class="headerlink" title="5）异常的分类"></a>5）异常的分类</h2><p>在Python中所有的异常都继承自BaseExcept,如下：<br>          |——&gt;KeyboardInterrupt（键盘中断异常）<br>          |<br>BaseExcept|——&gt;SystemExit(系统退出异常)<br>          |<br>          |——&gt;Except（其他所有异常的父类）<br>其中：keyboardInterrupt在使用强制中断程序时产生。<br>SystemExit在使用sys.exit()函数时产生。</p>
+<h2 id="6）主动抛出异常"><a href="#6）主动抛出异常" class="headerlink" title="6）主动抛出异常"></a>6）主动抛出异常</h2><p>raise 异常类对象实例或自定义异常类实例<br>raise IOError(‘IO 错误’)</p>
+<h2 id="7）finally的替换写法"><a href="#7）finally的替换写法" class="headerlink" title="7）finally的替换写法"></a>7）finally的替换写法</h2><p>with open(‘myfile.txt’,’r’) as f:<br>    for line in f:<br>        print(line)<br>其中打开的文件对象f，在执行完内容的读取后，被强制性关闭。及时在读取过程中，出现错误，也会被关闭。</p>
+<h2 id="8）使用异常机制的优势"><a href="#8）使用异常机制的优势" class="headerlink" title="8）使用异常机制的优势"></a>8）使用异常机制的优势</h2><p>第一，把错误控制与业务逻辑进行区分，增强程序的可读性和健壮性。<br>第二，代码结构更加清晰，复杂的业务流程的实现更加便利<br>第三，程序的容错性更强，不会因为一个小bug导致整体崩溃。</p>
+<h2 id="9）assert-断言"><a href="#9）assert-断言" class="headerlink" title="9）assert 断言"></a>9）assert 断言</h2><p>语法格式：assert 表达式，断言内容。代码如下</p>
+<pre><code class="py"><span class="keyword">try</span>:
+    <span class="keyword">assert</span> <span class="number">1</span>==<span class="number">2</span>,<span class="string">'1 不等于 2'</span>
+<span class="keyword">except</span> AssertionError <span class="keyword">as</span> ae:
+    print(<span class="string">'{}{}'</span>.format(ae.__class__.__name__, ae))
+</code></pre>
+<p>如果断言表达式为真，则正常执行，如果不为真，则返回断言内容，作为异常捕获的输出结果。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/03/exception/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-module" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -189,9 +349,9 @@ show()
 <p>4)模块可以在Python文件中，实现<strong>多次import导入</strong>，但是只有第一次导入时才真正将模块中的内容运行、方法载入，其他再进行导入时，Python解析器会先检测是否已经载入该模块，如果载入就不在执行相关操作。</p>
 <p><strong>总结</strong>：<br>模块载入一共分三个步骤：<br>1、为模块的导入，创建命名空间（划分新的内存地址），被载入的文件按照全局作用域来使用。<br>2、模块载入后，将在上一步操作中创建的命名空间中，执行模块中的代码<br>3、创建一个模块的名字，来引用模块所在的命名空间。my.show()</p>
 <p>5)当使用from  import引入多个模块时，同时<strong>多个模块存在同名函数</strong>，那么在程序中调用该函数时，以程序导入的最后一个模块的函数为准。</p>
-<p>##包：</p>
-<h3 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h3><p>包在Python中定义为可以包含多个模块文件的目录，其中必须要包含一个名为“<strong>init</strong>.py”的文件，用来初始化包。</p>
+<h2 id="包："><a href="#包：" class="headerlink" title="包："></a>包：</h2><h3 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h3><p>包在Python中定义为可以包含多个模块文件的目录，其中必须要包含一个名为“<strong>init</strong>.py”的文件，用来初始化包。</p>
 <h3 id="2）包在调用的使用，"><a href="#2）包在调用的使用，" class="headerlink" title="2）包在调用的使用，"></a>2）包在调用的使用，</h3><p>首先会初始化<strong>init</strong>.py文件，主要功能为包中模块运行时提供所需要的相关数据，比如：数据库用户名称、密码、地址等内容。</p>
+<h2 id="13、常用模块"><a href="#13、常用模块" class="headerlink" title="13、常用模块"></a>13、常用模块</h2><h3 id="1）序列化模块：json、pickle、shelve"><a href="#1）序列化模块：json、pickle、shelve" class="headerlink" title="1）序列化模块：json、pickle、shelve"></a>1）序列化模块：json、pickle、shelve</h3><p><strong>json模块</strong>：<br>序列化方法：dump()、dumps()<br>反序列化方法：load()、loads()<br><strong>pickle模块</strong>：<br>序列化方法：dump()、dumps()<br>反序列化方法：load()、loads()</p>
 
       
 
@@ -509,7 +669,7 @@ show()
 </blockquote>
 <p>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(name,age)</span>:</span>   <span class="comment"># 定义函数时声明的形参：name,age</span></span><br><span class="line">    print(name,age)</span><br><span class="line"></span><br><span class="line">display(<span class="string">'tom'</span>,<span class="number">22</span>)        <span class="comment">#调用函数时实际传递的参数值：tom, 22</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="1）必须的参数"><a href="#1）必须的参数" class="headerlink" title="1）必须的参数"></a>1）必须的参数</h4><p>我们在函数定义时，显示声明在函数的参数列表中的参数，这些参数一旦被声明，函数在调用时，必须按照所声明的顺序、个数和数据类型，来传递实际的参数内容。</p>
-<h3 id="2）关键字参数"><a href="#2）关键字参数" class="headerlink" title="2）关键字参数"></a>2）关键字参数</h3><p>我们在定义函数时，声明了函数的参数后，在调用函数时我们不仅传递实际的参数内容，同时还将参数名字与之对应，这样保证传递进来的参数如果没有按照函数定义时规定的顺序，也能够正确传递进来。</p>
+<h3 id="2）关键字参数"><a href="#2）关键字参数" class="headerlink" title="2）关键字参数"></a>2）关键字参数</h3><p>我们在定义函数时，声明了函数的参数后，在调用函数时我们不仅传递实际的参数内容，同时还将参数名字与之对应，这样保证传递进来的参数如果没有按照函数定义时规定的顺序，也能够正确传递进来。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(name, age)</span>:</span></span><br><span class="line">    print(<span class="string">'我是&#123;0&#125;，我&#123;1&#125;了'</span>.format(name, age))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">display(age=<span class="number">22</span>, name=<span class="string">'lmz'</span>)</span><br></pre></td></tr></table></figure></p>
 <h3 id="3-默认参数"><a href="#3-默认参数" class="headerlink" title="3)默认参数"></a>3)默认参数</h3><p>我们在定义函数时，声明函数的参数，同时可以给这些参数进行赋值，在调用该函数时，如果没有给对应参数传递实参，那么python会默认使用定义函数时所声明的默认参数值。</p>
 <h3 id="4）可变参数"><a href="#4）可变参数" class="headerlink" title="4）可变参数"></a>4）可变参数</h3><p>普通可变参数：我们在定义函数时，因为参数过多或者不确定具体参数列表的个数，我们还可以采用可变参数来实现。可变参数表示从0到N个参数，采用<strong>*参数名</strong><br>注意，此时可变参数类型，为<strong>tuple元组类型。</strong><br>关键字可变参数：我们在定义函数时，通过使用<strong>**参数名</strong>，来表示0到N个参数，在外部调用函数时，将这些可变参数组装成一个<strong>字典。</strong><br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, password, **kw)</span>:</span></span><br><span class="line">    print(<span class="string">'用户名&#123;0&#125;，密码&#123;1&#125;，其他内容&#123;2&#125;'</span>.format(name,password,kw))</span><br><span class="line"></span><br><span class="line">person(<span class="string">'tom'</span>,<span class="string">'123456'</span>)</span><br><span class="line">person(<span class="string">'simth'</span>, <span class="string">'12345'</span>,sex=<span class="string">'男'</span>, address=<span class="string">'郑州'</span>)</span><br></pre></td></tr></table></figure></p>
 <p><code>输出结果：用户名tom，密码123456，其他内容{}</code><br><code>用户名simth，密码12345，其他内容{&#39;sex&#39;: &#39;男&#39;, &#39;address&#39;: &#39;郑州&#39;}</code></p>
@@ -608,11 +768,13 @@ show()
 <blockquote>
 <p>迭代器两个步骤：<br>1、当调用next()函数，会将迭代器当前位置状态进行改变<br>2、会将下一个元素进行返回</p>
 </blockquote>
-<p><strong>迭代器的延迟作用</strong>：迭代器生成的元素并不是在迭代器声明时，就准备好了的。通常时在调用迭代器需要提供该元素时生成的，也就是说只有在我们需要的时候迭代器才产生相关元素，不需要时并不会主动的生成相关元素。我们可以把迭代器看成一个容器，到我们需要时使用next()方法返回容器中的下一个值。<br>迭代器实现了工厂模式的对象，它在你每次访问下一个值的时候给你返回。</p>
+<p><strong>迭代器的延迟作用</strong>：迭代器生成的元素并不是在迭代器声明时，就准备好了的。通常时在调用迭代器需要提供该元素时生成的，也就是说只有在我们需要的时候迭代器才产生相关元素，不需要时并不会主动的生成相关元素。我们可以把迭代器看成一个容器，到我们需要时使用next()方法返回容器中的下一个值。<br>迭代器实现了工厂模式的对象，它在你每次访问下一个值的时候给你返回。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.有一个可迭代对象</span></span><br><span class="line">list1 = [<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="string">'welcome'</span>]</span><br><span class="line"><span class="comment"># 2. 通过iter()方法将可迭代对象变成一个迭代器</span></span><br><span class="line">new_iter = iter(list1)</span><br><span class="line"><span class="comment"># 3.使用next()方法 顺序取值</span></span><br><span class="line">print(<span class="string">'我是通过next（）方法取出的值：'</span>, next(new_iter))</span><br><span class="line"><span class="comment"># 也可以通过循环取出所有的值。(因为迭代器是可迭代化的)</span></span><br><span class="line"><span class="comment"># 注意：已经被取出的值，无法再取到，因为迭代器只能向后，不能向前</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> new_iter:</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># 我是通过next（）方法取出的值： hello</span></span><br><span class="line"><span class="comment"># world</span></span><br><span class="line"><span class="comment"># welcome</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>可迭代化（iterable）</strong>：表明相关的对象可以创建迭代器对象，同时他们自身都是可以进行for数据遍历的。我们可以使用isinstance()来判断对象是否为可迭代化</p>
 <p><strong>instance()函数</strong>：<br>函数格式：isinstance(对象，类型)<br>返回值：布尔值<br>结果：如果指定的对象属于指定的类型，那么返回True，反之返回False<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line">string = <span class="string">'hello'</span></span><br><span class="line">print(isinstance(string, Iterable))  =&gt; True</span><br></pre></td></tr></table></figure></p>
 <p><strong>enumerate()函数</strong><br>函数格式：enumerate(iterable)<br>返回值：生成一个枚举对象<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">enum = enumberate([<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> enum:</span><br><span class="line">    print(i)</span><br><span class="line">    </span><br><span class="line">(<span class="number">0</span>, <span class="string">'one'</span>)</span><br><span class="line">(<span class="number">1</span>, <span class="string">'two'</span>)</span><br><span class="line">(<span class="number">2</span>, <span class="string">'three'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i,value <span class="keyword">in</span> enum:</span><br><span class="line">    print(i, value)</span><br><span class="line">   </span><br><span class="line"><span class="number">0</span> one</span><br><span class="line"><span class="number">1</span> two</span><br><span class="line"><span class="number">2</span> three</span><br></pre></td></tr></table></figure></p>
 <h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><h4 id="1、创建方式"><a href="#1、创建方式" class="headerlink" title="1、创建方式"></a>1、创建方式</h4><p>第一种，使用列表推导式，将[]改为()，生成一个generator对象<br>第二种，使用函数方式，采用<strong>yield关键字</strong>来实现<br>2、使用<br>生成器我们通常可以认为一种特殊的迭代器，但是它不需要像迭代器一样去实现<strong>iter</strong>,<strong>next</strong>方法。只需要使用yield关键字，该关键字可以在每次调用生成器函数时起到暂停作用，并将其值进行返回。同时还会记录当前运行值的状态。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getlist</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(getlist(<span class="number">10</span>))</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> getlist(<span class="number">10</span>):</span><br><span class="line">    print(item, end=<span class="string">' '</span>)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># &lt;generator object getlist at 0x0000000002142CA8&gt;</span></span><br><span class="line"><span class="comment"># 0 1 2 3 4 5 6 7 8 9</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">ge=getlist(<span class="number">10</span>)</span><br><span class="line">print(next(ge))  <span class="comment"># 注意：只能实例化后调用，否则只会取第一个值</span></span><br><span class="line">print(next(ge))</span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
+<p><strong>count(start,step)</strong>:返回一个count对象<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> count</span><br><span class="line">counter = count(start=<span class="number">1</span>, step=<span class="number">2</span>)</span><br><span class="line">print(next(counter))</span><br><span class="line">print(next(counter))</span><br><span class="line">print(next(counter))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line"><span class="comment"># 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># count()函数实际上就是一个生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(start, step)</span>:</span></span><br><span class="line">    x = start</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">yield</span> x</span><br><span class="line">        x += step</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">coun = count(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">print(next(coun))   <span class="comment"># 2</span></span><br><span class="line">print(next(coun))   <span class="comment"># 5</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>总结：迭代器和生成器<br>1、容器是一系列的元素集合，str、list、set、dict对象都可以看作是容器，容器都可以进行迭代（即用在while或for循环），凡是这样的容器我们都称为可迭代化对象（Iterable）。<br>2、可迭代化对象都实现了<strong>iter</strong>方法，该方法返回一个迭代器对象。<br>3、迭代器都拥有一个状态字段，用于记录下次迭代返回值。它实现了<strong>next</strong>和<strong>iter</strong>方法，迭代器不会一次性把所有的元素都加载到内存中，而是在需要的时候才生成返回结果。<br>4、生成器是一种特殊的迭代器，它的返回值不是通过return来返回的，而是通过yield来返回的。</p>
 </blockquote>
@@ -769,243 +931,6 @@ show()
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/16/triangle/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/16/python2/">组合数据类型</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/16/python2/" class="archive-article-date">
-  	<time datetime="2018-07-16T03:52:23.683Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1）List列表"><a href="#1）List列表" class="headerlink" title="1）List列表"></a>1）List列表</h3><h4 id="一、概念："><a href="#一、概念：" class="headerlink" title="一、概念："></a>一、概念：</h4><p>List数据，首先它可以存储各种数据类型，比如：数值、字符串、布尔型等等；其次，列表中的元素可以随时进行删除、修改、增加，其长度随之变化；同时，列表也是有序的，我们同样可以使用循环对其进行遍历。</p>
-<h4 id="二、声明与赋值"><a href="#二、声明与赋值" class="headerlink" title="二、声明与赋值"></a>二、声明与赋值</h4><p>1、声明列表同时进行赋值<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">list2 = [<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>]</span><br><span class="line">list3 = [<span class="number">1</span>,<span class="string">'two'</span>,<span class="number">3</span>,<span class="string">'four'</span>]</span><br></pre></td></tr></table></figure></p>
-<p>我们通过观察，可以发现列表是有序的。那么通过for  in  方式可以对其进行快速<strong>遍历</strong><br>比如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list1:</span><br><span class="line">    print(item,end=<span class="string">' '</span>)</span><br><span class="line"><span class="comment"># 1 2 3 4 5</span></span><br></pre></td></tr></table></figure></p>
-<p>2、声明一个空列表，后续进行添加元素<br><code>list1 = list()</code><br>此时，python会生成一个空列表,即：[]<br>注意，生成的这个空列表中没有任何值，它的长度为0</p>
-<h4 id="3、列表的操作"><a href="#3、列表的操作" class="headerlink" title="3、列表的操作"></a>3、列表的操作</h4><h5 id="1）增加元素"><a href="#1）增加元素" class="headerlink" title="1）增加元素"></a>1）增加元素</h5><p>第一种，使用<strong>append()</strong>函数，在列表的尾部追加一个新元素。<br>函数格式：list.append(元素)<br>返回值：列表长度+1<br><code>list1.append(6)</code><br>[1, 2, 3, 4, 5, 6]<br>注意，该方法添加元素都是在列表的尾部。<br>第二种，使用<strong>extend()</strong>函数，在列表尾部，追加一个子列表内容<br>函数格式：list.extend(子列表)<br>返回值：列表长度+n<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sublist = [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">list1.extend(sublist)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure></p>
-<p>第三种，使用<strong>“+”运算符</strong>，连接两个列表，其结果会生成一个新的列表。同时原来两个列表不变。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sublist</span><br><span class="line">[<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list3</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list3+sublist</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list3</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sublist</span><br><span class="line">[<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure></p>
-<p>第四种，使用<strong>insert()</strong>函数，对列表指定位置进行插入操作。<br>函数格式：list.insert(idx，元素),其中：idx代表要插入的索引位<br>返回值：列表长度+1<br><code>list1.insert(4,&#39;four&#39;)</code><br>[1, 2, 3, 4, ‘four’, 5, 6, 7, 8, 9]<br>注意：插入指定的索引位后，原索引位所在的元素下标+1<br>我们在实际使用的时候，通常会利用append或extend来实现元素的追加，而少用insert进行元素的插入。因为在频繁的插入操作，需要耗费大量的内存来维护列表的索引关系。</p>
-<h5 id="2）修改元素"><a href="#2）修改元素" class="headerlink" title="2）修改元素"></a>2）修改元素</h5><p>通过索引位，找到指定的列表元素，重新对其进行赋值即可完成修改操作。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">list1[<span class="number">2</span>] = <span class="number">5</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
-<h5 id="3-删除元素"><a href="#3-删除元素" class="headerlink" title="3)删除元素"></a>3)删除元素</h5><p>第一种，<strong>remove()</strong>移除在列表中指定的元素<br>函数格式：list.remove(元素)<br>返回值：移除元素后的列表，长度-1</p>
-<p>第二种，<strong>pop()</strong>有两种使用模式<br>list.pop()：默认模式，从列表的尾部弹出一个元素<br>返回值：返回所弹出的元素本身。如果列表已经为空，执行pop()程序会报错提示：列表为空。<br>list.pop(idx):idx指定的下表索引位置。</p>
-<p>此处pop()与remove()类似，但是区别在于pop()会将移除的元素返回。</p>
-<p>第三种，使用<strong>del</strong>删除指定的列表片段或列表本身<br>del list[idx]        删除指定索引位对应的元素<br>del list             删除整个列表，同时释放该列表所占用的内存空间<br>del list[star:end]   删除指定的列表片段</p>
-<blockquote>
-<p>del与clear()的区别<br>del list VS list.clear()<br>1、del 可以将列表的内容进行删除，同时将列表所占内存进行释放。<br>2、clear()只是将列表中的内容进行清空，原列表内容为空。</p>
-</blockquote>
-<p>+与*运算符<br>在列表中我们使用+运算符，可以将两个列表进行连接，生成一个新的列表。<br>比如：<br><code>list1 = [1,2,3]  list2 = [4,5,6]  list1+list2=&gt;[1,2,3,4,5,6]</code><br>使用*运算符，可以将目标列表的内容重复N次，并生成一个新的列表。<br>比如：<code>list1 = [1,2,3] list1*2=&gt;[1,2,3,1,2,3]</code></p>
-<p><strong>max()与min()</strong><br>函数格式：max(list)、min(list)<br>返回值：返回该列表中最大值或最小值。<br>注意：该函数在使用时，必须要求所统计的列表中元素的数据类型要一致。不支持多数据类型，数值型根据数值本身大小取值，字符串类型根据字母的ASCII码值取值，布尔值根据对应的1、0取值。</p>
-<p><strong>sum()</strong><br>函数格式：sum(list)<br>返回值：将列表中所用的数值进行求和运算，返回结果。注意，该函数只能用于数值型列表。</p>
-<blockquote>
-<p>sort()排序<br>函数格式：list.sort()、list.sort(reverse=True)<br>返回值：默认情况下，将原列表中元素按照升序进行排序,<br>如果设置了反转参数为True，那么将原列表中的元素按照降序排列<br>sorted()排序<br>函数格式：sorted(list)、sorted(list,reverse=True)<br>返回值：默认情况下，将原列表中元素按照升序进行排序,<br>如果设置了反转参数为True，那么将原列表中的元素按照降序排列<br><strong>注意</strong>：上面两种排序函数，其中第一个属于列表自身的排序方法，而第二种属于python内置的排序方法，也就是说第二种可以应用在包括列表在内多种集合排序(sort()是在原列表上进行排序，sorteds()是生成了一个新列表)。<br>sort()与sorted()<br>1、sort()函数提供排序功能，同时该排序是实现了<strong>永久性排序</strong>，即会改变原有列表的元素位置。<br>2、sorted()函数提供排序功能，但是该排序进行了<strong>临时性排序</strong>，即只是产生一个有序结果，并不会真正改变原列表中元素的位置。</p>
-</blockquote>
-<p><strong>count()</strong>计数函数<br>函数格式：list.count(元素)<br>返回值：返回指定元素在列表中出现的次数</p>
-<p><strong>in 关键字</strong><br>判断指定的元素是否在列表中存在，如果存在返回True，否在返回False</p>
-<p><strong>index()</strong>检索函数<br>函数格式：list.index(元素)<br>返回值：返回该元素在列表中的索引位置，如果不存在报错。</p>
-<blockquote>
-<p>常用数据类型的转换<br>字符串转为整型：int(str)<br>函数格式：int(str)<br>返回值：将字符型数值转为整数<br><code>int(&#39;3&#39;) =&gt; 3</code><br>字符串转为浮点型:float(str)<br>函数格式：float(str)<br>返回值：将字符型浮点数转为浮点数<br><code>float(&#39;2.4&#39;) =&gt; 2.4</code><br>数值转为字符串：str(int)、str(float)<br>函数格式：str(int)、str(float)<br>返回值：将整数或浮点数，转为字符型数值<br><code>str(2) =&gt; &#39;2 &#39;    str(2.4) =&gt; &#39;2.4&#39;</code><br>字符串转为列表：list(str)<br>函数格式：list(str)<br>返回值：将指定的字符串，按照元素顺序逐一转为列表<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string1 = <span class="string">'hello world'</span></span><br><span class="line">list1 = list(string1)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h5 id="列表比较运算符操作"><a href="#列表比较运算符操作" class="headerlink" title="列表比较运算符操作"></a>列表比较运算符操作</h5><p>相当于列表使用普通的比较运算符<br>import operator<br>operator.ge()         大于等于   &gt;=<br>operator.gt()         大于       &gt;<br>operator.eq()       等于         ==<br>operator.ne()        不等于      !=<br>operator.le()           小于等于 &lt;=<br>operator.lt()          小于      &lt;<br>格式：operator.ge(列表1,列表2)<br>返回值：如果符合条件，返回True，反之，返回False</p>
-<p><strong>split()</strong>:将字符串拆分 转化成列表<br>拆分字符串：str.split(分隔符)<br>函数格式：str.split(分隔符)<br>返回值：将字符串，根据指定的分隔符，转换为列表<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string1 = <span class="string">"锅包肉 肠粉 毛血旺 宫保鸡丁"</span></span><br><span class="line">list2 = string1.split(<span class="string">' '</span>)</span><br><span class="line">print(list2)</span><br><span class="line"><span class="comment"># ['锅包肉', '肠粉', '毛血旺', '宫保鸡丁']</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>join()</strong>:将列表转化为字符串<br>列表转为字符串：’分隔符’.join(list)<br>函数格式:’分隔符’.join(list)<br>返回值：将指定的列表中的元素，通过分隔符进行连接，转换为字符串<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list2 = [<span class="string">'锅包肉'</span>, <span class="string">'肠粉'</span>, <span class="string">'毛血旺'</span>, <span class="string">'宫保鸡丁'</span>]</span><br><span class="line"> <span class="string">' '</span>.join(list2)</span><br><span class="line"><span class="comment"># '锅包肉 肠粉 毛血旺 宫保鸡丁'</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2-Tuple元组"><a href="#2-Tuple元组" class="headerlink" title="2)Tuple元组"></a>2)Tuple元组</h3><h4 id="1、元组的概念："><a href="#1、元组的概念：" class="headerlink" title="1、元组的概念："></a>1、元组的概念：</h4><p>元组是值的有序序列，里面可以存储各种数据类型的元素。但是元组一旦被赋值后，其内容就不可被改变。</p>
-<h4 id="2、声明与赋值"><a href="#2、声明与赋值" class="headerlink" title="2、声明与赋值"></a>2、声明与赋值</h4><p>第一种，<br><code>tup = a,b,c,d</code><br>第二种，<br><code>tup = (a,b,c,d) # 推荐使用该种声明方式。</code><br>第三种，<br><code>tup = tuple() # 声明一个空的元组对象</code><br><strong>注意</strong>：元组在赋值时，且元素只有一个时，具体情况如下：<br>tuple1 = (1,)或tuple1 = 1,一定要在元素后面加上一个,号，与普通变量赋值进行区分。</p>
-<h4 id="3、常用操作"><a href="#3、常用操作" class="headerlink" title="3、常用操作"></a>3、常用操作</h4><p>+、*、in、遍历等等，参考列表。</p>
-<h4 id="4、元组与列表转换"><a href="#4、元组与列表转换" class="headerlink" title="4、元组与列表转换"></a>4、元组与列表转换</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 元组转为列表</span></span><br><span class="line">tuple1 = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">list1 = list(tuple1)</span><br><span class="line"><span class="comment"># 列表转为元组</span></span><br><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">tuple1 = tuple(list1)</span><br></pre></td></tr></table></figure>
-<h3 id="3）字典数据类型"><a href="#3）字典数据类型" class="headerlink" title="3）字典数据类型"></a>3）字典数据类型</h3><h4 id="1、字典类型的基本概念"><a href="#1、字典类型的基本概念" class="headerlink" title="1、字典类型的基本概念"></a>1、字典类型的基本概念</h4><p>字典数据类型，由key=value结构构成的。也就是说字典类型中的每个元素都是有两部分构成，中间使用：连接。其中，key和value的可以是任意数据类型的内容。</p>
-<h4 id="2、字典对象的生成"><a href="#2、字典对象的生成" class="headerlink" title="2、字典对象的生成"></a>2、字典对象的生成</h4><p>第一种、dic = {1:’one’,2:’two’,3:’three’}，两边使用一对{}来界定。<br>第二种、dic = dict() 生成一个空字典。<br>第三种、dic = dict({1:’one’,2:’two’,3:’three’})</p>
-<p><strong>注意</strong>：字典中的key是唯一的，如果在生成时命名了多个同名的key，那么实际上字典会使用最后一次命名的key来覆盖前面的同名内容。<br>同时，字典在赋值时，允许其value或key为空。</p>
-<h4 id="3、字典的特性"><a href="#3、字典的特性" class="headerlink" title="3、字典的特性"></a>3、字典的特性</h4><p>首先、字典中的元素时根据每对键值对中的key来决定的，通过相应的哈希算法来决定他们对应的value的存储地址，因此字典是<strong>无序</strong>的。<br>其次，<strong>字典中的key，可以是数值、字符串、元组等构成</strong>，注意这些内容都是不可改变的。同时，字典中的key都是唯一的。<br>然后，字典中的value需用通过key来获取。</p>
-<h4 id="4、字典的常用操作"><a href="#4、字典的常用操作" class="headerlink" title="4、字典的常用操作"></a>4、字典的常用操作</h4><p>1）字典的新增和修改<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;<span class="number">1</span>:<span class="string">'one'</span>,<span class="number">2</span>:<span class="string">'two'</span>,<span class="number">3</span>:<span class="string">'three'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic[<span class="number">4</span>] = <span class="string">'four'</span></span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'one'</span>, <span class="number">2</span>: <span class="string">'two'</span>, <span class="number">3</span>: <span class="string">'three'</span>, <span class="number">4</span>: <span class="string">'four'</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果字典中不存在指定的key，则对该字典实现元素的新增<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="number">1</span>: <span class="string">'one'</span>, <span class="number">2</span>: <span class="string">'two'</span>, <span class="number">3</span>: <span class="string">'three'</span>, <span class="number">4</span>: <span class="string">'four'</span>, <span class="number">5</span>: <span class="string">'fiv'</span>&#125;</span><br><span class="line">dic[<span class="number">5</span>] = <span class="string">'five'</span></span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'one'</span>, <span class="number">2</span>: <span class="string">'two'</span>, <span class="number">3</span>: <span class="string">'three'</span>, <span class="number">4</span>: <span class="string">'four'</span>, <span class="number">5</span>: <span class="string">'five'</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果字典中存在指定的key，那么对key对应的value进行修改</p>
-<p>2）字典的删除<br>第一种，使用<strong>del</strong>进行字典内容的删除<br>del dic[key]    删除指定可以对应的value内容<br>del dic         删除整个字典，并释放其所占内存<br>第二种，使用<strong>pop()函数</strong>，删除指定key对应的value内容<br>函数格式：dict.pop(key)  ，其中参数为字典中的key值<br>返回值：返回所删除key对应的value内容<br>第三种，使用<strong>clear()函数</strong>，清空字典中所有内容<br>函数格式：dict.clear()<br>返回值：清空字典内容，返回一个空字典<br>第四种：<strong>popitem()</strong>，删除字典中的键值对<br>函数格式：dict.popitem()<br>返回值：会在字典尾部，弹出键值对并删除，将删除的键值对按照元组类型返回</p>
-<p>3）检索字典<br>第一、查询指定的value,通过指定的key找到对应的value<br><code>dic[1] = &gt; &#39;one&#39;</code><br>第二、遍历字典<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dic:</span><br><span class="line">    dic[key]</span><br><span class="line"></span><br><span class="line"><span class="string">'one'</span></span><br><span class="line"><span class="string">'two'</span></span><br><span class="line"><span class="string">'three'</span></span><br><span class="line"><span class="string">'four'</span></span><br><span class="line"><span class="string">'five</span></span><br></pre></td></tr></table></figure></p>
-<p>4）字典与列表、元组的转换</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列表转成字典</span></span><br><span class="line">list1 = [[<span class="number">1</span>,<span class="string">'one'</span>],[<span class="number">2</span>,<span class="string">'two'</span>],[<span class="number">3</span>,<span class="string">'three'</span>]]</span><br><span class="line"><span class="comment"># list1 = [(1,'one'),(2,'two'),(3,'three')]</span></span><br><span class="line">dic = dict(list1)</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'one'</span>, <span class="number">2</span>: <span class="string">'two'</span>, <span class="number">3</span>: <span class="string">'three'</span>&#125;</span><br><span class="line"><span class="comment">#　元组转成字典</span></span><br><span class="line">tup = ((<span class="number">1</span>,<span class="string">'one'</span>),(<span class="number">2</span>,<span class="string">'two'</span>),(<span class="number">3</span>,<span class="string">'three'</span>))</span><br><span class="line">dic = dict(tup)</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'one'</span>, <span class="number">2</span>: <span class="string">'two'</span>, <span class="number">3</span>: <span class="string">'three'</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>注意：不管是元组还是列表，其作为key的那个值必须是不可变数据类型。<br>同时，我们对字典进行新增和修改时，其key可以使用True或False，但是要注意在使用他们时字典会首先对已有的key进行比对，如果有重复的则进行修改（True==1，False==0）</p>
-<blockquote>
-<p>使用zip()函数生成字典<br>函数格式：zip(iter1,iter2,….)<br>返回值：返回一个zip对象<br>我们通过zip函数，指定对应的元组，<strong>分别来作为字典的key和 value</strong>，生成zip对象转成字典数据。<br>例如：<br><code>dict(zip((&#39;id&#39;,&#39;name&#39;,&#39;city&#39;),(1,&#39;hhp&#39;,&#39;zhengzhou&#39;)))</code><br><code>输出结果：{&#39;id&#39;:1,&#39;name&#39;:&#39;hhp&#39;,&#39;city&#39;:&#39;zhengzhou&#39;}</code></p>
-</blockquote>
-<p>5）常用函数<br>1、<strong>keys()</strong>,获得字典所有的key值集合<br>函数格式：dict.keys()<br>返回值：dict_keys 类型，实际内容为一个list列表。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;<span class="number">1</span>:<span class="string">'one'</span>,<span class="number">2</span>:<span class="string">'two'</span>,<span class="number">3</span>:<span class="string">'three'</span>&#125;</span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dic.keys():</span><br><span class="line">     print(key,dic[key])</span><br></pre></td></tr></table></figure></p>
-<p>2、<strong>values()</strong>,获得字典中所有的value值的集合<br>函数格式：dict.values()<br>返回值：dict_values类型，实际内容为一个list列表</p>
-<p>3、<strong>items()</strong>,获得字典中所有key=value键值对的集合<br>函数格式：dict.items()<br>返回值：dict_items类型，实际内容为一个包含元组的list列表<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;<span class="number">1</span>:<span class="string">'one'</span>,<span class="number">2</span>:<span class="string">'two'</span>,<span class="number">3</span>:<span class="string">'three'</span>&#125;</span><br><span class="line">dic.items()</span><br><span class="line">	   </span><br><span class="line"><span class="comment"># dict_items([(1, 'one'), (2, 'two'), (3, 'three')])</span></span><br><span class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> dic.items():</span><br><span class="line">    print(i, value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 'one'</span></span><br><span class="line"><span class="comment"># 2 'two'</span></span><br><span class="line"><span class="comment"># 3 'three'</span></span><br></pre></td></tr></table></figure></p>
-<p>4、<strong>get()</strong>，获得字典中指定key对应的value内容<br>函数格式：dict.get(key)<br>返回值：返回指定key对应的value，如果没有找到则不返回任何内容即返回None。例如：<br><code>dic.get(5) == None     # True</code>  </p>
-<p>5、<strong>setdefault()</strong>，返回指定key对应的内容，如果这个key不存在，那么就进行新增<br>函数格式：dict.setdefault(key[,value]),其中key为键值，如果该key在字典中已经存在，那么不需要填写value参数；如果key值在字典中不存在，需要value参数。<br>返回值：如果key值存在，返回该key对应的value内容；如果key不存在，则进行新增返回新增的value内容。</p>
-<p>6、<strong>update()</strong>,将新字典中的key=value内容，添加到原有字典尾部，如果新字典内容中有key值与原字典的key值相同，那么就覆盖key值对应的原有value。<br>函数格式：old_dict.update(new_dict)<br>返回值：将新字典中的内容，添加到原有字典的尾部。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;<span class="number">1</span>:<span class="string">'麻辣米线'</span>,<span class="number">2</span>:<span class="string">'麻辣烫'</span>,<span class="number">3</span>:<span class="string">'凉皮'</span>,<span class="number">4</span>:<span class="string">'刀削面'</span>,<span class="number">5</span>:<span class="string">'兰州拉面'</span>&#125;</span><br><span class="line">dic2 = &#123;<span class="string">'one'</span>:<span class="string">'美式咖啡'</span>,<span class="string">'two'</span>:<span class="string">'拿铁'</span>,<span class="string">'three'</span>:<span class="string">'卡布基诺'</span>,<span class="number">5</span>:<span class="string">'甜甜圈'</span>&#125;</span><br><span class="line">dic.update(dic2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#123;1: '麻辣米线', 2: '麻辣烫', 3: '凉皮', 4: '刀削面', 5: '甜甜圈', 'one': '美式咖啡', 'two': '拿铁', 'three': '卡布基诺'&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>7、<strong>fromkeys()</strong>,通过指定的key集合，生成一个新字典，其value值缺省为None<br>函数格式：dict.fromkeys(iter1[,value]) 其中iter1为可迭代化集合，比如：列表、元组；value可以是任意数据类型。<br>返回值：返回一个新字典，其中key为我们在参数中使用的iter1集合，值都为None或者指定的value。比如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dic3 = dict(&#123;<span class="string">'a'</span>:<span class="string">'one'</span>,<span class="string">'b'</span>:<span class="string">'two'</span>,<span class="string">'c'</span>:<span class="string">'three'</span>&#125;)</span><br><span class="line">a = dic3.fromkeys([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#123;1: None, 2: None, 3: None&#125;</span></span><br><span class="line">dic3 = dict(&#123;<span class="string">'a'</span>:<span class="string">'one'</span>,<span class="string">'b'</span>:<span class="string">'two'</span>,<span class="string">'c'</span>:<span class="string">'three'</span>&#125;)</span><br><span class="line">a = dic3.fromkeys([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#123;1: ['a', 'b', 'c'], 2: ['a', 'b', 'c'], 3: ['a', 'b', 'c']&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>讨论：<br>列表的可迭代化<br>当生成一个空列表时，因为列表中没有值，所以python并没有相应的内存地址分配给这个列表变量，当该列表添加元素后，python会自动给该列表扩充内存地址，那么地址都是依次连续的在内存中进行排列。</p>
-<h3 id="4）集合数据类型-set"><a href="#4）集合数据类型-set" class="headerlink" title="4）集合数据类型 set"></a>4）集合数据类型 set</h3><h4 id="1、集合的概念："><a href="#1、集合的概念：" class="headerlink" title="1、集合的概念："></a>1、集合的概念：</h4><p>集合set是一个<strong>无序</strong>的数据集合，可以存储各种数据类型的元素，同时可以对集合中的元素进行新增、删除等操作，因此集合的长度是可变的。并且<strong>集合是不允许有重复元素</strong>，如果出现重复元素，除去第一个元素之外，都会被集合所忽略</p>
-<p>注意：set是无序的，即存储元素到set的顺序与这些元素输出的顺序无关。set仍然是采用哈希算法，对这些元素进行存储的。</p>
-<h4 id="2、集合的声明与赋值"><a href="#2、集合的声明与赋值" class="headerlink" title="2、集合的声明与赋值"></a>2、集合的声明与赋值</h4><p>1）set1 = {1,2,3}   生成一个集合<br>2）set1 = set({1,2,3})<br>3)set1 = set()  生成一个空集合，<br><strong>注意</strong>:集合只能通过set()函数来生成空集合，而不是通过set1 = {},这个表达式会生成一个空字典。</p>
-<h4 id="3、数据类型转换"><a href="#3、数据类型转换" class="headerlink" title="3、数据类型转换"></a>3、数据类型转换</h4><p>字符串转成集合<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string = <span class="string">'hello'</span></span><br><span class="line">set1 = set(string)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#123;'l', 'o', 'h', 'e'&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>列表转成集合<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">set1 = set(list1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#123;1, 2, 3&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>元组转成集合<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tup = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">set1 = set(tup)</span><br><span class="line"><span class="comment"># &#123;1, 2, 3&#125;</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="4、集合的操作"><a href="#4、集合的操作" class="headerlink" title="4、集合的操作"></a>4、集合的操作</h4><p>1）元素的<strong>增加add()</strong><br>函数格式：set.add(元素)<br>返回值：无返回值<br>结果：集合元素增加一个<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1=&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">set1.add(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#123;1, 2, 3, 4&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>2）元素的<strong>删除</strong><br>第一、<strong>remove()</strong><br>函数格式：set.remove(元素)<br>返回值：无返回值<br>结果：集合指定的元素被删除<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">set1.remove(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#123;1, 2, 3, 4&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>第二、<strong>discard()</strong><br>函数格式：set.discard(元素)<br>返回值：无返回值<br>结果：集合中指定的元素被删除<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set  = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">set1.discard(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#123;1, 2, 3, 4&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>注意</strong>：上面两个方法，如果删除一个不存在的元素，其中remove()会报错，而discar()无反应<br>第三、clear() 清空集合中所有的元素<br>函数格式：set.clear()<br>返回值：无返回值<br>结果：清空集合中所有的元素<br>set.clear()<br>第四、del命令 删除集合，并释放其所占内存资源<br>del set</p>
-<h4 id="5、集合运算"><a href="#5、集合运算" class="headerlink" title="5、集合运算"></a>5、集合运算</h4><p>1）并集运算 (|)或<strong>union()</strong><br>两个集合进行并集运算，即将两个集合中的元素都合并到一个新的集合中，重复的元素只出现一次。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1 = &#123;<span class="string">'zh'</span>, <span class="string">'tw'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set2 = &#123;<span class="string">'jp'</span>, <span class="string">'fr'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set1 | set2         <span class="comment"># &#123;'jp', 'tw', 'fr', 'zh', 'en'&#125;</span></span><br><span class="line">set1.union(set2)</span><br></pre></td></tr></table></figure></p>
-<p>2）交集运算 （&amp;）或<strong>intersection()</strong><br>两个集合进行交集运算，即将两个集合中相同的元素合并到一个新的集合中。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set1 = &#123;<span class="string">'zh'</span>, <span class="string">'tw'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set2 = &#123;<span class="string">'jp'</span>, <span class="string">'fr'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set1 &amp; set2     <span class="comment">#  &#123;'en'&#125;</span></span><br><span class="line"></span><br><span class="line">set1.intersection(set2)</span><br></pre></td></tr></table></figure></p>
-<p>3)差集运算（-）或<strong>difference()</strong><br>两个集合进行差集运算，即运算符左边的集合，与运算右边的集合进行差运算，相当于使用左边集合去除与右边集合相同的元素。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">set1 = &#123;<span class="string">'zh'</span>, <span class="string">'tw'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set2 = &#123;<span class="string">'jp'</span>, <span class="string">'fr'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set1 - set2    <span class="comment">#  &#123;'zh', 'tw'&#125;</span></span><br><span class="line"></span><br><span class="line">set1.difference(set2)</span><br><span class="line"></span><br><span class="line">set1 = &#123;<span class="string">'zh'</span>, <span class="string">'tw'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set2 = &#123;<span class="string">'jp'</span>, <span class="string">'fr'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set2 - set1      <span class="comment">#  &#123;'jp', 'fr'&#125;</span></span><br><span class="line"></span><br><span class="line">set2.difference(set1)</span><br></pre></td></tr></table></figure></p>
-<p>4)对称差运算（^）或者<strong>symmetric_difference()</strong><br>两个集合进行对称差运算，即两个集合中除去相同元素，其他所有元素重新归并到一个新集合中。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1 = &#123;<span class="string">'zh'</span>, <span class="string">'tw'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set2 = &#123;<span class="string">'jp'</span>, <span class="string">'fr'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set2 ^ set1      <span class="comment">#  &#123;'zh', 'tw','jp', 'fr'&#125;</span></span><br><span class="line">set1.symmetric_difference(set2)</span><br></pre></td></tr></table></figure></p>
-<p>5)子集与超集（父集）</p>
-<p>set1 = {‘zh’, ‘tw’, ‘en’}<br>subset = {‘zh’, ‘tw’}<br>我们通过观察可以看到，subset中的内容，属于set1的一部分。因此，<br><code>subset.issubset(set1) =&gt; True</code><br>表示，subset是set1集合的一个子集合<br>同理，我们也可以说，set1是subset的父集合<br><code>set1.issuperset(subset) =&gt; True</code></p>
-<p>6、集合常用函数<br>1）<strong>update()</strong><br>函数格式：set1.update(set2)<br>返回值：无<br>结果：我们将set2中的元素，添加到set1中，如果有相同的元素只保留一个。同时，该操作会修改set1的元素数量。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1 = &#123;<span class="string">'zh'</span>, <span class="string">'tw'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set2 = &#123;<span class="string">'jp'</span>, <span class="string">'fr'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set1.update(set2)</span><br><span class="line"><span class="comment"># set1 =&gt; &#123;'jp', 'tw', 'fr', 'zh', 'en'&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>相当于并集<br>2)intersection_update()<br>函数格式：set1.intersection_update(set2)<br>返回值：无<br>结果：我们使用set2中的元素，添加到set1中，其中，保留两个集合中相同的元素。其中，set1、set2中其他的元素被舍弃。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1 =&gt; &#123;'zh', 'tw', 'en'&#125;</span><br><span class="line">set2 =&gt; &#123;'jp', 'fr', 'en'&#125;</span><br><span class="line">set1.intersection_update(set2)</span><br><span class="line">&gt;&gt;&gt; set1 =&gt; &#123;'en'&#125;</span><br></pre></td></tr></table></figure></p>
-<p>相当于交集<br>3）<strong>symmetric_difference_update()</strong><br>函数格式：symmetric_difference_update()<br>返回值：无<br>结果：我们使用set1与set2进行运算，只保留两者除去相同元素之外的元素。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1 = &#123;<span class="string">'zh'</span>, <span class="string">'tw'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set2 = &#123;<span class="string">'jp'</span>, <span class="string">'fr'</span>, <span class="string">'en'</span>&#125;</span><br><span class="line">set1.symmetric_difference_update(set2)</span><br><span class="line"><span class="comment"># set1 =&gt; &#123;'jp', 'fr', 'zh', 'tw'&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>补充：高级特性<br>1、range()<br>range()函数自身并不会自动产生整数序列，它需要使用其他方式来调用它才会产生。</p>
-<blockquote>
-<p>2、列表推导式生成式<br>格式：[表达式或函数  for x in 序列]<br>含义：通过生成式中的循环，逐一产生x值，表达式使用X值进行相关运算。最终结果作为列表的元素。也就意味着，循环多少次，就会产生多少个相关元素。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/16/python2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/12/python1/">python基础</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/12/python1/" class="archive-article-date">
-  	<time datetime="2018-07-12T00:43:04.615Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、基础语法"><a href="#一、基础语法" class="headerlink" title="一、基础语法"></a>一、基础语法</h2><h3 id="1-编码"><a href="#1-编码" class="headerlink" title="1.编码"></a>1.编码</h3><p>在开发过程，对应不同的语言使用不同的字符编码。<br>英文    ISO-8859-1<br>中文    gbk或gb2312<br>目前Python为了统一编码格式，在3.0以上的版本使用了utf-8编码</p>
-<p>Unicode也是一种字符编码方法，不过它是由国际组织设计，可以容纳全世界所有语言文字的编码方案。<br>Unicode 是「字符集」 UTF-8 是「编码规则」<br>UTF-8就是在互联网上使用最广的一种unicode的实现方式。</p>
-<h3 id="2、print-函数"><a href="#2、print-函数" class="headerlink" title="2、print()函数"></a>2、print()函数</h3><p>[语法格式]：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">print</span>(value,...,sep=<span class="string">' '</span>,end=<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>其中，[value]代表我们要输出的内容，可以是字符串，可以是数值等内容<br>[sep]代表输出多个值之间的间隔符，默认使用空格隔开。我们可以重新定义间隔符，比如采用：#、，等<br>[end]代表输出语句的结束标识，默认使用了换行，我们可以重新定义其他内容，其输出的内容将不再进行换行操作。</p>
-<h3 id="3、print-函数的基本使用"><a href="#3、print-函数的基本使用" class="headerlink" title="3、print()函数的基本使用"></a>3、print()函数的基本使用</h3><p>print()常用输出方式：<br>print(‘hello ‘)、print(123456)等</p>
-<p>[参数格式输出]<br>注意：只能使用在字符串中，即%只能用在‘’中</p>
-<p>[%s]：代表了字符串内容，其中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">print</span>(<span class="string">'welcome %s'</span>%Beijing)   <span class="comment"># welcome Beijing</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">'welcome %10.3s'</span>%Beijing)  <span class="comment"># welcome       Bei</span></span><br><span class="line"><span class="comment">#输出结果为10个字符其中包含字符串Beijing中前三个，其余用空格填充</span></span><br></pre></td></tr></table></figure></p>
-<p>[%d]：代表了<strong>整数</strong>内容，其中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">print</span>(<span class="string">'price %d'</span>%10)   <span class="comment"># price 10</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">'price %d'</span>%10.5)  <span class="comment">#  price 10</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">'price %3d'</span>%10000)  <span class="comment">#  price 10000</span></span><br><span class="line"><span class="comment"># 注意这里面的3d表示输出一个宽度为3个单元的数值，如果数值长度小于三，那么数值靠右对齐。</span></span><br><span class="line"><span class="comment"># -3d表示，数值反向对齐（靠左对齐）</span></span><br></pre></td></tr></table></figure></p>
-<p>[%f]：代表了浮点数内容(注意，在Python中浮点数是一个近似值，所以结果也是近似)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">print</span>(<span class="string">'price %f'</span>%10.2)  <span class="comment"># 10.200000</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">'price %.1f'</span>%10.2)  <span class="comment">#  10.2</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">'prince %.1f'</span>%10.58) <span class="comment"># 10.6 当取一位小数位的时候，将小数位第二位进行舍入操作，但是Python的中间值不是5，导致当小数位第二位是5时，直接被舍去</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">'%5.1f'</span>%10.3)   <span class="comment"># 10.3</span></span><br><span class="line"><span class="comment"># 输出一个宽度为5的单位，其中整数3位，小数部分1位，小数点占一位</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">'the price is %4.3f'</span> % 222222.56)  <span class="comment"># 222222.560 浮点数是近似值</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">'%.1f'</span>%1.55)   <span class="comment"># 1.6</span></span><br></pre></td></tr></table></figure></p>
-<p>%o:转化为八进制<br><code>&gt;&gt;&gt; print(&#39;%o&#39;%10)     # 12</code></p>
-<p>%x:转化为十六进制<br><code>&gt;&gt;&gt; print(&#39;%x&#39;%10)     # a</code></p>
-<h3 id="4、格式化输出"><a href="#4、格式化输出" class="headerlink" title="4、格式化输出"></a>4、格式化输出</h3><p>在Python3.0之后，推荐使用{0}来代替前期的%d,%s,%f等一系列的格式化参数，采用了字符串的format函数进行处理。写法如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">print</span>(<span class="string">'welcome &#123;0&#125;同学，加入&#123;1&#125;班级'</span>.format(<span class="string">'tom'</span>,<span class="string">'Python3班'</span>))</span><br></pre></td></tr></table></figure></p>
-<p>其中{0}，{1}分别映射format()中的’tom’和’Python3班’，如果前面占位符中的索引值变化，那么他们映射的值也随之变化</p>
-<h3 id="5、变量"><a href="#5、变量" class="headerlink" title="5、变量"></a>5、变量</h3><p>1）<strong>变量的声明</strong>：在Python没有变量类型，直接进行变量的声明，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ i = 10</span><br></pre></td></tr></table></figure></p>
-<p>2)<strong>变量的赋值</strong>：在python中，有两种赋值方式<br>第一种，单个变量赋值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ name = <span class="string">'tom'</span></span><br></pre></td></tr></table></figure></p>
-<p>第二种，多个变量同时赋值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ name, age, sex = <span class="string">'tom'</span>， 23， <span class="string">'男'</span></span><br></pre></td></tr></table></figure></p>
-<p>[变量在内存中的存在情况]<br>1）python中的变量，在声明和赋值时，不仅声明了变量的名字同时还<strong>为这个变量指向了内存中的地址</strong>，该地址用来存储变量的值。<br>2）python中整数、字符串、浮点数等其本身都属于常量，所以当赋值给一个变量时，如：<br>i = 10意味着10这个常量在内存中的地址，因此，i = 10 ，j = 10 使用id(i),id(j）我们发现他们的id是相同的。<br>因为，他们的值10在内存中的地址是相同的。</p>
-<p>3）<strong>变量与内存地址</strong><br>当我们声明一个变量时，对其进行赋值。实际上就是将变量值所在的内存地址，赋值给该变量。也就是说这个变量指向其值所在的内存地址。<br>当我们改变变量的值的时候，说白了就是将变量指向的内存地址进行变化。<br>例如：a=10 ,对a重新赋值a=11  此时a废弃了原先指向10的内存引用,改为指向11这个内存地址。</p>
-<p>举例：我们日常购买商品，快递员通过你的邮寄地址将快递送到你本人手里。可以理解为，快递员拥有指向你这个变量的地址，通过地址，将快递商品赋值给你。<br>4）<strong>变量与常量</strong><br>变量：我们认为其内容是临时结果，可变的。供后续的程序代码进行调用。<br>常量：我们认为其内容是不变的，或者在程序运行的过程中也不发生改变。<br>在Python中，我们通过大写变量名，来表明这是一个常量，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CARDID = <span class="string">'12048377293'</span></span><br></pre></td></tr></table></figure></p>
-<p>5)<strong>变量命名规则</strong><br>首先，Python中的变量命名，必须由<strong>字母、数字或下划线三者组成</strong>，不能有其他的字符出现<br>其次，变量名的首个字符，必须是字母或下划线<br>然后，Python中的关键字不能作为变量名来使用，常用的关键字诸如：if,for,is,none等等。<br>Python是严格区分大小写的语言，其中A = 10 ，a = 10。我们认为这是两个不同的变量</p>
-<h3 id="6、基本数据类型"><a href="#6、基本数据类型" class="headerlink" title="6、基本数据类型"></a>6、基本数据类型</h3><p>1）<strong>常见的数据类型</strong>：<br>整型 :正整数，负整数，零<br>浮点型<br>布尔型 ：True、False<br>复数型<br>字符串型<br>我们工作中常用到整型、字符串</p>
-<blockquote>
-<p>2）整型<br>我们通常根据计算机中数据编码格式，将整型分为：二进制、八进制、十进制、十六进制四种类型。<br>进制间的转换<br>二进制转十进制：bin(int)=&gt;将十进制转为二进制   int(bin)=&gt;将二进制转为十进制<br>八进制转十进制：oct(int)=&gt;将十进制转为八进制   int(oct)=&gt;将八进制转为十进制<br>十六进制转十进制： hex(int)=&gt;将十进制转为十六进制，int(hex)=&gt;将十六进制转为十进制</p>
-</blockquote>
-<p>3）运算符<br>第一，<strong>算术运算符</strong>：+、-、*、/、%、//<br>在python中默认的数据类型时<strong>浮点型</strong>，因此在执行算术运算时5/2=2.5，而不是2.<br><strong>%</strong>：两数进行求余运算，如果分子大于分母，得余数；如果分子小于分母，直接得分子。注意：只有分子除尽分母时，结果才返回0</p>
-<p><strong>//</strong>：两数相除取整数，注意，此处得到的整数不进行四舍五入操作。只舍不入。<br>同样具有取整，只舍不入特征的还有：math.floor()、int()<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span>//<span class="number">5</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="number">9</span>/<span class="number">5</span>)</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></p>
-<p>**：A**B 数A连续相乘B次，也可以说数A 的B次幂</p>
-<p>补充：<br>1、对于数值运算的四舍五入操作<br>math包中的floor()和ceil()函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.floor(<span class="number">3</span>/<span class="number">2</span>)  <span class="comment"># 1   等同于 3//2    只舍不入</span></span><br><span class="line">math.ceil(<span class="number">3</span>/<span class="number">2</span>)  <span class="comment"># 2    此处，只要有小数位就进位，不管小数部分是否大于等于5  只入不舍</span></span><br></pre></td></tr></table></figure></p>
-<p>round()函数进行四舍五入操作，round(数值[,保留小数位数]):</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">round(1.5)=&gt;2   # 四舍六入五留双</span><br><span class="line">round(1.2)=&gt;1</span><br><span class="line">round(1.4,1)=&gt;1.4  意味着保留小数点后一位</span><br></pre></td></tr></table></figure>
-<p>2、求幂运算<br><code>pow(2,3) =&gt;8 等同于2**3</code><br>3、求绝对值<br><code>abs(-10) =&gt; 10</code><br>4、求两数相除的商与余数<br><code>divmod(5,3) =&gt;(1,2)    类似5%3=&gt;2</code><br>5、运算符<br>i = 10<br>i = i + 5  等同于  i+=5<br>i = i - 5  等同于  i-=5<br>i = i * 5  等同于  i*=5<br>i = i / 5  等同于  i/=5<br>i = i//5   等同于  i//=5<br>i = i ** 2 等同于  i**=2<br>i = i % 3  等同于  i%=3<br>
-        
-          <a class="article-more-a" href="/2018/07/12/python1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/12/python1/">展开全文 >></a>
         </p>
       
 

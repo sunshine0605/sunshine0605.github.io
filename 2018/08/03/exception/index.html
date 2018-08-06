@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 初学笔记</title>
+  <title>异常 | 初学笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Python、爬虫、Web开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="初学笔记">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="1）概念：指因程序出错在正常的执行流程之外，采取的行为。异常是一个事件，会在程序的执行过程中执行，并影响程序的执行。 2）异常的阶段第一、产生异常（比如：代码错误、业务逻辑错误）第二、处理异常（比如：将异常提示更加可理解、增强代码的健壮性） 3）常见的异常类Exception：Python中所有异常的父类。NameError：访问了一个未声明的变量。keyError:访问一个不存在的字典keyIn">
+<meta name="keywords" content="Python、爬虫、Web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="异常">
+<meta property="og:url" content="http://yoursite.com/2018/08/03/exception/index.html">
 <meta property="og:site_name" content="初学笔记">
+<meta property="og:description" content="1）概念：指因程序出错在正常的执行流程之外，采取的行为。异常是一个事件，会在程序的执行过程中执行，并影响程序的执行。 2）异常的阶段第一、产生异常（比如：代码错误、业务逻辑错误）第二、处理异常（比如：将异常提示更加可理解、增强代码的健壮性） 3）常见的异常类Exception：Python中所有异常的父类。NameError：访问了一个未声明的变量。keyError:访问一个不存在的字典keyIn">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-06T12:17:16.685Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初学笔记">
+<meta name="twitter:title" content="异常">
+<meta name="twitter:description" content="1）概念：指因程序出错在正常的执行流程之外，采取的行为。异常是一个事件，会在程序的执行过程中执行，并影响程序的执行。 2）异常的阶段第一、产生异常（比如：代码错误、业务逻辑错误）第二、处理异常（比如：将异常提示更加可理解、增强代码的健壮性） 3）常见的异常类Exception：Python中所有异常的父类。NameError：访问了一个未声明的变量。keyError:访问一个不存在的字典keyIn">
   
     <link rel="alternative" href="/atom.xml" title="初学笔记" type="application/atom+xml">
   
@@ -155,295 +159,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-exception" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/06/object/" class="archive-article-date">
-  	<time datetime="2018-08-06T12:21:44.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/06/object/">15、面向对象</a>
+    <h1 class="article-title" itemprop="name">
+      异常
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/03/exception/" class="archive-article-date">
+        
+        <a href="/2018/08/03/exception/" class="archive-article-date">
   	<time datetime="2018-08-03T01:25:33.666Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/03/exception/">异常</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h2><p>指因程序出错在正常的执行流程之外，采取的行为。异常是一个事件，会在程序的执行过程中执行，并影响程序的执行。</p>
+<h2 id="2）异常的阶段"><a href="#2）异常的阶段" class="headerlink" title="2）异常的阶段"></a>2）异常的阶段</h2><p>第一、产生异常（比如：代码错误、业务逻辑错误）<br>第二、处理异常（比如：将异常提示更加可理解、增强代码的健壮性）</p>
+<h2 id="3）常见的异常类"><a href="#3）常见的异常类" class="headerlink" title="3）常见的异常类"></a>3）常见的异常类</h2><p>Exception：Python中所有异常的父类。<br>NameError：访问了一个未声明的变量。<br>keyError:访问一个不存在的字典key<br>IndexError：索引超出序列的范围<br>ValueError：传给函数的参数类型不正确。<br>IOError：文件操作时输入输出错误</p>
+<h2 id="4）异常处理流程"><a href="#4）异常处理流程" class="headerlink" title="4）异常处理流程"></a>4）异常处理流程</h2><p>基本语法：</p>
+<blockquote>
+<p>try：<br>   可能会产生异常的代码<br>except  对应的异常 as 别名：<br>   异常处理语句<br>说明：在try中，放置可能会产生错误的相关代码；except后标明对应的异常类型，一旦try中产生相关异常，except后声明的异常类能够对应捕获，执行相关异常处理语句。如果try外面后续还要其他语句，会继续执行。在产生异常是，出现异常的语句后，如果还有其他语句则不会执行。</p>
+</blockquote>
+<blockquote>
+<p>try:<br>   可能会产生异常的代码<br>except 对应的异常 as 别名：<br>   异常处理语句<br>else:<br>   程序代码<br>说明：在此结构中，如果try中的代码出现异常，则使用except后面声明的异常类进行捕获处理，如果没有异常出现，则执行else内部的代码。</p>
+</blockquote>
+<blockquote>
+<p>try:<br>   可能会产生异常的代码<br>except 对应的异常 as 别名：<br>    异常处理语句<br>except 对应的异常 as 别名：<br>    异常处理语句<br>说明：当try中有多行代码可能会出现不同的异常，那么使用多个except与之对应，根据产生异常的顺序来依次捕获处理。</p>
+</blockquote>
+<blockquote>
+<p>try：<br>   可能会出产生异常的代码<br>except 对应的异常 as 别名：<br>   异常处理语句<br>finally：<br>   代码<br>说明：当异常捕获处理流程中，使用了finally来控制，表明不管是否出现异常进行捕获，最后代码都将允许finally内部的语句。<br>注意：finally中的语句，不管前面的代码出现何种操作，比如：break、return、exit等都会执行完finally内部的代码后，才会实现。</p>
+</blockquote>
+<h2 id="5）异常的分类"><a href="#5）异常的分类" class="headerlink" title="5）异常的分类"></a>5）异常的分类</h2><p>在Python中所有的异常都继承自BaseExcept,如下：<br>          |——&gt;KeyboardInterrupt（键盘中断异常）<br>          |<br>BaseExcept|——&gt;SystemExit(系统退出异常)<br>          |<br>          |——&gt;Except（其他所有异常的父类）<br>其中：keyboardInterrupt在使用强制中断程序时产生。<br>SystemExit在使用sys.exit()函数时产生。</p>
+<h2 id="6）主动抛出异常"><a href="#6）主动抛出异常" class="headerlink" title="6）主动抛出异常"></a>6）主动抛出异常</h2><p>raise 异常类对象实例或自定义异常类实例<br>raise IOError(‘IO 错误’)</p>
+<h2 id="7）finally的替换写法"><a href="#7）finally的替换写法" class="headerlink" title="7）finally的替换写法"></a>7）finally的替换写法</h2><p>with open(‘myfile.txt’,’r’) as f:<br>    for line in f:<br>        print(line)<br>其中打开的文件对象f，在执行完内容的读取后，被强制性关闭。及时在读取过程中，出现错误，也会被关闭。</p>
+<h2 id="8）使用异常机制的优势"><a href="#8）使用异常机制的优势" class="headerlink" title="8）使用异常机制的优势"></a>8）使用异常机制的优势</h2><p>第一，把错误控制与业务逻辑进行区分，增强程序的可读性和健壮性。<br>第二，代码结构更加清晰，复杂的业务流程的实现更加便利<br>第三，程序的容错性更强，不会因为一个小bug导致整体崩溃。</p>
+<h2 id="9）assert-断言"><a href="#9）assert-断言" class="headerlink" title="9）assert 断言"></a>9）assert 断言</h2><p>语法格式：assert 表达式，断言内容。代码如下</p>
+<pre><code class="py"><span class="keyword">try</span>:
+    <span class="keyword">assert</span> <span class="number">1</span>==<span class="number">2</span>,<span class="string">'1 不等于 2'</span>
+<span class="keyword">except</span> AssertionError <span class="keyword">as</span> ae:
+    print(<span class="string">'{}{}'</span>.format(ae.__class__.__name__, ae))
+</code></pre>
+<p>如果断言表达式为真，则正常执行，如果不为真，则返回断言内容，作为异常捕获的输出结果。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/03/exception/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/01/module/" class="archive-article-date">
-  	<time datetime="2018-08-01T13:48:42.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/06/object/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          15、面向对象
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/01/module/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">包与模块</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/01/module/">包与模块</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/01/excelparsexml/" class="archive-article-date">
-  	<time datetime="2018-08-01T11:21:42.724Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/01/excelparsexml/">Python对Excel文件的操作</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/28/fileIo/" class="archive-article-date">
-  	<time datetime="2018-07-28T09:30:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/28/fileIo/">文件输入输出（IO）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/copy/" class="archive-article-date">
-  	<time datetime="2018-07-24T13:27:21.934Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/copy/">copy()(浅拷贝)和deepcopy()（深拷贝）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/function/" class="archive-article-date">
-  	<time datetime="2018-07-24T13:13:13.948Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/function/">函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/19/iterator/" class="archive-article-date">
-  	<time datetime="2018-07-19T12:48:02.940Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/19/iterator/">迭代器和生成器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/17/sort/" class="archive-article-date">
-  	<time datetime="2018-07-17T13:30:48.010Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/17/sort/">排序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/16/triangle/" class="archive-article-date">
-  	<time datetime="2018-07-16T12:27:04.499Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/16/triangle/">输出各种三角形</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -467,8 +366,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
