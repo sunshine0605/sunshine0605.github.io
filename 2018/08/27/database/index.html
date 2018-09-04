@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>初学笔记</title>
+  <title>mysql数据库 | 初学笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Python、爬虫、Web开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="初学笔记">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="一、数据库语言1、分类数据库定义语言   DDL（create database/table，drop database/table，alter database/table）数据库操纵语言   DML (insert、delete、update、select)数据库控制语言   DCL（grant、revoke）注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。">
+<meta name="keywords" content="Python、爬虫、Web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql数据库">
+<meta property="og:url" content="http://yoursite.com/2018/08/27/database/index.html">
 <meta property="og:site_name" content="初学笔记">
+<meta property="og:description" content="一、数据库语言1、分类数据库定义语言   DDL（create database/table，drop database/table，alter database/table）数据库操纵语言   DML (insert、delete、update、select)数据库控制语言   DCL（grant、revoke）注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-04T10:48:35.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初学笔记">
+<meta name="twitter:title" content="mysql数据库">
+<meta name="twitter:description" content="一、数据库语言1、分类数据库定义语言   DDL（create database/table，drop database/table，alter database/table）数据库操纵语言   DML (insert、delete、update、select)数据库控制语言   DCL（grant、revoke）注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。">
   
     <link rel="alternative" href="/atom.xml" title="初学笔记" type="application/atom+xml">
   
@@ -155,16 +159,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-database" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-database" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/27/database/">mysql数据库</a>
+    <h1 class="article-title" itemprop="name">
+      mysql数据库
     </h1>
   
 
@@ -201,11 +203,62 @@
 <p><strong>逻辑非 not</strong><br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select pno, pname, age, hire_date, salary <span class="keyword">from</span> persons where hire_date NOT between <span class="string">'2018-03-01'</span> <span class="keyword">and</span> <span class="string">'2018-04-30'</span>;</span><br></pre></td></tr></table></figure></p>
 <p>排序子句：order by（排序子句一定要放在所有子句之后）<br>sql中排序分为升序与降序，默认情况下为升序，如果要使用降序采用desc关键字。</p>
 <p><code>select pno, pname, age, hire_date, salary from persons order by salary desc;</code><br><strong>注意</strong>，如果出现多个排序条件时，表示为先按照第一个排序条件进行排序，如果出现相同的排序字段内容时，再按照第二个排序条件进行排序，依次类推。多个排序条件之间，用,号隔开。<br><code>select pno, pname, age, hire_date, salary from persons order by salary desc, hire_date;</code></p>
-        
-          <a class="article-more-a" href="/2018/08/27/database/#more">more >></a>
-        
+<a id="more"></a>
+<p>分组子句：group by<br>如果SQL中使用了分组子句，那么在select子句里面，只能使用分组字段或者是统计函数。例如：<br><code>select age,count(age) from persons group by age;</code><br>注意：通常情况下分组子句会结合统计函数一起使用。</p>
+<p>having条件子句<br>having子句通常是配合group子句一起使用，having将统计函数作为其条件字段。<br><code>select age,count(age) from persons group by age having count(age)&gt;1;</code></p>
+<p>limit子句：分页子句<br>limit 开始的行号（第一行为0）,显示几条记录<br> <code>select * from persons limit 0,1;</code></p>
+<p>distinct去重：<br>去除指定字段中的重复内容，只保留一个。<br><code>select distinct salary from persons;</code></p>
+<p>列表名与表别名<br>列别名：给指定的列，起别名。可以使用as关键字。<br><code>select 列名 [as] 别名 from 表名</code><br>例如：<br><code>select pno as &#39;编号&#39; from persons;</code><br>表别名：给指定的表，起别名。使用as关键字修饰。</p>
+<p><strong>统计函数</strong>：<br>count():统计个数<br>max()：求最大值<br>min()：求最小值<br>avg()：求平均值<br>sum()：求和</p>
+<p>注意，在使用统计函数时，如果没有配合group by子句使用，那么在select中只能输出统计函数的值，不能输出其他字段。例如：<br><code>select max(salary) from persons;</code><br>其中，max、min、avg、sum只能统计数据类型是数值型的字段，如果该字段值为null，那么统计函数将忽略该内容。我们可以通过<strong>ifnull(字段，替换值)</strong>，将null值转换为我们指定的值，进而参加相关的统计运算。<br><code>select avg(ifnull(salary,0)) from persons;</code></p>
+<p><strong>模糊查询：like</strong><br>我们通常在查询时，如果条件内容不是非常明确的情况下，我们会使用like关键字进行模糊查询。通常会使用%、<em>来配合，其中%代表了0到n个字符，</em>代表了1个字符。<br><code>select * from persons where pname like &#39;_i%&#39;;查找名字第二位是i的人员信息</code><br><code>select * from persons where pname like &#39;%i%&#39;;查找名字中有i的人员信息</code></p>
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><p>1、查询分类<br><strong>内连接</strong>（等值连接）<br>inner join<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select e.empno,e.ename,e.sal,e.deptno,d.dname <span class="keyword">from</span> emp e inner join dept d on e.deptno=d.deptno where e.sal&gt;<span class="number">2000</span>;</span><br><span class="line"><span class="comment"># 等价于</span></span><br><span class="line">select e.empno,e.ename,e.sal,e.deptno,d.dname <span class="keyword">from</span> emp e, dept d where e.deptno=d.deptno <span class="keyword">and</span> e.sal&gt;<span class="number">2000</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>外连接</strong><br>分为左外连接与右外连接<br>left join on<br>right join on</p>
+<p>何时使用外连接？<br>当进行两个表连接查询时，其中<em>一方有不匹配记录</em>，如果进行等值连接这些记录将不会被查询检索，如果我们需要查询时将匹配记录以及不匹配记录都查询出来，就需要使用外连接。那么不匹配记录存在的表位于连接语句的左侧，就使用左外连接，如果出现在右侧就使用右外连接。<br>例如：其中dept表中有不匹配的记录，deptno=40的记录。<br>左外连接<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select e.empno,e.ename,d.deptno,d.dname <span class="keyword">from</span>  dept d left join emp e on e.deptno=d.deptno;</span><br></pre></td></tr></table></figure></p>
+<p>右外连接<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select e.empno,e.ename,d.deptno,d.dname <span class="keyword">from</span> emp e right join dept d on e.deptno=d.deptno;</span><br></pre></td></tr></table></figure></p>
+<p><strong>子查询</strong><br>概念：将一个SQL查询语句的返回结果，作为另外一个查询语句的条件来使用。<br>分为单行子查询与多行子查询<br>单行子查询：作为条件返回的查询语句，其返回结果为一行记录。<br>多行子查询：作为条件返回的查询语句，其返回结果为多行记录。<br>子查询通常放在where条件子句中进行使用。但有时我们也可以<strong>将子查询作为虚表</strong>，放在from子句后面使用。但是这种使用方法，必须给子查询一个别名。例如：<br><code>select * from (select * from emp) as e;</code></p>
+<p>补充：<br><strong>行变列</strong><br>select name,max(case course when ‘math’ then score else 0 end) ‘数学’,max(case course when ‘english’ then score else 0 end) ‘英语’,max(case course when ‘chinese’ then score else 0 end ) ‘语文’ from grade group by name;<br> Field  | Type        | Null | Key | Default | Extra          |<br>+——–+————-+——+—–+———+—————-+<br>| id     | int(11)     | NO   | PRI | NULL    | auto_increment |<br>| name   | varchar(20) | YES  |     | NULL    |                |<br>| course | varchar(10) | YES  |     | NULL    |                |<br>| score  | int(3)      | YES  |     | NULL    |<br><strong>列变行</strong><br> select name,’math’ course,math_score as score from grade2 union select name,’english’ course,en_score as score from grade2 union select name,’chinese’ course,cn_score as score from grade2 order by name,course;<br>————+————-+——+—–+———+—————-+<br>| Field      | Type        | Null | Key | Default | Extra          |<br>+————+————-+——+—–+———+—————-+<br>| id         | int(11)     | NO   | PRI | NULL    | auto_increment |<br>| name       | varchar(10) | YES  |     | NULL    |                |<br>| math_score | int(3)      | YES  |     | NULL    |                |<br>| en_score   | int(3)      | YES  |     | NULL    |                |<br>| cn_score   | int(3)      | YES  |     | NULL    |                |<br>+————+————-+——+—–+———+—————-+</p>
+<blockquote>
+<p><strong>删除表数据</strong><br>delete<br>truncate<br>这两种方法都可以实现对表数据的删除，但是在实际操作中，他们的删除原理是不同的。<br>delete属于DML语句，所有的删除操作都是可以被撤销的。也就是意味着，进行的删除操作并没有真正对数据库的记录进行持久化删除，而且在数据库服务器中仍然保留了其记录数据的缓存，一旦执行rollback，就可以将已删除的内容进行恢复。<br>truncate删除数据，实际上是进行的表的截断操作，在删除记录的同时将这些记录在数据库服务器中的缓存同时进行删除。此操作不可撤销。</p>
+</blockquote>
+<h3 id="函数："><a href="#函数：" class="headerlink" title="函数："></a>函数：</h3><h4 id="1、字符串函数"><a href="#1、字符串函数" class="headerlink" title="1、字符串函数"></a>1、字符串函数</h4><p>length(字段)：返回该字段字符串的实际长度。<br>trim(字段)：将字符串左右两端的空格去除。<br>repeat(字段,n)：将字段中的字符串重复n次<br>replace(s,s1,s2)：使用s2替换字段s中的s1<br>substring(s,n,len):对字符串s的第n个位置开始，截取长度为len的子字符串。注意，此处字符串的字符位置从1开始。</p>
+<h4 id="2、数值函数"><a href="#2、数值函数" class="headerlink" title="2、数值函数"></a>2、数值函数</h4><p>ceil()：返回数值的上限（只入不舍）<br>floor()：返回数值的下限（只舍不入）<br>mod(x,y)：返回两个数的余数<br>round(x,[y])：对x进行四舍五入操作，如果声明了y,则保留到小数点后y位<br>truncate(x,y)：对x进行截断操作，保留小数位y位</p>
+<h4 id="3、日期函数"><a href="#3、日期函数" class="headerlink" title="3、日期函数"></a>3、日期函数</h4><p>curdate():当前日期年月日<br>curtime():当期时间时分秒<br>now():当前的时间 年月日 时分秒<br>year():返回当前的年份<br>month()：返回当前的月份<br>dayofmonth()：返回当前的天数<br>date_format():格式化指定字段的日期<br>adddate(d，时间间隔):将指定的日期增加或减少对应的时间。</p>
+<h4 id="4、系统函数"><a href="#4、系统函数" class="headerlink" title="4、系统函数"></a>4、系统函数</h4><p>user():返回当前登录数据库的用户名<br>database():返回当前登录的数据库名</p>
+<h3 id="4、数据控制语言-DCL"><a href="#4、数据控制语言-DCL" class="headerlink" title="4、数据控制语言(DCL)"></a>4、数据控制语言(DCL)</h3><p>1）创建用户<br><code>create user 用户名 identified by 密码</code><br>2）授予用户权限<br>grant 权限 on 数据库 to 用户名<br><code>grant all privileges on mydb.* to &#39;pythondb&#39;@&#39;localhost&#39;;</code><br>此处，将mydb数据库的所有权限都授予pythondb用户</p>
+<p>同时，在授予权限时，可以选择授予不同的权限，如：查询、删除、修改、新增、修改表、创建表、删除表等等。<br>3）撤销用户权限<br>revoke 权限 on 数据库 from 用户名<br><code>revoke all privileges on mydb.* from &#39;pythondb&#39;@&#39;localhost&#39;;</code><br>将mydb数据库上的所有权限，从pythondb用户收回<br>4）删除用户<br>drop user 用户名<br><code>drop user &#39;pythondb&#39;@&#39;localhost&#39;;</code></p>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>数据库—事务<br><strong>背景</strong>：银行转账过程中，如果发生了意外，需要使用事务进行处理。<br>A账号有余额1000元，向余额为200元的B账号进行转账500元。由于发生了某些故障，造成A账号在转账过程中出现了错误，需要使用事务回滚（rollback）。如果A账号成功扣款，转账完成，B账号余额增加500元。</p>
+<p><strong>不使用事务产生的问题</strong>：<br>1、当A账号进行转账扣款时，发生错误。B账号并没有收到转账金额500元。而A账号已经提示完成扣款。<br>2、当A账号进行转账发生错误，未成功扣款，而B账号提示收到转账金额500元。<br>我们称上述的情况产生的数据为脏数据。</p>
+<p><strong>具体步骤</strong>：<br>1、关闭MySQL自动提交功能。set autocommit = 0;<br>2、开启事务：start transaction/begin<br>3、执行相应的SQL操作<br>4、提交或回滚<br>5、将MySQL自动提交功能开启 set autocommit = 1;</p>
+<p><strong>概念</strong>：在MySQL中事务主要用于处理操作量大，复杂度高的数据。只有定义了InnoDB引擎的数据库才支持事务。事务处理可以用来维护数据库的完整性，保证SQL操作要么全完成，要么全不执行。</p>
+<p><strong>事务满足四个特性：ACID</strong><br>A：原子性。一个事务中的所有操作，会作为一个整体来看待即，在执行时如果有一个操作没有成功，那么所有操作都将被回滚。回到事务开始前的状态。<br>C：一致性。在事务开始之前和事务结束之后，数据库的完整性没有被破坏，说明写入的资料符合数据库的所有设置的规则，包括数据的精度。<br>I：隔离性。数据库允许同时并发多个事务，并且同时对数据库进行读写操作，隔离性可以保证防止多个事务并发执行时由于交叉执行从而导致数据不一致。<br>事务的隔离分为：读未提交、读提交、可重复读、串行化。<br>D：持久性。事务处理结束后，对数据的修改是永久的，即存储在数据库中。</p>
+<blockquote>
+<p>MySQL数据库中<strong>myisam</strong>与<strong>innodb</strong>的区别<br>1、MyISAM是非事务安全型的，而InnoDB是事务安全型<br>2、MyISAM是锁支持到表级，而InnoDB支持行级。<br>3、MyISAM支持全文检索，而InnoDB不支持全文检索<br>4、MyISAM表保存为文件形式的，有利于跨平台时进行数据转移，而InnoDB比MyISAM更安全，可以保证表中数据不丢失的情况下，切换非事务到事务表。<br>5、如果在实际应用中，需要执行大量的select查询，那么MyISAM是优先选择的。<br>如果需要执行大量的增删改操作，那么InnoDB是优先选择的，可以提高多用户并发操作的性能。<br>通常，我们在实现构建数据库服务器时，采用读写分离的方式，即设置一台读服务器，一台写服务器，同时两台服务器进行数据同步。</p>
+</blockquote>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -214,16 +267,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/27/database/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/27/database/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/24/spider/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">爬虫基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -243,768 +355,14 @@
 
 
 
-
-  
-    <article id="post-spider" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/24/spider/">爬虫基础</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/24/spider/" class="archive-article-date">
-  	<time datetime="2018-08-24T07:01:49.367Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、网络原理"><a href="#一、网络原理" class="headerlink" title="一、网络原理"></a>一、网络原理</h2><h3 id="1、HTTP与HTTPS的区别"><a href="#1、HTTP与HTTPS的区别" class="headerlink" title="1、HTTP与HTTPS的区别"></a>1、HTTP与HTTPS的区别</h3><p><strong>HTTP</strong>：我们称为超文本传输协议，主要用来实现从客户端(浏览器本地)通过网络传输超文本到服务器，实现高效且准确的超文本传送。目前HTTP的版本为1.1<br><strong>HTTPS</strong>：我们认为就是以安全为目标的HTTP通道，即在HTTP协议的基础上加入了<em>SSL层</em>，简称HTTPS。</p>
-<blockquote>
-<p>SSL的主要作用分为以下两部分：<br>第一、为HTTP传输文件提供安全的传输通道<br>第二、确认网站的真实性，通过HTTPS访问的网站都需要获取到CA认证。</p>
-</blockquote>
-<h3 id="2、网络七层模型（了解）"><a href="#2、网络七层模型（了解）" class="headerlink" title="2、网络七层模型（了解）"></a>2、网络七层模型（了解）</h3><p>从下到上的顺序<br>物理层<br>数据链路层<br>网络层<br>传输层（TCP、UDP）<br>会话层<br>表示层<br>应用层（HTTP FTP TFTP SMTP SNMP DNS TELNET HTTPS POP3 DHCP）</p>
-<h3 id="3、HTTP的请求机制"><a href="#3、HTTP的请求机制" class="headerlink" title="3、HTTP的请求机制"></a>3、HTTP的请求机制</h3><p>第一，由客户端（浏览器）发出请求<br>第二，通过网络传输，到指定的服务器地址<br>第三，服务器接收相关请求，并进行解析<br>第四，服务器将最终的结果响应回客户端<br>第五，客户端接收到服务器响应后，通过浏览器解析，最终将内容进行展现</p>
-<h3 id="4、客户端访问服务器，发出请求，有四部分构成"><a href="#4、客户端访问服务器，发出请求，有四部分构成" class="headerlink" title="4、客户端访问服务器，发出请求，有四部分构成"></a>4、客户端访问服务器，发出请求，有四部分构成</h3><p>第一，请求方法（request method），默认为get方式。只有在表单提交和文件上传时为post方法。<br>第二，请求网址（request url），即在浏览器中输入的网路地址。<br>第三，请求头（request header），用来标识为一个浏览器正常的访问<br>第四，请求体（request body），用来传输到服务器端的相关数据</p>
-<h3 id="5、请求方法中get与post的区别"><a href="#5、请求方法中get与post的区别" class="headerlink" title="5、请求方法中get与post的区别"></a>5、请求方法中get与post的区别</h3><p>第一、使用get方式提交请求时，相关数据会作为url的参数被一起进行提交，我们可以直接在地址栏中观察到相关数据。而采用post方式请求的url不会包含这些数据，而是直接通过表单提交到服务器。<br>第二、get方式提交请求，对于提交的数据大小不能大于1024字节，而post方式提交数据，没有大小的限制。<br>总之，如果提交的信息比较敏感或者字节较大时，需要使用post方式；如果只是普通的请求使用get方式。</p>
-<h2 id="二、HTML网页结构"><a href="#二、HTML网页结构" class="headerlink" title="二、HTML网页结构"></a>二、HTML网页结构</h2><h3 id="1、HTML基本构成"><a href="#1、HTML基本构成" class="headerlink" title="1、HTML基本构成"></a>1、HTML基本构成</h3><p>HTML有三个标签来构成基本结构：<br>&lt;html&gt;:作为HTML文件的根标签，所有的页面中的标签和内容都要在HTML标签的范围内。<br>&lt;head&gt;：作为HTML文件的头部标签，相关页面的信息、编码、引导外部的CSS文件和JS文件，都需要放置在head标签中。<br>&lt;body&gt;：body标签中的内容，就是我们爬虫需要解析的主体。所有需要在页面上展现的内容，都会放置在该标签中。</p>
-<h3 id="2、常见的HTML标签"><a href="#2、常见的HTML标签" class="headerlink" title="2、常见的HTML标签"></a>2、常见的HTML标签</h3><p>1）h1…h6：标题标签，用来显示标题，h1最大，h6最小。<br>2）<code>&lt;p&gt;：段落标签。用来对文本内容进行分段。</code><br>3）<code>&lt;a&gt;：链接标签。用来跳转到指定的网址。</code></p>
-<p><code>&lt;a target=&#39;&#39; href=&#39;URL&#39;&gt;链接地址&lt;/a&gt;</code><br>其中参数target，_self:在自身的窗口重新打开指定的网址<br>_blank：在一个新窗口中打开指定的网址</p>
-<p>4）&lt;img&gt;：图片标签。用来载入指定位置的图片，通常可以接收的图片类型：JPG、png、gif、bmp<br>&lt;img src=”” alt=””&gt;</p>
-<p>其中：src：指定图片的具体位置<br>      alt：其中的内容，作为图片无法载入时，显示的内容。</p>
-<p>5）表格标签：table、tr、th、td</p>
-<p>&lt;table&gt;：表格标签，所有表格中的行和单元格内容都必须放置在内部。<br>&lt;tr&gt;:表格行，代表表格一行<br>&lt;th&gt;:表格头，代表表格的标题行<br>&lt;td&gt;：表格单元格，代表表格中的每个单元内容</p>
-<p>6）列表<br>有序列表：<br>&lt;ol&gt;<br>&nbsp; &lt;li&gt;&lt;/li&gt;<br>&lt;/ol&gt;<br>无序列表:<br>&lt;ul&gt;<br>   &lt;li&gt;&lt;/li&gt;<br>&lt;/ul&gt;<br>自定义列表：<br>&lt;dl&gt;<br>   &lt;dt&gt;<br>      &lt;dd&gt;&lt;/dd&gt;<br>   &lt;/dt&gt;<br>&lt;/dl&gt;</p>
-<h3 id="7-div与span"><a href="#7-div与span" class="headerlink" title="7)div与span"></a>7)div与span</h3><p>div：块级元素，用来实现页面布局。自身没有任何效果<br>span:内联元素，用做文本容器。</p>
-<h3 id="8）表单"><a href="#8）表单" class="headerlink" title="8）表单"></a>8）表单</h3><p>&lt;form name=”表单名” action=”URL” method=”get/post”&gt;<br>默认情况，如果没有声明method属性，缺省值为get<br>&lt;input type=””&gt;<br>输入标签，type属性：<br>text:文本框<br>password：密码框<br>checkbox：复选框<br>radio：单选框<br>submit：提交按钮<br>reset：重置按钮<br>button：按钮<br>file:文件上传<br>&lt;textarea cols=”列数” rows=”行数”&gt;：文件区标签</p>
-<h2 id="三、网络爬虫—urllib库"><a href="#三、网络爬虫—urllib库" class="headerlink" title="三、网络爬虫—urllib库"></a>三、网络爬虫—urllib库</h2><h3 id="1、urllib库的基本使用"><a href="#1、urllib库的基本使用" class="headerlink" title="1、urllib库的基本使用"></a>1、urllib库的基本使用</h3><p>import urllib.request<br>函数格式：urllib.request.openurl(url, data, timeout)<br>参数说明：<br>url：指定的请求网址<br>data：请求时提交给服务器端的数据，如果在openurl中使用了data参数，那么提交方式为post，默认情况下为get。<br>timeout：指定连接url的超时时间，单位为秒。<br><code>response = urllib.request.openurl()  函数返回一个HTTPResponse对象</code></p>
-<blockquote>
-<p>我们可以使用<em>response对象中的相关方法</em>：<br>read()读取响应体中的内容<br>status/getcode()返回响应码<br>reason 返回响应信息的内容<br>info()返回响应头信息<br>geturl()返回请求的url地址</p>
-</blockquote>
-<h3 id="2、Request请求对象"><a href="#2、Request请求对象" class="headerlink" title="2、Request请求对象"></a>2、Request请求对象</h3><p>req = urllib.request.Request(url,data,headers,method)<br>参数说明：<br>url：指定的请求网址<br>data：请求时提交给服务器端的数据，如果在openurl中使用了data参数，那么提交方式为post，默认情况下为get。<br>headers：请求对象的头信息，用来将一个爬虫伪装成一个普通的浏览器请求，主要设置user-agent<br>method：请求的方式，默认为get，可以设置为get或post<br>
-        
-          <a class="article-more-a" href="/2018/08/24/spider/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/24/spider/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-object" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/06/object/">面向对象</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/06/object/" class="archive-article-date">
-  	<time datetime="2018-08-06T12:21:44.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、面向对象的概念"><a href="#一、面向对象的概念" class="headerlink" title="一、面向对象的概念"></a>一、面向对象的概念</h2><h3 id="1、类、对象"><a href="#1、类、对象" class="headerlink" title="1、类、对象"></a>1、类、对象</h3><p>类：指具有相同属性或行为的一组事物。<br>对象：是指类的具体化。<br>类与对象的关系:类是一组对象的抽象表示，而对象是类的具体化表现。</p>
-<h3 id="2、类的语法结构"><a href="#2、类的语法结构" class="headerlink" title="2、类的语法结构"></a>2、类的语法结构</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名：</span></span><br><span class="line"><span class="class">     变量声明语句</span></span><br><span class="line"><span class="class">     执行语句</span></span><br><span class="line"><span class="class">     <span class="title">def</span> <span class="title">func</span><span class="params">(self)</span>:</span></span><br><span class="line">         执行语句</span><br><span class="line">``` </span><br><span class="line">其中，类名首字母要求大写（约定俗成），遵守Python命名规则，不能以数字开头，通常我们都是字母开头。</span><br><span class="line">**注意**：</span><br><span class="line"><span class="number">1</span>）如果类中声明了函数，其函数的参数，必须有一个默认的参数为self，self代表了该类的实例化对象。</span><br><span class="line"><span class="number">2</span>）如果在类中声明了变量，且该变量位于函数体之外，这个变量我们成为类变量，类变量是公共的。类变量的调用可以直接使用类名进行调用，比如：</span><br><span class="line">``` py</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>:</span>  <span class="comment"># 定义一个类，类名Animal</span></span><br><span class="line">    color = <span class="string">'灰色'</span></span><br><span class="line">    leg_num = <span class="number">4</span></span><br><span class="line">    weight = <span class="number">20</span></span><br><span class="line">    width = <span class="number">150</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wangwang</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'wangwangwangwang'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'一顿饭20块钱'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'非常快'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">husky = Dog()  <span class="comment"># 将类实例化成对象，对象为dog</span></span><br><span class="line">husky.run()</span><br><span class="line">Dog.color</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>类变量，作为公共的变量，<strong>不管类实例化多少个对象，都只实例一份类变量</strong>。而且类变量会在对象实例化之前载入内容，一旦改变了类变量中的内容，所有对象中调用这个类变量的值都会随之改变。</p>
-</blockquote>
-<p>3)在类实例化对象时，会将其定义的属性和行为，生成一份副本给具体的实例化对象。对象与对象之间，他们的属性和行为是不相互干扰的。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>:</span>  <span class="comment"># 定义一个类，类名Animal</span></span><br><span class="line">    color = <span class="string">'灰色'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        self.num = num</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getNum</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(self.num)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">husky = Dog(<span class="number">5</span>)  <span class="comment"># 将类实例化成对象，对象为dog</span></span><br><span class="line">samoye = Dog(<span class="number">3</span>)</span><br><span class="line">husky.getNum()</span><br><span class="line">samoye.getNum()</span><br></pre></td></tr></table></figure></p>
-<p>我们在实例化Dog类时，生成两个对象husky、samoye，这两对象在实例化的过程中会生成两套成员变量和函数，他们的相互不干扰的。我们可以观察上面的代码，发现num变量属于成员变量，即husky和samoye各有持有相同的成员变量，但是修改num的值，husky为5，而samoye为3。结果表明他们的成员变量只能归各自的对象所拥有，并进行改变。<strong>对象与对象之间不会相互影响</strong>。<br>4）<strong>使用构造函数，来初始化成员变量</strong><br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span>  <span class="comment"># 构造函数，在实例化对象时被默认调用，用来给对象的成员变量赋值</span></span><br><span class="line">        self.name = <span class="string">'tom'</span></span><br><span class="line">        self.age = <span class="number">21</span></span><br><span class="line">        self.tel = <span class="string">'1350000000'</span></span><br><span class="line">        self.address = <span class="string">'北京'</span></span><br><span class="line">        self.sex = <span class="string">'男'</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setName</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getName</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line">p1 = Person()</span><br><span class="line">p1.name</span><br></pre></td></tr></table></figure></p>
-<p>使用<strong>init</strong>()函数，用来初始化成员变量。对象在实例化时，会默认的调用<strong>init</strong>()函数，同时将成员变量进行初始化。同时，在构造函数中，使用self.变量名进行初始化的成员变量，都是公有的。即在类外可以通过实例化的对象调用。</p>
-<p><strong>类变量与成员变量的区别</strong><br>1、类变量是声明在类中，位于函数之外声明的变量。这些变量时公共的，即在类外使用类名.类变量的方式进行调用。我们一旦修改类变量的值，所有调用类变量的内容均发生改变。<br>2、成员变量，是声明在类中的构造函数中，通过self.变量来进行声明赋值的。这些成员变量是公有的，即在类外可以通过对象名.成员变量的方式进行调用。所有的对象都有自己的成员变量，也就意味着每个对象的成员变量都是独立的，不会相互干扰。<br>3、类变量是该类所有实例化对象所公有的，它会早于对象实例化之前被载入内容中。<br><strong>成员变量</strong>都是跟随对象实例化的过程中，被声明出来的。<strong>它是伴随着对象的产生而产生，消亡而消亡的</strong>。<br>4、成员变量和方法，默认情况下都是公有的。也就是说在类外可以直接使用对象进行调用。<br>我们可以通过为成员变量设置双下划线，将其标识为私有的成员变量，<br>例如：<br><code>self.__name = &#39;tom&#39;</code><br><strong>私有的成员变量只能在类内进行直接使用，类外必须通过相关方法进行间接调用</strong>。</p>
-<blockquote>
-<p>Python中对象创建的流程<br>1、Python创建一个对象，首先要调用<em><strong>new</strong></em>方法,用来<em>创建并返回一个对象</em>。通常，Python中不需要我们直接显示调用，它会默认调用object.<strong>new</strong>()方法<br>2、然后，调用<strong>init</strong>方法,对该对象进行初始化**。</p>
-</blockquote>
-<h3 id="析构函数："><a href="#析构函数：" class="headerlink" title="析构函数："></a>析构函数：</h3><p>1、析构函数与构造函数一样，都是Python中特殊的函数。<br>2、析构函数如果用户没有定义的话，Python会提供一个默认的析构函数<br>3、析构函数<strong>del</strong>(self)，<strong>作用用来释放掉对象所占用的内存空间</strong>，在Python回收对象空间之前自动被执行。<br>4、通常在析构函数中，主要是将对象中占用大量资源的变量进行手动的释放，便于后续Python解释器去回收这些内存空间。</p>
-        
-          <a class="article-more-a" href="/2018/08/06/object/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/06/object/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-exception" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/03/exception/">异常</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/03/exception/" class="archive-article-date">
-  	<time datetime="2018-08-03T01:25:33.666Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h2><p>指因程序出错在正常的执行流程之外，采取的行为。异常是一个事件，会在程序的执行过程中执行，并影响程序的执行。</p>
-<h2 id="2）异常的阶段"><a href="#2）异常的阶段" class="headerlink" title="2）异常的阶段"></a>2）异常的阶段</h2><p>第一、产生异常（比如：代码错误、业务逻辑错误）<br>第二、处理异常（比如：将异常提示更加可理解、增强代码的健壮性）</p>
-<h2 id="3）常见的异常类"><a href="#3）常见的异常类" class="headerlink" title="3）常见的异常类"></a>3）常见的异常类</h2><p>Exception：Python中所有异常的父类。<br>NameError：访问了一个未声明的变量。<br>keyError:访问一个不存在的字典key<br>IndexError：索引超出序列的范围<br>ValueError：传给函数的参数类型不正确。<br>IOError：文件操作时输入输出错误</p>
-<h2 id="4）异常处理流程"><a href="#4）异常处理流程" class="headerlink" title="4）异常处理流程"></a>4）异常处理流程</h2><p>基本语法：</p>
-<blockquote>
-<p>try：<br>   可能会产生异常的代码<br>except  对应的异常 as 别名：<br>   异常处理语句<br>说明：在try中，放置可能会产生错误的相关代码；except后标明对应的异常类型，一旦try中产生相关异常，except后声明的异常类能够对应捕获，执行相关异常处理语句。如果try外面后续还要其他语句，会继续执行。在产生异常是，出现异常的语句后，如果还有其他语句则不会执行。</p>
-</blockquote>
-<blockquote>
-<p>try:<br>   可能会产生异常的代码<br>except 对应的异常 as 别名：<br>   异常处理语句<br>else:<br>   程序代码<br>说明：在此结构中，如果try中的代码出现异常，则使用except后面声明的异常类进行捕获处理，如果没有异常出现，则执行else内部的代码。</p>
-</blockquote>
-<blockquote>
-<p>try:<br>   可能会产生异常的代码<br>except 对应的异常 as 别名：<br>    异常处理语句<br>except 对应的异常 as 别名：<br>    异常处理语句<br>说明：当try中有多行代码可能会出现不同的异常，那么使用多个except与之对应，根据产生异常的顺序来依次捕获处理。</p>
-</blockquote>
-<blockquote>
-<p>try：<br>   可能会出产生异常的代码<br>except 对应的异常 as 别名：<br>   异常处理语句<br>finally：<br>   代码<br>说明：当异常捕获处理流程中，使用了finally来控制，表明不管是否出现异常进行捕获，最后代码都将允许finally内部的语句。<br>注意：finally中的语句，不管前面的代码出现何种操作，比如：break、return、exit等都会执行完finally内部的代码后，才会实现。</p>
-</blockquote>
-<h2 id="5）异常的分类"><a href="#5）异常的分类" class="headerlink" title="5）异常的分类"></a>5）异常的分类</h2><p>在Python中所有的异常都继承自BaseExcept,如下：<br>          |——&gt;KeyboardInterrupt（键盘中断异常）<br>          |<br>BaseExcept|——&gt;SystemExit(系统退出异常)<br>          |<br>          |——&gt;Except（其他所有异常的父类）<br>其中：keyboardInterrupt在使用强制中断程序时产生。<br>SystemExit在使用sys.exit()函数时产生。</p>
-<h2 id="6）主动抛出异常"><a href="#6）主动抛出异常" class="headerlink" title="6）主动抛出异常"></a>6）主动抛出异常</h2><p>raise 异常类对象实例或自定义异常类实例<br>raise IOError(‘IO 错误’)</p>
-<h2 id="7）finally的替换写法"><a href="#7）finally的替换写法" class="headerlink" title="7）finally的替换写法"></a>7）finally的替换写法</h2><p>with open(‘myfile.txt’,’r’) as f:<br>    for line in f:<br>        print(line)<br>其中打开的文件对象f，在执行完内容的读取后，被强制性关闭。及时在读取过程中，出现错误，也会被关闭。</p>
-<h2 id="8）使用异常机制的优势"><a href="#8）使用异常机制的优势" class="headerlink" title="8）使用异常机制的优势"></a>8）使用异常机制的优势</h2><p>第一，把错误控制与业务逻辑进行区分，增强程序的可读性和健壮性。<br>第二，代码结构更加清晰，复杂的业务流程的实现更加便利<br>第三，程序的容错性更强，不会因为一个小bug导致整体崩溃。</p>
-<h2 id="9）assert-断言"><a href="#9）assert-断言" class="headerlink" title="9）assert 断言"></a>9）assert 断言</h2><p>语法格式：assert 表达式，断言内容。代码如下</p>
-<pre><code class="py"><span class="keyword">try</span>:
-    <span class="keyword">assert</span> <span class="number">1</span>==<span class="number">2</span>,<span class="string">'1 不等于 2'</span>
-<span class="keyword">except</span> AssertionError <span class="keyword">as</span> ae:
-    print(<span class="string">'{}{}'</span>.format(ae.__class__.__name__, ae))
-</code></pre>
-<p>如果断言表达式为真，则正常执行，如果不为真，则返回断言内容，作为异常捕获的输出结果。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/03/exception/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-module" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/01/module/">包与模块</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/01/module/" class="archive-article-date">
-  	<time datetime="2018-08-01T13:48:42.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1）模块"><a href="#1）模块" class="headerlink" title="1）模块"></a>1）模块</h2><p>基本概念：在Python中进行Python定义和声明的文件，以.py结尾。使用import或from   import导入的文件，我们称为模块。</p>
-<h3 id="2）模块的优势"><a href="#2）模块的优势" class="headerlink" title="2）模块的优势"></a>2）模块的优势</h3><p>首先，使用模块，可以将常用的功能和变量，统一分类存储在不同的文件中，在使用时进行导入。提供了<strong>代码的可维护性</strong>。<br>其次，使用模块因为将常用功能进行了统一调用，提供了<strong>代码的复用性</strong><br>最后，解决了在同一个文件中，方法和变量重名的问题。</p>
-<h3 id="3）导入时的问题"><a href="#3）导入时的问题" class="headerlink" title="3）导入时的问题"></a>3）导入时的问题</h3><p>如果导入了与文件同名的函数（方法名相同，函数参数相同）时，需要使用模块名调用函数，与文件中的函数进行区分，例如：</p>
-<pre><code class="py"><span class="keyword">import</span> my
-my.show()
-<span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">()</span>:</span>
-  <span class="keyword">pass</span>
-show()
-</code></pre>
-<p>4)模块可以在Python文件中，实现<strong>多次import导入</strong>，但是只有第一次导入时才真正将模块中的内容运行、方法载入，其他再进行导入时，Python解析器会先检测是否已经载入该模块，如果载入就不在执行相关操作。</p>
-<p><strong>总结</strong>：<br>模块载入一共分三个步骤：<br>1、为模块的导入，创建命名空间（划分新的内存地址），被载入的文件按照全局作用域来使用。<br>2、模块载入后，将在上一步操作中创建的命名空间中，执行模块中的代码<br>3、创建一个模块的名字，来引用模块所在的命名空间。my.show()</p>
-<p>5)当使用from  import引入多个模块时，同时<strong>多个模块存在同名函数</strong>，那么在程序中调用该函数时，以程序导入的最后一个模块的函数为准。</p>
-<h2 id="包："><a href="#包：" class="headerlink" title="包："></a>包：</h2><h3 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h3><p>包在Python中定义为可以包含多个模块文件的目录，其中必须要包含一个名为“<strong>init</strong>.py”的文件，用来初始化包。</p>
-<h3 id="2）包在调用的使用，"><a href="#2）包在调用的使用，" class="headerlink" title="2）包在调用的使用，"></a>2）包在调用的使用，</h3><p>首先会初始化<strong>init</strong>.py文件，主要功能为包中模块运行时提供所需要的相关数据，比如：数据库用户名称、密码、地址等内容。</p>
-<h2 id="13、常用模块"><a href="#13、常用模块" class="headerlink" title="13、常用模块"></a>13、常用模块</h2><h3 id="1）序列化模块：json、pickle、shelve"><a href="#1）序列化模块：json、pickle、shelve" class="headerlink" title="1）序列化模块：json、pickle、shelve"></a>1）序列化模块：json、pickle、shelve</h3><p><strong>json模块</strong>：<br>序列化方法：dump()、dumps()<br>反序列化方法：load()、loads()<br><strong>pickle模块</strong>：<br>序列化方法：dump()、dumps()<br>反序列化方法：load()、loads()</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/01/module/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-excelparsexml" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/01/excelparsexml/">Python对Excel文件的操作</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/01/excelparsexml/" class="archive-article-date">
-  	<time datetime="2018-08-01T11:21:42.724Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><h3 id="1、需要三个主要的模块"><a href="#1、需要三个主要的模块" class="headerlink" title="1、需要三个主要的模块"></a>1、需要三个主要的模块</h3><p>xlrd:用来<strong>读取</strong>Excel文件中的内容<br>xlwt：用来<strong>生成</strong>Excel文件<br>xlutils：用来实现Excel文件的<strong>复制</strong><br>安装命令：<br><code>pip insatall xlrd</code></p>
-<p>###2、<br>首先：<strong>xlrd</strong><br><strong>open_workbook()</strong><br>函数格式：open_workbook(文件名)<br>返回值：返回Excel对象<br>说明：打开指定的Excel文件，<strong>生成一个Excel对象</strong>用来实现读取行、列及单元格内容</p>
-<p>函数格式：sheet_by_name(sheet页面名)/sheet_by_index(sheet页索引位，默认从0开始)<br>返回值：sheet页对象<br>说明：找到指定的sheet页，<strong>生成一个对应的sheet页对象</strong>，对其内部的数据进行检索</p>
-<p>函数格式：sheet.cell(rownum,colnum)<br>返回值：返回指定行列的单元格对象，如果要获取其中的内容，调用value属性。<br>说明：通过指定行、列，能够确认一个单元格。</p>
-<p>其次：<strong>xlwt</strong><br>函数名称：Workbook()<br>返回值：返回一个新创建的Excel空对象<br>说明：该函数用来生成一个Excel对象，但是该对象没有任何内容</p>
-<p>函数名称：add_sheet(sheet名字)<br>返回值：返回一个新创建的sheet页对象<br>说明：该函数用来新增一个空的sheet页对象</p>
-<p>函数名称：write(row, col, value)<br>返回值：无<br>说明：对指定的行列单元格内，写入value内容。</p>
-<p>最后：xlutils<br>函数格式：copy(Excel对象)<br>返回值：返回一个指定对象的副本<br>说明：在Python中对Excel的修改，都是生成一个对应的副本，修改后保存。</p>
-<p>函数格式：get_sheet(索引位)<br>返回值：返回一个指定对象副本中的sheet页<br>说明：我们实际修改的数据，都是位于sheet页中。因此要获取到指定的sheet页。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlwt  <span class="comment"># 写Excel文件，选用该模块</span></span><br><span class="line"><span class="keyword">import</span> xlrd  <span class="comment"># 读取Excel文件中数据，选用该模块</span></span><br><span class="line"><span class="keyword">from</span> xlutils.copy <span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">saveExcel</span><span class="params">(title, data)</span>:</span></span><br><span class="line">    <span class="comment"># 生成Excel对象</span></span><br><span class="line">    wbt = xlwt.Workbook()</span><br><span class="line">    <span class="comment"># 生成一个sheet页</span></span><br><span class="line">    sheet = wbt.add_sheet(<span class="string">'人员信息表'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(title)):</span><br><span class="line">        sheet.write(<span class="number">0</span>, i, title[i])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> range(len(data)):</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> range(len(data[m])):</span><br><span class="line">            sheet.write(m + <span class="number">1</span>, n, data[m][n])</span><br><span class="line"></span><br><span class="line">    wbt.save(<span class="string">'person.xls'</span>)</span><br><span class="line">    <span class="comment"># python中excel的扩展名为.xls</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 两种方式均可以将data写入到excel文件中</span></span><br><span class="line">    <span class="comment"># for i in range(len(title)):</span></span><br><span class="line">    <span class="comment">#     # 0代表行数，且是表中的第一行，i代表列数</span></span><br><span class="line">    <span class="comment">#     sheetname.write(0, i, title[i])</span></span><br><span class="line">    <span class="comment">#     for j in range(len(data)):</span></span><br><span class="line">    <span class="comment">#         sheetname.write(j + 1, i, data[j][i])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">readExcel</span><span class="params">(bookname, sheetname)</span>:</span></span><br><span class="line">    <span class="comment">#打开Excel文件</span></span><br><span class="line">    wb = xlrd.open_workbook(bookname)</span><br><span class="line">    sheet = wb.sheet_by_name(sheetname)</span><br><span class="line">    <span class="comment">#for rownum in range(sheet.nrows):</span></span><br><span class="line">    <span class="comment"># print(sheet.row_values(rownum))</span></span><br><span class="line">    <span class="keyword">for</span> rownum <span class="keyword">in</span> range(sheet.nrows):</span><br><span class="line">        msg = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> colnum <span class="keyword">in</span> range(sheet.ncols):</span><br><span class="line">            msg += str(sheet.cell(rownum, colnum).value)</span><br><span class="line">        print(msg)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 还可以不使用msg,直接打印：</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> range(sheet.nrows):</span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> range(sheet.ncols):</span><br><span class="line">            print(sheet.cell(row, col).value, end=<span class="string">' '</span>)</span><br><span class="line">        print()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">updateExcle</span><span class="params">(bookname, sheetname)</span>:</span></span><br><span class="line">    wb = xlrd.open_workbook(<span class="string">'person.xls'</span>)</span><br><span class="line">    <span class="comment"># sheet = wb.sheet_by_name('人员信息表')</span></span><br><span class="line">    <span class="comment"># sheet 这个变量在后面没有被使用</span></span><br><span class="line">    new_wb = copy(wb)  <span class="comment"># 将原有的Excel，拷贝一个新的副本</span></span><br><span class="line">    new_sheet = new_wb.get_sheet(<span class="number">0</span>)  <span class="comment"># 重新在新的Excel中获取sheet页</span></span><br><span class="line">    <span class="comment"># 1,0:第二行，第1列</span></span><br><span class="line">    new_sheet.write(<span class="number">1</span>, <span class="number">0</span>, <span class="string">'夏滨'</span>)</span><br><span class="line">    new_wb.save(<span class="string">'perons.xls'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 作为Excel表中的标题名称</span></span><br><span class="line">    title = [<span class="string">'姓名'</span>, <span class="string">'年龄'</span>, <span class="string">'性别'</span>, <span class="string">'出生年月'</span>, <span class="string">'家庭住址'</span>, <span class="string">'婚姻状况'</span>, <span class="string">'身份证号码'</span>]</span><br><span class="line">    <span class="comment"># 生成Excel中的数据</span></span><br><span class="line">    data = [[<span class="string">'小文'</span>, <span class="number">22</span>, <span class="string">'女'</span>, <span class="string">'19980101'</span>, <span class="string">'不详'</span>, <span class="string">'不详'</span>, <span class="string">'4111111111111'</span>],</span><br><span class="line">            [<span class="string">'小宾宾'</span>, <span class="number">21</span>, <span class="string">'男'</span>, <span class="string">'19981010'</span>, <span class="string">'河南省郑州'</span>, <span class="string">'已婚'</span>, <span class="string">'410222222222'</span>],</span><br><span class="line">            [<span class="string">'丹丹'</span>, <span class="number">22</span>, <span class="string">'女'</span>, <span class="string">'19980210'</span>, <span class="string">'河南郑州'</span>, <span class="string">'已婚'</span>, <span class="string">'4103333333333'</span>]]</span><br><span class="line">    saveExcel(title, data)</span><br><span class="line">    bookname = <span class="string">'person.xls'</span></span><br><span class="line">    sheetname = <span class="string">'人员信息表'</span></span><br><span class="line">    readExcel(bookname, sheetname)</span><br><span class="line">    updateExcle(bookname, sheetname)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者，生成excel文件时：</span></span><br><span class="line"><span class="comment"># saveexcel(title, data, tabelname, sheetname)</span></span><br></pre></td></tr></table></figure>
-<h2 id="Python对XML文件的解析"><a href="#Python对XML文件的解析" class="headerlink" title="Python对XML文件的解析"></a>Python对XML文件的解析</h2><h3 id="1、XML解析的两种方式：DOM与SAX"><a href="#1、XML解析的两种方式：DOM与SAX" class="headerlink" title="1、XML解析的两种方式：DOM与SAX"></a>1、XML解析的两种方式：DOM与SAX</h3><p><strong>DOM</strong>：文档对象模型，是Python处理XML文件的标准模式。<br>一个DOM的解析器在解析XML文档时 ，<strong>一次性读入整个文档</strong>，把文档中的所有元素（标签和文本）保存在内存中的一个<strong>树形结构</strong>，然后我们可以利用DOM提供的各种函数，来读取或修改文档中的内容。<br><strong>SAX</strong>：是一种<strong>时间驱动的API</strong>，利用SAX解析XML 。主要使用解析器负责读取XML文档，并向事件处理器发生事件，比如：元素开始、元素结束。<br>常用在1）大型文档的处理，2）只需要文件的部分内容，或者从文件中得到特定的部分3）建立自己的对象模型。</p>
-<blockquote>
-<p>dom与sax对比：<br>1、DOM解析需要读取整个文档到内存中，并且将所有元素保存到树形结构。那也就意味着，可以根据树形结构导航到任意节点，获取其相关内容。<br>2、SAX解析文档，将文档<strong>边读入，边解析</strong>的方式，不需要一次性读入全部文档内容，只需要读入一部分即可。同时，因为其边读入边解析的工作方式，能够<strong>适应大文件的解析</strong>，提高解析效率。</p>
-</blockquote>
-<h3 id="SAX解析文件步骤："><a href="#SAX解析文件步骤：" class="headerlink" title="SAX解析文件步骤："></a>SAX解析文件步骤：</h3><h4 id="1、创建解析器"><a href="#1、创建解析器" class="headerlink" title="1、创建解析器"></a>1、创建解析器</h4><p><code>parser = sax.make_parser()</code></p>
-<h4 id="2、读取xml文档"><a href="#2、读取xml文档" class="headerlink" title="2、读取xml文档"></a>2、读取xml文档</h4><p><code>xml.sax.parse(xmlfile)</code><br>3、设置ContentHandler对象，重写startDocument、endDocument、startElement、endElement方法</p>
-<p>startDocument():文档载入时调用，文档开始<br>endDocument()：当解析器达到文档结尾时调用</p>
-<p>startElement(name,attrs):当遇到XML标签时调用，name是标签的名字，attrs标签的属性字典<br>endElement(name):当遇到XML标签结束时调用，name是标签名<br>4、使用SAX解析文件，需要为解析器配置ContentHandler，定义了如何解析标签，以及处理标签间文本内容的业务逻辑。<br><code>carhandler = CarHandler()</code><br><code>parser.setContentHandler(carhandler)</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/01/excelparsexml/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-fileIo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/28/fileIo/">文件输入输出（IO）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/28/fileIo/" class="archive-article-date">
-  	<time datetime="2018-07-28T09:30:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1）格式化函数"><a href="#1）格式化函数" class="headerlink" title="1）格式化函数"></a>1）格式化函数</h3><p><strong>repr()</strong><br>函数格式：repr(Object)<br>返回值：返回一个字符串类型的数据</p>
-<p>说明：该函数将参数中的对象进行处理，变为<strong>字符串类型</strong>，其中如果参数为字符串仍然会在外部加上“”，其内部的字符串的边界符仍然存在。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">repr(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="string">"'hello world'"</span></span><br></pre></td></tr></table></figure></p>
-<p>居左、居右、居中函数<br><strong>rjust()/ljust()/center()</strong><br>函数格式：rjust(int) /ljust(int)/center()<br>返回值：无<br>说明：该函数，将输出的字符串居右(居左/居中)对齐，左侧(右侧/两侧)使用参数中规定的空格数来对齐<br><strong>参数int是输出的字符串的宽度</strong>,rjust()方法是字符串才可调用的方法<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>):</span><br><span class="line">	print(repr(i).rjust(<span class="number">3</span>),repr(i*i).rjust(<span class="number">4</span>),repr(i**<span class="number">3</span>).rjust(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">  <span class="number">1</span>    <span class="number">1</span>     <span class="number">1</span></span><br><span class="line">  <span class="number">2</span>    <span class="number">4</span>     <span class="number">8</span></span><br><span class="line">  <span class="number">3</span>    <span class="number">9</span>    <span class="number">27</span></span><br><span class="line">  <span class="number">4</span>   <span class="number">16</span>    <span class="number">64</span></span><br><span class="line">  <span class="number">5</span>   <span class="number">25</span>   <span class="number">125</span></span><br><span class="line">  <span class="number">6</span>   <span class="number">36</span>   <span class="number">216</span></span><br><span class="line">  <span class="number">7</span>   <span class="number">49</span>   <span class="number">343</span></span><br><span class="line">  <span class="number">8</span>   <span class="number">64</span>   <span class="number">512</span></span><br><span class="line">  <span class="number">9</span>   <span class="number">81</span>   <span class="number">729</span></span><br><span class="line"> <span class="number">10</span>  <span class="number">100</span>  <span class="number">1000</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2）文本文件的输入输出"><a href="#2）文本文件的输入输出" class="headerlink" title="2）文本文件的输入输出"></a>2）文本文件的输入输出</h3><p>文本文件的操作步骤：</p>
-<h4 id="1、打开文件"><a href="#1、打开文件" class="headerlink" title="1、打开文件"></a>1、打开文件</h4><p>函数格式：<strong>open(file,mode,buffering,encoding)</strong><br>返回值：返回一个文件对象，用来对文件进行操作。<br>说明：该函数主要是进行文件打开操作，如果文件不存在就新建一个文件。如果存在就打开原有文件。</p>
-<h4 id="2、操作文件"><a href="#2、操作文件" class="headerlink" title="2、操作文件"></a>2、操作文件</h4><p><strong>1）写文件</strong><br>函数格式：write(str)<br>返回值：返回所写入文件的字符串中的字符数。<br>说明：该函数可以一次性写入一个字符串内容，到文件中。每次写入文件是，如果使用的<em>模式为w</em>，那么因为着本次写入为<strong>覆盖式写入</strong>，即写入内容会替换掉原有文件内容。</p>
-<p>函数格式：writelines(sequence)<br>返回值：无<br>说明：该函数可以使用列表、字符串、元组、集合、字典等作为参数，其中这些序列中的元素必须为字符串类型，同时也可以一次性写入多行字符串。<br><strong>2）读文件</strong><br>函数格式：read([size])<br>返回值：返回按字节逐一读取的数据。<br>说明：该函数按照字节个数，<strong>逐一读取</strong>文件中的数据。如果没有规定读取数据的字节大小即size，一直读完文件中全部数据，如果规定了数据的字节大小，只读取规定字节数的内容。</p>
-<p>函数格式：readline()<br>返回值：返回读取的一行字符串<br>说明：该函数一次能够<strong>读取文件中一行内容</strong>，如果需要读取全部内容，需要配合while循环使用，注意使用读取到的文件内容作为条件判断，即文件内容为空字符串时，退出循环。</p>
-<p>函数格式：readlines()<br>返回值：<strong>返回</strong>一个包含多个字符串的<strong>列表</strong>。<br>说明：该函数能够一次性将文件中的数据全部读取出来，然后将文件中每行字符串，作为一个列表的元素，将其组装成一个列表返回。</p>
-<h4 id="3、关闭文件"><a href="#3、关闭文件" class="headerlink" title="3、关闭文件"></a>3、关闭文件</h4><p>函数格式：close()<br>返回值：无<br>说明：当我们操作文件时，进行相关的写入操作，<strong>Python将数据写入文件之前，会将文件保存在文件缓冲区中</strong>，在我们调用close()函数时，首先会将文件缓冲区内还没有写入到文件中的数据进行刷新并强制写入文件，然后关闭Python与文件的通道，释放相关资源。</p>
-<h4 id="4、json格式处理"><a href="#4、json格式处理" class="headerlink" title="4、json格式处理"></a>4、json格式处理</h4><p>在Python中，提供了json模块可以实现对特殊数据结构的读写。比如：列表和字典。<br>字典在使用普通方法写入到文件中时，只能将key写入进去。<br>1）将嵌套列表或字典转为json格式数据<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="comment"># dumps()将列表或字典先转化为json对象</span></span><br><span class="line">item = json.dumps(list/dict)</span><br><span class="line"><span class="comment"># 使用writelines()将json对象写入到文件中</span></span><br><span class="line">file.writelines(item)</span><br><span class="line"><span class="comment"># 使用dump()可以将列表转化为json数据后直接加入到文件中</span></span><br><span class="line">json.dump(list, file)</span><br></pre></td></tr></table></figure></p>
-<p>2)将文件中的列表或字典json字符串读取出来<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f= open(file,mode)</span><br><span class="line">json.load(f)</span><br></pre></td></tr></table></figure></p>
-<h4 id="5、文件及路径操作函数"><a href="#5、文件及路径操作函数" class="headerlink" title="5、文件及路径操作函数"></a>5、文件及路径操作函数</h4><p>1）<strong>isfile()与isdir()</strong> （os.path模块）<br>函数格式：os.path.isfile(file)<br>返回值：bool<br>说明：根据传入的参数，判断该内容是否为文件类型。如果是文件类型返回True，如果不是返回False</p>
-<p><strong>isdir()</strong><br>函数格式：os.path.isdir(path)<br>返回值：bool<br>说明：根据传入的参数，判断内容是否为目录类型，如果是目录就返回True，如果不是返回False</p>
-<p>2）<strong>创建路径 mkdir()、删除路径removedirs() (os模块)</strong><br>函数格式：os.mkdir(path)<br>返回值：无<br>说明：如果指定路径中不存在该目录，那么创建该目录。注意，如果存在同名目录，则报错</p>
-<p>函数格式：os.removedirs(path)，os.rmdir(path)<br>返回值：无<br>说明：删除指定的目录，如果该目录中存在文件或子目录，都不允许删除。否则报错。</p>
-<p>3）<strong>删除文件 remove() （os模块）</strong><br>函数格式：os.remove(file)<br>返回值：无<br>说明：删除指定的文件，如果该文件不存在则报错。如果文件存在就删除。</p>
-<p>4）<strong>判断文件/目录是否存在 exists()</strong><br>函数格式：os.path.exists(file/path)<br>返回值：bool<br>说明：判断指定的文件或路径是否存在，如果存在返回True，如果不存在返回False。</p>
-<p>5)<strong>返回指定路径下，所有子路径 listdir()</strong><br>函数格式：os.listdir(path)<br>返回值：list<br>说明：返回指定路径下，所有的子路径。</p>
-<p>6）<strong>返回当前路径 getcwd()</strong><br>函数格式：os.getcwd()<br>返回值：path<br>说明：返回当前程序所在的绝对路径</p>
-<p>7）<strong>返回文件大小 getsize()</strong><br>函数格式：path.getsize()<br>返回值：int<br>说明：返回指定文件的大小，单位是字节</p>
-<p>8）<strong>重命名 rename()</strong><br>函数格式：os.rename(oldfilename/oldpath,newfilename/newpath)<br>返回值：无<br>说明:将指定的文件名或目录名进行重命名。</p>
-<p>9）<strong>替换 replace()</strong><br>函数格式：os.replace(src,dst)<br>返回值：无<br>说明：使用目标文件替换掉原文件</p>
-<p><strong>注意</strong>：在Python3.x版本中，将pathlib作为内置模块进行了引入。<br>我们可以通过使用from pathlib import Path，使用。<br>其使用的前提为：需要先创建一个path对象，然后对其进行操作。<br><code>p = Path(&#39;c:\pythoncode\etc&#39;)</code><br>具体方法，大家自行学习。</p>
-<h3 id="3、二进制文件的输入输出"><a href="#3、二进制文件的输入输出" class="headerlink" title="3、二进制文件的输入输出"></a>3、二进制文件的输入输出</h3><h4 id="1）struct和pickle"><a href="#1）struct和pickle" class="headerlink" title="1）struct和pickle"></a>1）struct和pickle</h4><p><strong>使用struct模块</strong>，进行数据的输入输出<br>使用步骤：<br>第一，对要写入到文件中的各种类型数据，进行统一打包<br><code>struct.pack(&#39;if&#39;,10,12.4),其中，i:代表了整数，f：代表了浮点数 ？：代表布尔型</code><br>第二，使用<strong>write()写入</strong>，写入后以二进制的方式进行文件存储。<br>第三，读取时，首先采用<strong>struct.unpack()来解包</strong>里面包含的相关数据，返回一个序列，即写入时的顺序，与读取时的顺序应该一致。<br>注意：需要将所有写入的数据，一次性都封装到一个bytes中，因为在Python中没有byte的概念，所以需要第三方的模块进行封装。</p>
-<p><strong>使用pickel模块</strong>，进行数据的输入输出<br>使用步骤：<br>第一，对要写入文件中的数据，进行逐一的写入。例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'myfile.dat'</span>,<span class="string">'wb'</span>)</span><br><span class="line">pickle.dump(<span class="number">10</span>, f)</span><br></pre></td></tr></table></figure></p>
-<p>第二，读取数据时，同理，需要逐一的读取。例如：<br><code>pickle.load(f)</code><br>注意，在使用时，我们能够观察到该模块的dump和load函数，与前面所学的json模块的函数一致，在Python中json与pickle都能够实现序列化和反序列化的两个模块。<br>在实际的使用中，推荐使用pickle 模块。</p>
-<h4 id="2）文件定位"><a href="#2）文件定位" class="headerlink" title="2）文件定位"></a>2）文件定位</h4><p>函数格式：<strong>seek(n)</strong><br>返回值：返回指定的位置<br>说明：通过指定元素的位置，将文件指针移动到该位置。<br>seek()函数有三个固定值，分别为：0,1,2<br>0：文件的开头<br>1：文件当前的位置<br>2：文件的结尾位置<br>seek(0,2):代表着将指针定位到文件尾，然后进行添加操作<br>seek(0,1):代表着在当前指针的位置，进行替换</p>
-<blockquote>
-<p>补充：对文件的读取时，如果文件大小未知，切忌不要使用read(),readline()，readlines()将文件内容一次性读取到内存中。因为有可能文件内容过多，造成读取时的IO阻塞。建议，将文件分多次分批读入内存中。<br>我们通常可以先获取到文件大小，使用path.getsize()函数来获取文件的大小,根据其大小来判断我们采用何种方式进行读取数据内容。<br><code>size = path.getsize(&#39;myfile.txt&#39;)</code></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/28/fileIo/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-copy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/24/copy/">copy()(浅拷贝)和deepcopy()（深拷贝）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/24/copy/" class="archive-article-date">
-  	<time datetime="2018-07-24T13:27:21.934Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1、浅拷贝："><a href="#1、浅拷贝：" class="headerlink" title="1、浅拷贝："></a>1、浅拷贝：</h3><p>我们使用copy()函数将列表中的元素，进行复制，通常对于普通的列表（一维）能够实现完全的值传递，即将自身的副本赋值给另外一个列表。<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">ls2 = ls1.copy()  <span class="comment"># 将ls1中的元素赋值给ls2,此时他们的值相等的</span></span><br><span class="line">ls1[<span class="number">3</span>] = <span class="number">6</span>        <span class="comment">#此时，对ls1中索引位3的值进行修改，变为6</span></span><br></pre></td></tr></table></figure></p>
-<p><code>观察其结果，我们可以发现ls1 =&gt; [1,2,3,6,5],但是ls2 =&gt;[1,2,3,4,5]没有发生改变</code></p>
-<p>一旦，ls1的列表元素结构发生变化，出现子列表嵌套。<br>如：ls1 = [1,2,3,[‘one’,’two’],5]，这是再使用copy()对ls2赋值，我们进行如下修改：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">'one'</span>,<span class="string">'two'</span>],<span class="number">5</span>]</span><br><span class="line">ls2 = ls1.copy()</span><br><span class="line">ls1[<span class="number">3</span>][<span class="number">0</span>] = <span class="string">'three'</span></span><br></pre></td></tr></table></figure></p>
-<p><code>我们观察其结果，可以发现ls1 =&gt; [1,2,3,[&#39;three&#39;,&#39;two&#39;],5],同时ls2也会随之变化 ls2 =&gt; [1,2,3,[&#39;three&#39;,&#39;two&#39;],5]。</code></p>
-<p><strong>总结</strong>：这种现象我们成为浅拷贝，copy()函数进行组合数据类型拷贝时，只能控制第一层元素进行值传递，一旦出现嵌套的子列表、子字典等内容，将不再拷贝其内容的值，而是直接将这个嵌套的内存地址，赋值给ls2。所以会造成一旦原列表改变子列表内容后，目标列表中对应的子列表也发生改变。</p>
-<h3 id="2、深拷贝："><a href="#2、深拷贝：" class="headerlink" title="2、深拷贝："></a>2、深拷贝：</h3><p>我们需要引入copy这个模块，调用deepcopy()函数。写法如下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">ls1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">'one'</span>,<span class="string">'two'</span>],<span class="number">5</span>]</span><br><span class="line">ls2 = copy.deepcopy(ls1)</span><br><span class="line">ls1[<span class="number">3</span>][<span class="number">0</span>] = <span class="string">'three'</span></span><br></pre></td></tr></table></figure></p>
-<p>此时，我们发现ls1内容发生改变后，但是ls2并没有随之改变，那么也就是意味着deepcopy()将ls1中内容，包括嵌套里面的元素都进行了副本赋值，给ls2。因此，<strong>他们只是值相同，并没有指向同一个内存地址</strong>。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/24/copy/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-function" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/24/function/">函数</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/24/function/" class="archive-article-date">
-  	<time datetime="2018-07-24T13:13:13.948Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、自定义函数</p>
-<h3 id="1、函数的定义"><a href="#1、函数的定义" class="headerlink" title="1、函数的定义"></a>1、函数的定义</h3><p>函数的格式：<br>def 函数名([参数列表]):<br>    执行代码</p>
-<p>其中，函数名的命名方式与变量名的要求相同，即只能是数字、字符、下划线三者构成，同时不能由数字开头。<br>另外，函数的参数根据情况，可以有参，也可以无参。同时，参数的个数，可以是1到N个。最后，调用函数时，一定要保证该函数已经被定义。调用的函数名与定义的函数名一致。</p>
-<h3 id="2、函数的调用"><a href="#2、函数的调用" class="headerlink" title="2、函数的调用"></a>2、函数的调用</h3><p>函数在外部调用时，直接写函数名以及函数参数即可，不需要将函数体写出来。同时，函数是否有返回值，由其函数体最后一句代码是否为return来决定的。如果由return语句，那么就意味着该函数有返回值，如果没有返回值就意味着返回值为None。</p>
-<blockquote>
-<p>注意：函数使用return作为返回值语句，该命令通常放在函数的最后一句，保证函数相关的代码都执行完毕后才返回，如果后面还有其他程序，则不会被执行。</p>
-</blockquote>
-<h3 id="3、函数的参数"><a href="#3、函数的参数" class="headerlink" title="3、函数的参数"></a>3、函数的参数</h3><p>概念：函数在定义时声明的参数，我们称为形参（形式参数）。</p>
-<blockquote>
-<p>形参的作用，主要是用来表明参数顺序、类型和个数。并不代表具体内容。<br>我们在调用函数的时候，根据形参的规定（顺序、类型、个数），传递进来实际的内容。我们称为实参。</p>
-</blockquote>
-<p>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(name,age)</span>:</span>   <span class="comment"># 定义函数时声明的形参：name,age</span></span><br><span class="line">    print(name,age)</span><br><span class="line"></span><br><span class="line">display(<span class="string">'tom'</span>,<span class="number">22</span>)        <span class="comment">#调用函数时实际传递的参数值：tom, 22</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="1）必须的参数"><a href="#1）必须的参数" class="headerlink" title="1）必须的参数"></a>1）必须的参数</h4><p>我们在函数定义时，显示声明在函数的参数列表中的参数，这些参数一旦被声明，函数在调用时，必须按照所声明的顺序、个数和数据类型，来传递实际的参数内容。</p>
-<h3 id="2）关键字参数"><a href="#2）关键字参数" class="headerlink" title="2）关键字参数"></a>2）关键字参数</h3><p>我们在定义函数时，声明了函数的参数后，在调用函数时我们不仅传递实际的参数内容，同时还将参数名字与之对应，这样保证传递进来的参数如果没有按照函数定义时规定的顺序，也能够正确传递进来。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(name, age)</span>:</span></span><br><span class="line">    print(<span class="string">'我是&#123;0&#125;，我&#123;1&#125;了'</span>.format(name, age))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">display(age=<span class="number">22</span>, name=<span class="string">'lmz'</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-默认参数"><a href="#3-默认参数" class="headerlink" title="3)默认参数"></a>3)默认参数</h3><p>我们在定义函数时，声明函数的参数，同时可以给这些参数进行赋值，在调用该函数时，如果没有给对应参数传递实参，那么python会默认使用定义函数时所声明的默认参数值。</p>
-<h3 id="4）可变参数"><a href="#4）可变参数" class="headerlink" title="4）可变参数"></a>4）可变参数</h3><p>普通可变参数：我们在定义函数时，因为参数过多或者不确定具体参数列表的个数，我们还可以采用可变参数来实现。可变参数表示从0到N个参数，采用<strong>*参数名</strong><br>注意，此时可变参数类型，为<strong>tuple元组类型。</strong><br>关键字可变参数：我们在定义函数时，通过使用<strong>**参数名</strong>，来表示0到N个参数，在外部调用函数时，将这些可变参数组装成一个<strong>字典。</strong><br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, password, **kw)</span>:</span></span><br><span class="line">    print(<span class="string">'用户名&#123;0&#125;，密码&#123;1&#125;，其他内容&#123;2&#125;'</span>.format(name,password,kw))</span><br><span class="line"></span><br><span class="line">person(<span class="string">'tom'</span>,<span class="string">'123456'</span>)</span><br><span class="line">person(<span class="string">'simth'</span>, <span class="string">'12345'</span>,sex=<span class="string">'男'</span>, address=<span class="string">'郑州'</span>)</span><br></pre></td></tr></table></figure></p>
-<p><code>输出结果：用户名tom，密码123456，其他内容{}</code><br><code>用户名simth，密码12345，其他内容{&#39;sex&#39;: &#39;男&#39;, &#39;address&#39;: &#39;郑州&#39;}</code></p>
-<p>特殊用法：*<br>在函数定义中，如果单独使用一个*号，意味着该*后面的参数，为关键字参数声明时必须使用的名字。在调用该函数时，关键字参数的名字要与函数定义中*号后面的参数名称一致。例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, password, *, city, sex)</span>:</span></span><br><span class="line">    print(<span class="string">'用户名&#123;0&#125;，密码&#123;1&#125;，其他内容&#123;2&#125;&#123;3&#125;'</span>.format(name, password, city, sex))</span><br><span class="line"></span><br><span class="line"><span class="comment"># person('simth', '12345',sex='男', city='郑州')</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="4、局部变量与全局变量"><a href="#4、局部变量与全局变量" class="headerlink" title="4、局部变量与全局变量"></a>4、局部变量与全局变量</h3><p>1）Python中，函数在调用的时候Python才会给函数一个内存地址，用来执行函数内部的相关代码。<br>2)Python程序在运行时，首先会将程序最外部的变量载入内容，并给其分配相关的内存空间。我们成这种变量为全局变量。<br>3）函数中声明的变量，只有在函数被执行时，才会被分配内存空间进行执行。我们称这种变量为局部变量。<br>4）Python程序执行的过程中，执行函数时首先会检查其函数内部的局部变量是否存在，如果存在就调用它，如果不存在就从外部全局变量中进行调用，如果仍然没有发现相关内容，则报错。<br>5）<strong>globals()与locals()</strong><br>在Python中，通过globals()观察全局作用域中内容，包括：内置函数、自定义函数、全局变量；通过locals()观察局部作用域中的内容，包括：局部变量，嵌套函数（内部函数）inner<br>6）当函数中出现嵌套情况时，最内层函数执行调用变量，会采用“就近原则”即先查找自身范围内的变量，如果没有找到，则向上查找，直到程序最外部结束。</p>
-<p>7)<strong>global与nonlocal</strong><br>global用来修饰局部变量时，表示该变量将作为全局变量来使用。即不仅在函数中可以被调用，同时在文件最外部也可以被调用。<br>nonlocal用来修饰嵌套函数内部的变量，对父级作用域（外层函数）中的变量进行引用和修改，那么从该层(包括父级)以下都将调用该变量的值。注意，该关键字只能影响其直接父级函数。<br>使用global关键字修饰的变量之前可以并不存在<br>而使用nonlocal关键字修饰的变量在嵌套作用域中必须已经存在。</p>
-<blockquote>
-<p>总结：<br>在函数中定义的变量，我们成为局部变量。包括在函数内部定义的变量、作为参数传递进来的变量。局部变量起作用的范围，我们称为局部作用域。因为Python在调用局部变量时，需要给它分配内存地址，我们称为这个地址为局部命名空间。<br>在文件最外层定义的变量，我们成为全局变量，可以在文件中的任意位置进行调用。全局变量起作用的范围，我们称为全局作用域。Python在载入文件时，就需要给全局变量分配内存地址，这个地址我们称为全局命名空间。</p>
-</blockquote>
-<p><strong>Python运行时处理变量的步骤：</strong><br>1、从Python解释器开始执行之后，就在内存中开辟里一个空间，每当遇到一个变量的时候，就把变量名和值之间对应的关系记录下来，但是当遇到函数定义的时候，解释器只是象征性的将函数名读入内存，表示知道这个函数存在了，至于函数内部的变量和逻辑，解释器根本不关心。<br>2、函数执行时，函数中的变量会储存在新开辟出来的内存中，<strong>函数中的变量只能在函数内部使用</strong>，并且会随着函数执行完毕，这块内存中的所有内容也会被清空</p>
-<h3 id="5、函数嵌套"><a href="#5、函数嵌套" class="headerlink" title="5、函数嵌套"></a>5、函数嵌套</h3><p>根据Python中，对函数的载入和调用特点。我们可以清楚看到，当Python运行相关文件时，如果遇到函数时，会先将其名字载入到内存中（即为函数名指定一个内存地址）。<br>因此我们在使用函数名时，可以有以下三种情况：</p>
-<h4 id="1）将函数名赋值给变量"><a href="#1）将函数名赋值给变量" class="headerlink" title="1）将函数名赋值给变量"></a>1）将函数名赋值给变量</h4><p>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">   print(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line">a = f1</span><br></pre></td></tr></table></figure></p>
-<p>这是变量a中的值就是f1()函数名的内存地址。</p>
-<h4 id="2）将函数名作为容器的元素"><a href="#2）将函数名作为容器的元素" class="headerlink" title="2）将函数名作为容器的元素"></a>2）将函数名作为容器的元素</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">   print(<span class="string">'ok'</span>)</span><br><span class="line">ls = [<span class="number">1</span>,<span class="number">2</span>,f1]</span><br></pre></td></tr></table></figure>
-<p>注意，此时存入到列表ls中的f1，它的值仍然是该函数名对应的内存地址</p>
-<h4 id="3）将函数名作为另外一个函数的参数，进行传递"><a href="#3）将函数名作为另外一个函数的参数，进行传递" class="headerlink" title="3）将函数名作为另外一个函数的参数，进行传递"></a>3）将函数名作为另外一个函数的参数，进行传递</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">   print(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">(x)</span>:</span></span><br><span class="line">   x()</span><br><span class="line">f2(f1)</span><br></pre></td></tr></table></figure>
-<p>其执行结果为OK，这种方式类似与函数的普通嵌套,代码如下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">      print(<span class="string">'ok'</span>)</span><br><span class="line">   f1()</span><br><span class="line">f2()</span><br></pre></td></tr></table></figure></p>
-<h3 id="6、闭包"><a href="#6、闭包" class="headerlink" title="6、闭包"></a>6、闭包</h3><p>1）闭包格式<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'我是外部函数'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">'我是闭包函数'</span>)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">f = outer()</span><br><span class="line">f()</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>通过对例子的观察，我们发现<strong>闭包函数的写法有如下特点：</strong><br>1、闭包函数作为内部函数，嵌套在外部函数中<br>2、闭包函数会作为外部函数的返回值，进行返回。返回闭包函数时，只返回函数名，不带括号。<br>3、外部调用时，首先要执行外部函数，然后将结果赋值给一个变量，此时该变量对应了闭包函数。<br>4、我们可以通过<strong>closure</strong>内部函数可以观察到，闭包函数的存在。前提是，闭包函数要与外部函数进行数据传递或调用。</p>
-</blockquote>
-<p>总结：闭包使用的数据，必须是本身定义或外部函数中定义的相关变量，通常需要调用外部函数的数据，形成一个封闭的函数结构。不能与外部数据（全局变量）发生交流。</p>
-<h4 id="2）闭包的应用—装饰器"><a href="#2）闭包的应用—装饰器" class="headerlink" title="2）闭包的应用—装饰器"></a>2）闭包的应用—装饰器</h4><p>1、概念：装饰器本身仍然是一个函数。是我们队闭包应用的一种具体实现。<br>2、作用：装饰器可以在不改变函数本身功能的情况下，为函数添加额外的功能。诸如：日志、测试、性能检测等。装饰器同样也是返回一个函数对象。<br>3、用法：<br>使用格式：@+装饰器名称<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">(f)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(*var)</span>:</span></span><br><span class="line">        start_time = time.time()</span><br><span class="line">        f(*var)</span><br><span class="line">        time.sleep(<span class="number">0.3</span>)</span><br><span class="line">        end_time = time.time()</span><br><span class="line">        print(<span class="string">'此函数执行时间为&#123;0&#125;'</span>.format(str(end_time-start_time)))</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">@outer      # 此处就是装饰器的声明，这种方法我们成为语法糖</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'hello world'</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="7、高阶函数"><a href="#7、高阶函数" class="headerlink" title="7、高阶函数"></a>7、高阶函数</h3><h4 id="1）匿名函数"><a href="#1）匿名函数" class="headerlink" title="1）匿名函数"></a>1）匿名函数</h4><p>使用lambda关键字进行修饰，没有显式声明函数的名字。格式如下：<br><code>lambda 参数：表达式（返回值）</code><br>注意，在使用匿名函数时，因为其自身的情况限制，匿名函数并不能执行比较复杂的业务逻辑，即函数内的代码不能过多。lambda本身是一个表达式</p>
-<h4 id="2）map函数（映射函数）"><a href="#2）map函数（映射函数）" class="headerlink" title="2）map函数（映射函数）"></a>2）map函数（映射函数）</h4><p>函数格式：map(func,iterable)<br><strong>返回值</strong>：map 对象（<strong>迭代器</strong>）<br>说明：map函数主要作用是，将指定函数与序列中的元素进行映射，并完成函数中功能的批量操作，返回值为一个迭代器。我们可以使用for循环或next()函数进行遍历。通常情况下，如果映射的函数较为简单，我们就不单独声明函数，而是采用匿名函数来实现，这样也能提高运行效率。</p>
-<h4 id="3）reduce函数（归纳函数）"><a href="#3）reduce函数（归纳函数）" class="headerlink" title="3）reduce函数（归纳函数）"></a>3）reduce函数（归纳函数）</h4><p>函数格式：reduce(func,iterator)<br>返回值：返回函数计算结果，具体类型根据函数的返回值来定<br>说明：reduce函数中的func，一定要设为两个参数，用来接收迭代器返回的值。操作顺序为首先接收第一、第二个值，进行运算；运算结果再与第三个值进行运行，以此类推，直到迭代器迭代完全部数据。<br>需要引入包from functools import reduce</p>
-<h4 id="4）filter函数（过滤函数）"><a href="#4）filter函数（过滤函数）" class="headerlink" title="4）filter函数（过滤函数）"></a>4）filter函数（过滤函数）</h4><p>函数格式：filter(func,iterable)<br>返回值：返回一个迭代器<br>说明：过滤函数与映射函数类似，都需要将函数作用于序列中的每个元素，根据函数判断True或False，返回相关元素。</p>
-<h3 id="8、递归"><a href="#8、递归" class="headerlink" title="8、递归"></a>8、递归</h3><p>递归概念：就是使用自身函数对自身进行调用，每调用一次将当前次的<strong>运行结果保存到函数的堆栈中</strong>，以副本形式保存，一直到最后完成全部调用。然后逐一向外将当期函数的结果返回并退出到其调用的位置。<br>在Python中，通常推荐使用迭代，递归本身对内存的消耗和运行效率低下的问题较少使用。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/24/function/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-iterator" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/iterator/">迭代器和生成器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/19/iterator/" class="archive-article-date">
-  	<time datetime="2018-07-19T12:48:02.940Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="迭代器（Iterator）"><a href="#迭代器（Iterator）" class="headerlink" title="迭代器（Iterator）"></a>迭代器（Iterator）</h3><h4 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h4><p>迭代器访问元素，是从第一个元素开始，依次访问后续元素直到结束。其中迭代器只能向前不能回退。<br>其包含两个方法iter()和next():</p>
-<blockquote>
-<p>iter()用来创建一个迭代器，next()用来访问下一个元素。</p>
-</blockquote>
-<p>目前我们所学的字符串、列表、元组都可以创建迭代器，那么他们也是可迭代化的对象。</p>
-<blockquote>
-<p>迭代器两个步骤：<br>1、当调用next()函数，会将迭代器当前位置状态进行改变<br>2、会将下一个元素进行返回</p>
-</blockquote>
-<p><strong>迭代器的延迟作用</strong>：迭代器生成的元素并不是在迭代器声明时，就准备好了的。通常时在调用迭代器需要提供该元素时生成的，也就是说只有在我们需要的时候迭代器才产生相关元素，不需要时并不会主动的生成相关元素。我们可以把迭代器看成一个容器，到我们需要时使用next()方法返回容器中的下一个值。<br>迭代器实现了工厂模式的对象，它在你每次访问下一个值的时候给你返回。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.有一个可迭代对象</span></span><br><span class="line">list1 = [<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="string">'welcome'</span>]</span><br><span class="line"><span class="comment"># 2. 通过iter()方法将可迭代对象变成一个迭代器</span></span><br><span class="line">new_iter = iter(list1)</span><br><span class="line"><span class="comment"># 3.使用next()方法 顺序取值</span></span><br><span class="line">print(<span class="string">'我是通过next（）方法取出的值：'</span>, next(new_iter))</span><br><span class="line"><span class="comment"># 也可以通过循环取出所有的值。(因为迭代器是可迭代化的)</span></span><br><span class="line"><span class="comment"># 注意：已经被取出的值，无法再取到，因为迭代器只能向后，不能向前</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> new_iter:</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># 我是通过next（）方法取出的值： hello</span></span><br><span class="line"><span class="comment"># world</span></span><br><span class="line"><span class="comment"># welcome</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>可迭代化（iterable）</strong>：表明相关的对象可以创建迭代器对象，同时他们自身都是可以进行for数据遍历的。我们可以使用isinstance()来判断对象是否为可迭代化</p>
-<p><strong>instance()函数</strong>：<br>函数格式：isinstance(对象，类型)<br>返回值：布尔值<br>结果：如果指定的对象属于指定的类型，那么返回True，反之返回False<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line">string = <span class="string">'hello'</span></span><br><span class="line">print(isinstance(string, Iterable))  =&gt; True</span><br></pre></td></tr></table></figure></p>
-<p><strong>enumerate()函数</strong><br>函数格式：enumerate(iterable)<br>返回值：生成一个枚举对象<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">enum = enumberate([<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> enum:</span><br><span class="line">    print(i)</span><br><span class="line">    </span><br><span class="line">(<span class="number">0</span>, <span class="string">'one'</span>)</span><br><span class="line">(<span class="number">1</span>, <span class="string">'two'</span>)</span><br><span class="line">(<span class="number">2</span>, <span class="string">'three'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i,value <span class="keyword">in</span> enum:</span><br><span class="line">    print(i, value)</span><br><span class="line">   </span><br><span class="line"><span class="number">0</span> one</span><br><span class="line"><span class="number">1</span> two</span><br><span class="line"><span class="number">2</span> three</span><br></pre></td></tr></table></figure></p>
-<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><h4 id="1、创建方式"><a href="#1、创建方式" class="headerlink" title="1、创建方式"></a>1、创建方式</h4><p>第一种，使用列表推导式，将[]改为()，生成一个generator对象<br>第二种，使用函数方式，采用<strong>yield关键字</strong>来实现<br>2、使用<br>生成器我们通常可以认为一种特殊的迭代器，但是它不需要像迭代器一样去实现<strong>iter</strong>,<strong>next</strong>方法。只需要使用yield关键字，该关键字可以在每次调用生成器函数时起到暂停作用，并将其值进行返回。同时还会记录当前运行值的状态。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getlist</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(getlist(<span class="number">10</span>))</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> getlist(<span class="number">10</span>):</span><br><span class="line">    print(item, end=<span class="string">' '</span>)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># &lt;generator object getlist at 0x0000000002142CA8&gt;</span></span><br><span class="line"><span class="comment"># 0 1 2 3 4 5 6 7 8 9</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">ge=getlist(<span class="number">10</span>)</span><br><span class="line">print(next(ge))  <span class="comment"># 注意：只能实例化后调用，否则只会取第一个值</span></span><br><span class="line">print(next(ge))</span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
-<p><strong>count(start,step)</strong>:返回一个count对象<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> count</span><br><span class="line">counter = count(start=<span class="number">1</span>, step=<span class="number">2</span>)</span><br><span class="line">print(next(counter))</span><br><span class="line">print(next(counter))</span><br><span class="line">print(next(counter))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line"><span class="comment"># 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># count()函数实际上就是一个生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(start, step)</span>:</span></span><br><span class="line">    x = start</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">yield</span> x</span><br><span class="line">        x += step</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">coun = count(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">print(next(coun))   <span class="comment"># 2</span></span><br><span class="line">print(next(coun))   <span class="comment"># 5</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>总结：迭代器和生成器<br>1、容器是一系列的元素集合，str、list、set、dict对象都可以看作是容器，容器都可以进行迭代（即用在while或for循环），凡是这样的容器我们都称为可迭代化对象（Iterable）。<br>2、可迭代化对象都实现了<strong>iter</strong>方法，该方法返回一个迭代器对象。<br>3、迭代器都拥有一个状态字段，用于记录下次迭代返回值。它实现了<strong>next</strong>和<strong>iter</strong>方法，迭代器不会一次性把所有的元素都加载到内存中，而是在需要的时候才生成返回结果。<br>4、生成器是一种特殊的迭代器，它的返回值不是通过return来返回的，而是通过yield来返回的。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/19/iterator/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1027,8 +385,8 @@ show()
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

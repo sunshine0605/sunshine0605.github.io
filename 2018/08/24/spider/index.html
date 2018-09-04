@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="初学笔记">
 <meta property="og:description" content="一、网络原理1、HTTP与HTTPS的区别HTTP：我们称为超文本传输协议，主要用来实现从客户端(浏览器本地)通过网络传输超文本到服务器，实现高效且准确的超文本传送。目前HTTP的版本为1.1HTTPS：我们认为就是以安全为目标的HTTP通道，即在HTTP协议的基础上加入了SSL层，简称HTTPS。  SSL的主要作用分为以下两部分：第一、为HTTP传输文件提供安全的传输通道第二、确认网站的真实性">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T08:12:34.819Z">
+<meta property="og:updated_time" content="2018-08-27T11:21:52.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫基础">
 <meta name="twitter:description" content="一、网络原理1、HTTP与HTTPS的区别HTTP：我们称为超文本传输协议，主要用来实现从客户端(浏览器本地)通过网络传输超文本到服务器，实现高效且准确的超文本传送。目前HTTP的版本为1.1HTTPS：我们认为就是以安全为目标的HTTP通道，即在HTTP协议的基础上加入了SSL层，简称HTTPS。  SSL的主要作用分为以下两部分：第一、为HTTP传输文件提供安全的传输通道第二、确认网站的真实性">
@@ -194,19 +194,14 @@
 <p>其中：src：指定图片的具体位置<br>      alt：其中的内容，作为图片无法载入时，显示的内容。</p>
 <p>5）表格标签：table、tr、th、td</p>
 <p>&lt;table&gt;：表格标签，所有表格中的行和单元格内容都必须放置在内部。<br>&lt;tr&gt;:表格行，代表表格一行<br>&lt;th&gt;:表格头，代表表格的标题行<br>&lt;td&gt;：表格单元格，代表表格中的每个单元内容</p>
-<p>6）列表<br>有序列表：<br>&lt;ol&gt;<br>   &lt;li&gt;&lt;/li&gt;<br>&lt;/ol&gt;<br>无序列表:</p>
-<p><ul><br>   <li></li><br></ul><br>自定义列表：</p>
-<dl><br>   <dt><br>      <dd></dd><br>   </dt><br></dl>
-
+<p>6）列表<br>有序列表：<br>&lt;ol&gt;<br>&nbsp; &lt;li&gt;&lt;/li&gt;<br>&lt;/ol&gt;<br>无序列表:<br>&lt;ul&gt;<br>   &lt;li&gt;&lt;/li&gt;<br>&lt;/ul&gt;<br>自定义列表：<br>&lt;dl&gt;<br>   &lt;dt&gt;<br>      &lt;dd&gt;&lt;/dd&gt;<br>   &lt;/dt&gt;<br>&lt;/dl&gt;</p>
 <h3 id="7-div与span"><a href="#7-div与span" class="headerlink" title="7)div与span"></a>7)div与span</h3><p>div：块级元素，用来实现页面布局。自身没有任何效果<br>span:内联元素，用做文本容器。</p>
-<h3 id="8）表单"><a href="#8）表单" class="headerlink" title="8）表单"></a>8）表单</h3><p><form name="表单名" action="URL" method="get/post"><br>默认情况，如果没有声明method属性，缺省值为get</form></p>
-<p><input type=""><br>输入标签，type属性：<br>text:文本框<br>password：密码框<br>checkbox：复选框<br>radio：单选框<br>submit：提交按钮<br>reset：重置按钮<br>button：按钮<br>file:文件上传</p>
-<p><textarea cols="列数" rows="行数">：文件区标签</textarea></p>
+<h3 id="8）表单"><a href="#8）表单" class="headerlink" title="8）表单"></a>8）表单</h3><p>&lt;form name=”表单名” action=”URL” method=”get/post”&gt;<br>默认情况，如果没有声明method属性，缺省值为get<br>&lt;input type=””&gt;<br>输入标签，type属性：<br>text:文本框<br>password：密码框<br>checkbox：复选框<br>radio：单选框<br>submit：提交按钮<br>reset：重置按钮<br>button：按钮<br>file:文件上传<br>&lt;textarea cols=”列数” rows=”行数”&gt;：文件区标签</p>
 <h2 id="三、网络爬虫—urllib库"><a href="#三、网络爬虫—urllib库" class="headerlink" title="三、网络爬虫—urllib库"></a>三、网络爬虫—urllib库</h2><h3 id="1、urllib库的基本使用"><a href="#1、urllib库的基本使用" class="headerlink" title="1、urllib库的基本使用"></a>1、urllib库的基本使用</h3><p>import urllib.request<br>函数格式：urllib.request.openurl(url, data, timeout)<br>参数说明：<br>url：指定的请求网址<br>data：请求时提交给服务器端的数据，如果在openurl中使用了data参数，那么提交方式为post，默认情况下为get。<br>timeout：指定连接url的超时时间，单位为秒。<br><code>response = urllib.request.openurl()  函数返回一个HTTPResponse对象</code></p>
 <blockquote>
 <p>我们可以使用<em>response对象中的相关方法</em>：<br>read()读取响应体中的内容<br>status/getcode()返回响应码<br>reason 返回响应信息的内容<br>info()返回响应头信息<br>geturl()返回请求的url地址</p>
 </blockquote>
-<h3 id="2、Request请求对象"><a href="#2、Request请求对象" class="headerlink" title="2、Request请求对象"></a>2、Request请求对象</h3><p>req = urllib.request.Request(url,data,headers,method)<br>参数说明：<br>url：指定的请求网址<br>data：请求时提交给服务器端的数据，如果在openurl中使用了data参数，那么提交方式为post，默认情况下为get。<br>headers：请求对象的头信息，用来将一个爬虫伪装成一个普通的浏览器请求，主要设置user-agent<br>method：请求的方式，默认为get，可以设置为get或post</p>
+<h3 id="2、Request请求对象"><a href="#2、Request请求对象" class="headerlink" title="2、Request请求对象"></a>2、Request请求对象</h3><p>req = urllib.request.Request(url,data,headers,method)<br>参数说明：<br>url：指定的请求网址<br>data：请求时提交给服务器端的数据，如果在openurl中使用了data参数，那么提交方式为post，默认情况下为get。<br>headers：请求对象的头信息，用来将一个爬虫伪装成一个普通的浏览器请求，主要设置user-agent<br>method：请求的方式，默认为get，可以设置为get或post<br><a id="more"></a></p>
 <h3 id="3、urllib-error"><a href="#3、urllib-error" class="headerlink" title="3、urllib.error"></a>3、urllib.error</h3><p>在urllib库中有三个error对象<br><strong>HTTPError</strong>：HTTP访问异常<br><strong>URLError</strong>：url地址异常<br><strong>ContentTooShortError</strong>：文件大小异常</p>
 <p><strong>注意</strong>，HTTPError是URLError的子类。<br>HTTPError，只有一个属性reason<br>URLError，有code，reason，headers三个属性。</p>
 <h3 id="4、urllib-robotparser"><a href="#4、urllib-robotparser" class="headerlink" title="4、urllib.robotparser"></a>4、urllib.robotparser</h3><p>作用：用来解析指定网站的robots.txt文件。用来分析哪些内容是允许抓取，哪些内容是不允许的。</p>
@@ -235,8 +230,6 @@
 <p>6）<strong>sub()</strong>:根据正则表达式，将指定的字符串内容替换<br>函数格式：sub(pattern, repl, string, count)<br>参数说明：<br>repl：替换匹配字符串的字符串<br>count：匹配的最大次数<br>返回值：返回替换后的字符串<br>7）<strong>compile()</strong>:生成正则表达式对象<br>函数格式：compile(pattern)<br>返回值：返回一个正则表达式对象</p>
 <h3 id="4、match对象"><a href="#4、match对象" class="headerlink" title="4、match对象"></a>4、match对象</h3><p>1）match对象属性<br>string：待匹配的字符串<br>pos：匹配文本的开始位置<br>endpos：匹配文件的结束位置<br>re：正则表达式</p>
 <p>2）match方法<br>group(0)：获得匹配后的字符串<br>start()：返回文本开始的位置<br>end()：返回文本结束的位置<br>span()：返回文本开始，结束的位置，以元组的形式返回</p>
-<p><a href="https://s.taobao.com/search?q=商品&amp;s=44&amp;callback=jsonp267&amp;ajax=true" target="_blank" rel="noopener">https://s.taobao.com/search?q=商品&amp;s=44&amp;callback=jsonp267&amp;ajax=true</a></p>
-<p><a href="http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData?page=1&amp;num=40&amp;sort=symbol&amp;asc=1&amp;node=sw_jsj&amp;symbol=&amp;_s_r_a=init" target="_blank" rel="noopener">http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData?page=1&amp;num=40&amp;sort=symbol&amp;asc=1&amp;node=sw_jsj&amp;symbol=&amp;_s_r_a=init</a></p>
 
       
 
@@ -329,6 +322,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/27/database/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mysql数据库
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/06/object/" id="article-nav-older" class="article-nav-link-wrap">
