@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>mysql数据库 | 初学笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、数据库语言1、分类数据库定义语言   DDL（create database/table，drop database/table，alter database/table）数据库操纵语言   DML (insert、delete、update、select)数据库控制语言   DCL（grant、revoke）注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。">
+  <meta name="description" content="概念数据库（Database）是按照数据结构来组织、存储和管理数据的仓库，  关系数据库管理系统(Relational Database Management System)的特点：1.数据以表格的形式出现2.每行为各种记录名称3.每列为记录名称所对应的数据域4.许多的行和列组成一张表单5.若干的表单组成database  一、数据库语言1、分类数据库定义语言   DDL（create datab">
 <meta name="keywords" content="Python、爬虫、Web开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql数据库">
 <meta property="og:url" content="http://yoursite.com/2018/08/27/database/index.html">
 <meta property="og:site_name" content="初学笔记">
-<meta property="og:description" content="一、数据库语言1、分类数据库定义语言   DDL（create database/table，drop database/table，alter database/table）数据库操纵语言   DML (insert、delete、update、select)数据库控制语言   DCL（grant、revoke）注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。">
+<meta property="og:description" content="概念数据库（Database）是按照数据结构来组织、存储和管理数据的仓库，  关系数据库管理系统(Relational Database Management System)的特点：1.数据以表格的形式出现2.每行为各种记录名称3.每列为记录名称所对应的数据域4.许多的行和列组成一张表单5.若干的表单组成database  一、数据库语言1、分类数据库定义语言   DDL（create datab">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-04T10:48:35.443Z">
+<meta property="og:updated_time" content="2018-09-06T01:18:08.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql数据库">
-<meta name="twitter:description" content="一、数据库语言1、分类数据库定义语言   DDL（create database/table，drop database/table，alter database/table）数据库操纵语言   DML (insert、delete、update、select)数据库控制语言   DCL（grant、revoke）注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。">
+<meta name="twitter:description" content="概念数据库（Database）是按照数据结构来组织、存储和管理数据的仓库，  关系数据库管理系统(Relational Database Management System)的特点：1.数据以表格的形式出现2.每行为各种记录名称3.每列为记录名称所对应的数据域4.许多的行和列组成一张表单5.若干的表单组成database  一、数据库语言1、分类数据库定义语言   DDL（create datab">
   
     <link rel="alternative" href="/atom.xml" title="初学笔记" type="application/atom+xml">
   
@@ -179,7 +179,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、数据库语言"><a href="#一、数据库语言" class="headerlink" title="一、数据库语言"></a>一、数据库语言</h2><h3 id="1、分类"><a href="#1、分类" class="headerlink" title="1、分类"></a>1、分类</h3><p>数据库定义语言   DDL（create database/table，drop database/table，alter database/table）<br>数据库操纵语言   DML (insert、delete、update、select)<br>数据库控制语言   DCL（grant、revoke）<br>注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>数据库（Database）是按照数据结构来组织、存储和管理数据的仓库，</p>
+<blockquote>
+<p>关系数据库管理系统(Relational Database Management System)的<em>特点</em>：<br>1.数据以表格的形式出现<br>2.每行为各种记录名称<br>3.每列为记录名称所对应的数据域<br>4.许多的行和列组成一张表单<br>5.若干的表单组成database</p>
+</blockquote>
+<h2 id="一、数据库语言"><a href="#一、数据库语言" class="headerlink" title="一、数据库语言"></a>一、数据库语言</h2><h3 id="1、分类"><a href="#1、分类" class="headerlink" title="1、分类"></a>1、分类</h3><p>数据库定义语言   DDL（create database/table，drop database/table，alter database/table）<br>数据库操纵语言   DML (insert、delete、update、select)<br>数据库控制语言   DCL（grant、revoke）<br>注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。</p>
 <h3 id="2、数据定义语言"><a href="#2、数据定义语言" class="headerlink" title="2、数据定义语言"></a>2、数据定义语言</h3><p>1）、创建数据库<br><code>create database 数据库名；</code><br>2）、删除数据库<br><code>drop database 数据库名；</code><br>3）、打开数据库<br><code>use 数据库名；</code><br>4）创建数据表<br><code>create table 表名(列名 数据类型(长度),列名 数据类型（长度）,......) default charset=utf8</code><br>注意，如果创建表的时候，没有指定字符集，那么该表将默认采用其所在数据库的字符集。通常我们建议指定缺省的字符集。<br>5)、查看数据表的字符集情况<br><code>show variables like &#39;character%&#39;;</code><br>修改字符集<br><code>alter table 表名 default character set utf8;</code><br>6）查看表结构<br><code>desc 表名</code><br>(7)查看建表语句<br><code>show create table 表名;</code></p>
 <h3 id="8）、数据库字段类型"><a href="#8）、数据库字段类型" class="headerlink" title="8）、数据库字段类型"></a>8）、数据库字段类型</h3><p><strong>字符类型</strong>：<br>char(长度)：定长的字符类型，一旦声明了长度，即使定义的字段数据不能达到最大长度，也会按照最大长度进行所占字节的分配。取值范围：0-255<br>varchar(长度)： 变长的字符类型，声明长度后，如果字段数据的长度达不到最大长度，则会根据实际长度给出数据的长度。取值范围：0-2^16-1</p>
 <p><strong>数值类型</strong>：<br>int(长度)：给出指定的字段数据长度。如果没有明确指定长度，则采用默认长度11。所占字节4个字节。</p>
@@ -327,6 +331,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/09/06/mongodb/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MongoDB
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/24/spider/" id="article-nav-older" class="article-nav-link-wrap">

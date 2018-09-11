@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 初学笔记</title>
+  <title>使用git上传文件至码云的步骤 | 初学笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Python、爬虫、Web开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="初学笔记">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="初始化$ git initInitialized empty Git repository in C:/Users/Administrator/Desktop/gitress/.git/ Administrator@JM001 MINGW64 ~/Desktop/gitress (master)$ ls -altotal 16drwxr-xr-x 1 Administrator 197121 0">
+<meta name="keywords" content="Python、爬虫、Web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用git上传文件至码云的步骤">
+<meta property="og:url" content="http://yoursite.com/2018/09/10/aboutgitee/index.html">
 <meta property="og:site_name" content="初学笔记">
+<meta property="og:description" content="初始化$ git initInitialized empty Git repository in C:/Users/Administrator/Desktop/gitress/.git/ Administrator@JM001 MINGW64 ~/Desktop/gitress (master)$ ls -altotal 16drwxr-xr-x 1 Administrator 197121 0">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-10T10:46:53.344Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初学笔记">
+<meta name="twitter:title" content="使用git上传文件至码云的步骤">
+<meta name="twitter:description" content="初始化$ git initInitialized empty Git repository in C:/Users/Administrator/Desktop/gitress/.git/ Administrator@JM001 MINGW64 ~/Desktop/gitress (master)$ ls -altotal 16drwxr-xr-x 1 Administrator 197121 0">
   
     <link rel="alternative" href="/atom.xml" title="初学笔记" type="application/atom+xml">
   
@@ -155,295 +159,174 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-aboutgitee" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      使用git上传文件至码云的步骤
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/10/aboutgitee/" class="archive-article-date">
+
+        
+        <a href="/2018/09/10/aboutgitee/" class="archive-article-date">
   	<time datetime="2018-09-10T10:43:21.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/10/aboutgitee/">使用git上传文件至码云的步骤</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p><code>$ git init</code><br>Initialized empty Git repository in C:/Users/Administrator/Desktop/gitress/.git/</p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress (master)<br><code>$ ls -al</code><br>total 16<br>drwxr-xr-x 1 Administrator 197121 0 九月 10 14:38 ./<br>drwxr-xr-x 1 Administrator 197121 0 九月 10 14:38 ../<br>drwxr-xr-x 1 Administrator 197121 0 九月 10 14:38 .git/</p>
+<p>#在网页上打开码云，新建一个项目，复制“克隆/下载”下的https的网址，并粘贴在git clone命令后<br>Administrator@JM001 MINGW64 ~/Desktop/gitress (master)</p>
+<h1 id="将服务器上的文件clone到本地"><a href="#将服务器上的文件clone到本地" class="headerlink" title="将服务器上的文件clone到本地"></a>将服务器上的文件clone到本地</h1><p><code>$ git clone https://gitee.com/gemini0605/pyhomework.git</code><br>Cloning into ‘pyhomework’…<br>remote: Enumerating objects: 3, done.<br>remote: Counting objects: 100% (3/3), done.<br>remote: Compressing objects: 100% (2/2), done.<br>remote: Total 3 (delta 0), reused 0 (delta 0)<br>Unpacking objects: 100% (3/3), done.</p>
+<h1 id="查看当前文件夹"><a href="#查看当前文件夹" class="headerlink" title="查看当前文件夹"></a>查看当前文件夹</h1><p><code>$ ls</code><br>pyhomework/</p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress (master)</p>
+<h1 id="查看当前文件全路径"><a href="#查看当前文件全路径" class="headerlink" title="查看当前文件全路径"></a>查看当前文件全路径</h1><p><code>$ pwd</code><br>/c/Users/Administrator/Desktop/gitress</p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress (master)</p>
+<h1 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h1><p><code>$ cd pyhomework/</code></p>
+<h1 id="查看当前服务器的状态"><a href="#查看当前服务器的状态" class="headerlink" title="查看当前服务器的状态"></a>查看当前服务器的状态</h1><p><code>$ git pull</code><br>Already up to date.</p>
+<h1 id="查看本地状态（db3文件是服务器没有，而本地有的文件）"><a href="#查看本地状态（db3文件是服务器没有，而本地有的文件）" class="headerlink" title="查看本地状态（db3文件是服务器没有，而本地有的文件）"></a>查看本地状态（db3文件是服务器没有，而本地有的文件）</h1><p><code>$ git status</code><br>On branch master<br>Your branch is up to date with ‘origin/master’.</p>
+<p>Untracked files:<br>  (use “git add <file>…” to include in what will be committed)</file></p>
+<pre><code>db3/
+</code></pre><p>nothing added to commit but untracked files present (use “git add” to track)</p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress/pyhomework (master)</p>
+<h1 id="是指当前文件夹中的所有文件，add命令是将这些文件上传至缓存区"><a href="#是指当前文件夹中的所有文件，add命令是将这些文件上传至缓存区" class="headerlink" title=".是指当前文件夹中的所有文件，add命令是将这些文件上传至缓存区"></a>.是指当前文件夹中的所有文件，add命令是将这些文件上传至缓存区</h1><p><code>$ git add .</code></p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress/pyhomework (master)</p>
+<h1 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h1><p><code>$ git commit -m &quot;作业专用&quot;</code><br>[master 7d870ae] 作业专用<br> 5 files changed, 216 insertions(+)<br> create mode 100644 db3/.idea/db3.iml<br> create mode 100644 db3/.idea/misc.xml<br> create mode 100644 db3/.idea/modules.xml<br> create mode 100644 db3/.idea/workspace.xml<br> create mode 100644 db3/hello.py</p>
+<h1 id="将commit的文件push到服务器"><a href="#将commit的文件push到服务器" class="headerlink" title="将commit的文件push到服务器"></a>将commit的文件push到服务器</h1><p><code>$ git push</code><br>Username for ‘<a href="https://gitee.com&#39;" target="_blank" rel="noopener">https://gitee.com&#39;</a>: gemini0605</p>
+<p>Counting objects: 9, done.<br>Delta compression using up to 4 threads.<br>Compressing objects: 100% (8/8), done.<br>Writing objects: 100% (9/9), 3.37 KiB | 314.00 KiB/s, done.<br>Total 9 (delta 0), reused 0 (delta 0)<br>remote: Powered by Gitee.com<br>To <a href="https://gitee.com/gemini0605/pyhomework.git" target="_blank" rel="noopener">https://gitee.com/gemini0605/pyhomework.git</a><br>   764bb29..7d870ae  master -&gt; master</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/10/aboutgitee/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/06/mongodb/" class="archive-article-date">
-  	<time datetime="2018-09-06T03:50:33.538Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/06/mongodb/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/06/mongodb/">MongoDB</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/27/database/" class="archive-article-date">
-  	<time datetime="2018-08-27T11:16:35.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/27/database/">mysql数据库</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/24/spider/" class="archive-article-date">
-  	<time datetime="2018-08-24T07:01:49.367Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/24/spider/">爬虫基础</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/06/object/" class="archive-article-date">
-  	<time datetime="2018-08-06T12:21:44.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/06/object/">面向对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/03/exception/" class="archive-article-date">
-  	<time datetime="2018-08-03T01:25:33.666Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/03/exception/">异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/01/module/" class="archive-article-date">
-  	<time datetime="2018-08-01T13:48:42.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/01/module/">包与模块</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/01/excelparsexml/" class="archive-article-date">
-  	<time datetime="2018-08-01T11:21:42.724Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/01/excelparsexml/">Python对Excel文件的操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/28/fileIo/" class="archive-article-date">
-  	<time datetime="2018-07-28T09:30:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/28/fileIo/">文件输入输出（IO）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/copy/" class="archive-article-date">
-  	<time datetime="2018-07-24T13:27:21.934Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/copy/">copy()(浅拷贝)和deepcopy()（深拷贝）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -467,8 +350,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

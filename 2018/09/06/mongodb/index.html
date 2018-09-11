@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 初学笔记</title>
+  <title>MongoDB | 初学笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Python、爬虫、Web开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="初学笔记">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="SQL VS NoSQLSQL: 关系型数据模型 数据被存放在表中 适用于每条记录（数据）都是相同类型并且具有相同属性的情况 存储数据需要预定义 添加新数据必须修改表结构 ACID事务支持 NoSQL： 非关系数据模型 可以存储JSON、键值对 灵活设置表结构 混合存储数据模型（不影响其他数据） 支持ACID事务 一致性可以改变 横向扩展 #MongoDB 术语1.文档（document）相当于传">
+<meta name="keywords" content="Python、爬虫、Web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB">
+<meta property="og:url" content="http://yoursite.com/2018/09/06/mongodb/index.html">
 <meta property="og:site_name" content="初学笔记">
+<meta property="og:description" content="SQL VS NoSQLSQL: 关系型数据模型 数据被存放在表中 适用于每条记录（数据）都是相同类型并且具有相同属性的情况 存储数据需要预定义 添加新数据必须修改表结构 ACID事务支持 NoSQL： 非关系数据模型 可以存储JSON、键值对 灵活设置表结构 混合存储数据模型（不影响其他数据） 支持ACID事务 一致性可以改变 横向扩展 #MongoDB 术语1.文档（document）相当于传">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-10T10:34:29.202Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初学笔记">
+<meta name="twitter:title" content="MongoDB">
+<meta name="twitter:description" content="SQL VS NoSQLSQL: 关系型数据模型 数据被存放在表中 适用于每条记录（数据）都是相同类型并且具有相同属性的情况 存储数据需要预定义 添加新数据必须修改表结构 ACID事务支持 NoSQL： 非关系数据模型 可以存储JSON、键值对 灵活设置表结构 混合存储数据模型（不影响其他数据） 支持ACID事务 一致性可以改变 横向扩展 #MongoDB 术语1.文档（document）相当于传">
   
     <link rel="alternative" href="/atom.xml" title="初学笔记" type="application/atom+xml">
   
@@ -155,295 +159,297 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mongodb" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/10/aboutgitee/" class="archive-article-date">
-  	<time datetime="2018-09-10T10:43:21.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/10/aboutgitee/">使用git上传文件至码云的步骤</a>
+    <h1 class="article-title" itemprop="name">
+      MongoDB
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/06/mongodb/" class="archive-article-date">
+        
+        <a href="/2018/09/06/mongodb/" class="archive-article-date">
   	<time datetime="2018-09-06T03:50:33.538Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/06/mongodb/">MongoDB</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SQL-VS-NoSQL"><a href="#SQL-VS-NoSQL" class="headerlink" title="SQL VS NoSQL"></a>SQL VS NoSQL</h1><p>SQL:</p>
+<pre><code>关系型数据模型
+数据被存放在表中
+适用于每条记录（数据）都是相同类型并且具有相同属性的情况
+存储数据需要预定义
+添加新数据必须修改表结构
+ACID事务支持
+</code></pre><p>NoSQL：</p>
+<pre><code>非关系数据模型
+可以存储JSON、键值对
+灵活设置表结构
+混合存储数据模型（不影响其他数据）
+支持ACID事务
+一致性可以改变
+横向扩展
+</code></pre><p>#MongoDB 术语<br>1.文档（document）相当于传统数据库模型中的“行”，但是比“行”复杂（数据信息）<br>2.集合（collection） ：在MongoDB中表示一组文档，类似表，集合是没有模式的<br>没有模式就是可以混合插入不同的数据结构类型<br>3.数据库（database)</p>
+<p>#MongoDB 终端命令</p>
+<h2 id="mongodb服务"><a href="#mongodb服务" class="headerlink" title="mongodb服务"></a>mongodb服务</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">启动mongodb:net start mongodb</span><br><span class="line">关闭mongodb服务：net stop mongodb</span><br><span class="line">进入mongodb:mongo</span><br></pre></td></tr></table></figure>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>1.创建数据库:（若不存在，创建；存在，选中）<br><code>use mymongo</code><br>查看当前数据库：db<br>查看所有的数据库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; show dbs</span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br><span class="line">qz01db  0.000GB</span><br></pre></td></tr></table></figure></p>
+<p>2.删除数据库：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.dropDatabase()</span><br><span class="line">&#123; <span class="string">"ok"</span> : <span class="number">1</span> &#125;</span><br><span class="line">查看当前数据库状态：db.stats()</span><br><span class="line">&#123;</span><br><span class="line">        <span class="string">"db"</span> : <span class="string">"py06db"</span>,</span><br><span class="line">        <span class="string">"collections"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"views"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"objects"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"avgObjSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"dataSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"storageSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"numExtents"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"indexes"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"indexSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"fileSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"fsUsedSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"fsTotalSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"ok"</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.查看数据库的链接<br><code>db.getMongo()</code><br>connection to 127.0.0.1:27017</p>
+<h2 id="集合collection"><a href="#集合collection" class="headerlink" title="集合collection"></a>集合collection</h2><p>1.创建集合：<br><code>db.createCollection(&quot;mycol&quot;)</code><br>创建带参数的集合：<br><code>db.createCollection(&quot;mycol2&quot;,{capped:true,autoIndexId:true,size:6142800,max:10000})</code><br>当你插入一些文档时，MongoDB 会自动创建集合:<br><code>db.mycol3.insert({&quot;name&quot;:&quot;database&quot;})</code></p>
+<p>2.查看所有的集合： <code>show collections</code><br>3.查看表的所有命令<br><code>db.py06db.help()  #py06db表名</code></p>
+<h1 id="往集合中插入数据"><a href="#往集合中插入数据" class="headerlink" title="往集合中插入数据"></a>往集合中插入数据</h1><h2 id="向collection中插入一条数据"><a href="#向collection中插入一条数据" class="headerlink" title="向collection中插入一条数据"></a>向collection中插入一条数据</h2><p>db.collection.insert(var)</p>
+<p>定义一个字典类型的变量<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; post=&#123;<span class="string">"name"</span>:<span class="string">"Pony Ma"</span>, <span class="string">"age"</span>:<span class="number">45</span>, <span class="string">"sex"</span>:<span class="string">"M"</span>, <span class="string">"marry"</span>:true ,<span class="string">"date"</span>:new Date() &#125;</span><br><span class="line">&#123;</span><br><span class="line">        <span class="string">"name"</span> : <span class="string">"Pony Ma"</span>,</span><br><span class="line">        <span class="string">"age"</span> : <span class="number">45</span>,</span><br><span class="line">        <span class="string">"sex"</span> : <span class="string">"M"</span>,</span><br><span class="line">        <span class="string">"marry"</span> : true,</span><br><span class="line">        <span class="string">"date"</span> : ISODate(<span class="string">"2018-09-06T01:02:30.058Z"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 将变量post添加到集合pyuser</span></span><br><span class="line">&gt; db.pyuser.insert(post)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：当有多个文档时，insert只对第一个{}中包含的数据进行插入,但是不报错；如果想要插入多条数据，可以是一个列表中包含多个文档</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.py01db.insert(&#123;<span class="string">"name"</span>:<span class="string">'one'</span>&#125;,&#123;<span class="string">'name'</span>:<span class="string">'two'</span>&#125;,&#123;<span class="string">'name'</span>:<span class="string">'three'</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br><span class="line"><span class="comment"># 查看集合中的所有文档</span></span><br><span class="line">&gt; db.py01db.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5b90ce54d75b407f468b9419"</span>), <span class="string">"name"</span> : <span class="string">"one"</span> &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="insert与save的区别："><a href="#insert与save的区别：" class="headerlink" title="insert与save的区别："></a>insert与save的区别：</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.py02tab.insert(&#123;<span class="string">"name"</span>:<span class="string">"Pony Ma"</span>,<span class="string">"age"</span>:<span class="number">45</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5b90d2e1d75b407f468b9421"</span>), <span class="string">"name"</span> : <span class="string">"Pony Ma"</span>, <span class="string">"age"</span> : <span class="number">45</span> &#125;</span><br><span class="line">&gt; db.py02tab.save(&#123;<span class="string">'name'</span>:<span class="string">'Iack Ma'</span>,<span class="string">'age'</span>:<span class="number">50</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5b90d2e1d75b407f468b9421"</span>), <span class="string">"name"</span> : <span class="string">"Pony Ma"</span>, <span class="string">"age"</span> : <span class="number">45</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5b90d376d75b407f468b9422"</span>), <span class="string">"name"</span> : <span class="string">"Iack Ma"</span>, <span class="string">"age"</span> : <span class="number">50</span> &#125;</span><br><span class="line">&gt; db.py02tab.insert(&#123;<span class="string">"_id"</span>:<span class="number">1</span>,<span class="string">"name"</span>:<span class="string">"IG.wxz"</span>,<span class="string">"age"</span>:<span class="number">30</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : <span class="number">1</span>, <span class="string">"name"</span> : <span class="string">"IG.wxz"</span>, <span class="string">"age"</span> : <span class="number">30</span> &#125;</span><br><span class="line">&gt; db.py02tab.insert(&#123;<span class="string">"_id"</span>:<span class="number">1</span>,<span class="string">"name"</span>:<span class="string">"IG.wxz"</span>,<span class="string">"age"</span>:<span class="number">30</span>&#125;)</span><br><span class="line">WriteResult(&#123;</span><br><span class="line">        <span class="string">"nInserted"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"writeError"</span> : &#123;</span><br><span class="line">                <span class="string">"code"</span> : <span class="number">11000</span>,</span><br><span class="line">                <span class="string">"errmsg"</span> : <span class="string">"E11000 duplicate key error collection: py06db.py02ta</span></span><br><span class="line"><span class="string">b index: _id_ dup key: &#123; : 1.0 &#125;"</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&gt; db.py02tab.save(&#123;<span class="string">"_id"</span>:<span class="number">1</span>,<span class="string">'name'</span>:<span class="string">'IG.wxz'</span>,<span class="string">'age'</span>:<span class="number">30</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nMatched"</span> : <span class="number">1</span>, <span class="string">"nUpserted"</span> : <span class="number">0</span>, <span class="string">"nModified"</span> : <span class="number">0</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : <span class="number">1</span>, <span class="string">"name"</span> : <span class="string">"IG.wxz"</span>, <span class="string">"age"</span> : <span class="number">30</span> &#125;</span><br><span class="line">&gt; db.py02tab.save(&#123;<span class="string">"_id"</span>:<span class="number">1</span>,<span class="string">'name'</span>:<span class="string">'IG.po'</span>,<span class="string">'age'</span>:<span class="number">30</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nMatched"</span> : <span class="number">1</span>, <span class="string">"nUpserted"</span> : <span class="number">0</span>, <span class="string">"nModified"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : <span class="number">1</span>, <span class="string">"name"</span> : <span class="string">"IG.po"</span>, <span class="string">"age"</span> : <span class="number">30</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>———————-查询————————</p>
+<h1 id="find（）中不填任何内容，表示查看集合中所有数据"><a href="#find（）中不填任何内容，表示查看集合中所有数据" class="headerlink" title="find（）中不填任何内容，表示查看集合中所有数据"></a>find（）中不填任何内容，表示查看集合中所有数据</h1><blockquote>
+<p>db.pyuser.find()<br>{ “_id” : ObjectId(“5b907d2cd75b407f468b9408”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:02:30.058Z”) }</p>
+</blockquote>
+<h1 id="将显示的内容格式化"><a href="#将显示的内容格式化" class="headerlink" title="将显示的内容格式化"></a>将显示的内容格式化</h1><blockquote>
+<p>db.pyuser.find().pretty()<br>{<br>        “_id” : ObjectId(“5b907d2cd75b407f468b9408”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:02:30.058Z”)<br>}</p>
+</blockquote>
+<h1 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h1><blockquote>
+<p>db.pyuser.distinct(‘name’)<br>[ “Pony Ma” ]</p>
+</blockquote>
+<h1 id="mongodb默认显示一页20条文档，想要查看其他的文档输入it命令"><a href="#mongodb默认显示一页20条文档，想要查看其他的文档输入it命令" class="headerlink" title="mongodb默认显示一页20条文档，想要查看其他的文档输入it命令"></a>mongodb默认显示一页20条文档，想要查看其他的文档输入it命令</h1><blockquote>
+<p>db.pyuser.find({age:{$lt:50}}).pretty()<br>{<br>        “_id” : ObjectId(“5b908930d75b407f468b940b”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:02:30.058Z”)<br>}</p>
+</blockquote>
+<h1 id="有条件的查询"><a href="#有条件的查询" class="headerlink" title="有条件的查询"></a>有条件的查询</h1><blockquote>
+<p>db.pyuser.find({age:45}).pretty()<br>{<br>        “_id” : ObjectId(“5b908930d75b407f468b940b”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:02:30.058Z”)<br>}</p>
+</blockquote>
+<h1 id="查询age大于40的数据"><a href="#查询age大于40的数据" class="headerlink" title="查询age大于40的数据"></a>查询age大于40的数据</h1><blockquote>
+<p>db.pyuser.find({age:{$gt:40}})<br>{ “_id” : ObjectId(“5b908930d75b407f468b940b”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:02:30.058Z”) }</p>
+</blockquote>
+<h1 id="使用正则表达式进行查询"><a href="#使用正则表达式进行查询" class="headerlink" title="使用正则表达式进行查询"></a>使用正则表达式进行查询</h1><blockquote>
+<p>db.pyuser.find({name:/Ma/})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:20:53.317Z”) }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:29:01.621Z”) }</p>
+</blockquote>
+<h1 id="使用正则查询name是P开头的文档"><a href="#使用正则查询name是P开头的文档" class="headerlink" title="使用正则查询name是P开头的文档"></a>使用正则查询name是P开头的文档</h1><blockquote>
+<p>db.pyuser.find({name:/^P/})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:20:53.317Z”) }<br>db.pyuser.find({name:/^J/})<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:29:01.621Z”) }</p>
+</blockquote>
+<h1 id="第一个-放置条件，第二个-中的1表示true-意思是只显示name字段；若name为0-显示除name字段的其他字段"><a href="#第一个-放置条件，第二个-中的1表示true-意思是只显示name字段；若name为0-显示除name字段的其他字段" class="headerlink" title="第一个{}放置条件，第二个{}中的1表示true,意思是只显示name字段；若name为0,显示除name字段的其他字段."></a>第一个{}放置条件，第二个{}中的1表示true,意思是只显示name字段；若name为0,显示除name字段的其他字段.</h1><blockquote>
+<p>db.pyuser.find({},{name:1})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma” }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma” }</p>
+</blockquote>
+<blockquote>
+<p>db.pyuser.find({},{name:0})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “age” : 45, “sex” : “M”, “marry”<br> : true, “date” : ISODate(“2018-09-06T02:20:53.317Z”) }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “age” : 50, “sex” : “M”, “marry”<br> : true, “date” : ISODate(“2018-09-06T02:29:01.621Z”) }</p>
+</blockquote>
+<h1 id="显示name-age两个字段"><a href="#显示name-age两个字段" class="headerlink" title="显示name,age两个字段"></a>显示name,age两个字段</h1><blockquote>
+<p>db.pyuser.find({},{name:1,age:1})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma”, “age” : 45 }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50 }</p>
+</blockquote>
+<p>满足条件的指定字段</p>
+<blockquote>
+<p>db.pyuser.find({age:{$gte:46}},{name:1,age:1})<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50 }</p>
+</blockquote>
+<h1 id="排序-1升序，-1降序（若对name进行排序，全是英文，按照ASCII码进行排序，中英文混合，升序中文会放在英文后）"><a href="#排序-1升序，-1降序（若对name进行排序，全是英文，按照ASCII码进行排序，中英文混合，升序中文会放在英文后）" class="headerlink" title="排序 1升序，-1降序（若对name进行排序，全是英文，按照ASCII码进行排序，中英文混合，升序中文会放在英文后）"></a>排序 1升序，-1降序（若对name进行排序，全是英文，按照ASCII码进行排序，中英文混合，升序中文会放在英文后）</h1><p> db.pyuser.find().sort({age:1})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:20:53.317Z”) }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:29:01.621Z”) }</p>
+<h1 id="显示前三条"><a href="#显示前三条" class="headerlink" title="显示前三条"></a>显示前三条</h1><blockquote>
+<p>db.pyuser.find().limit(3)<br>当字段名不相同时，不同的字段名为null，no field等价于0，尤其在排序时</p>
+</blockquote>
+<h1 id="跳过前3条显示后面的内容"><a href="#跳过前3条显示后面的内容" class="headerlink" title="跳过前3条显示后面的内容"></a>跳过前3条显示后面的内容</h1><blockquote>
+<p>db.pyuser.find().skip(3)</p>
+</blockquote>
+<h1 id="取456的文档（行）"><a href="#取456的文档（行）" class="headerlink" title="取456的文档（行）"></a>取456的文档（行）</h1><blockquote>
+<p>db.pyuser.find().skip(3).limit(3)</p>
+</blockquote>
+<h1 id="查询age为50-或age为40的文档"><a href="#查询age为50-或age为40的文档" class="headerlink" title="查询age为50 或age为40的文档"></a>查询age为50 或age为40的文档</h1><blockquote>
+<p>db.pyuser.find({$or:[{age:50},{age:40}]})<br>{ “_id” : ObjectId(“5b90a013d75b407f468b9414”), “name” : “Jack Ma”, “age” : 50,<br>“sex” : “M”, “marry” : false, “date” : ISODate(“2018-09-06T03:33:30.045Z”) }</p>
+</blockquote>
+<p># </p>
+<blockquote>
+<p>db.pyuser.totalIndexSize()<br>36864</p>
+</blockquote>
+<h1 id="表中的文档数"><a href="#表中的文档数" class="headerlink" title="表中的文档数"></a>表中的文档数</h1><blockquote>
+<p>db.pyuser.count()<br>3</p>
+</blockquote>
+<h1 id="表中age-45的文档数"><a href="#表中age-45的文档数" class="headerlink" title="表中age=45的文档数"></a>表中age=45的文档数</h1><blockquote>
+<p>db.pyuser.find({age:45}).count()<br>0</p>
+</blockquote>
+<h1 id="exists常用于过滤-集合中含有marry字段的个数"><a href="#exists常用于过滤-集合中含有marry字段的个数" class="headerlink" title="exists常用于过滤  集合中含有marry字段的个数"></a>exists常用于过滤  集合中含有marry字段的个数</h1><blockquote>
+<p>db.pyuser.find({marry:{$exists:true}}).count()<br>2</p>
+</blockquote>
+<p>—————–创建带参数的集合———————-</p>
+<blockquote>
+<p>db.createCollection(‘py01db’,{size:10240,max:3})<br>{ “ok” : 1 }</p>
+</blockquote>
+<h1 id="创建带有参数的集合capped为true-max才有作用"><a href="#创建带有参数的集合capped为true-max才有作用" class="headerlink" title="创建带有参数的集合capped为true,max才有作用"></a>创建带有参数的集合capped为true,max才有作用</h1><blockquote>
+<p>db.createCollection(‘py01tab’,{capped:true,size:1024,max:3})<br>{ “ok” : 1 }<br>db.py01tab.insert({‘name’:’one’})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({‘name’:’two’})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({‘name’:’three’})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d162d75b407f468b941d”), “name” : “one” }<br>{ “_id” : ObjectId(“5b90d16bd75b407f468b941e”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d171d75b407f468b941f”), “name” : “three” }</p>
+</blockquote>
+<blockquote>
+<p>db.py01tab.insert({‘name’:’four’})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d16bd75b407f468b941e”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d171d75b407f468b941f”), “name” : “three” }<br>{ “_id” : ObjectId(“5b90d196d75b407f468b9420”), “name” : “four” }</p>
+</blockquote>
+<p>————– 删除集合———————–</p>
+<blockquote>
+<p>db.py01db.drop()<br>true</p>
+</blockquote>
+<p>——————————更新—————————–</p>
+<p>update(查询条件，要更新的数据，是否插入数据，multi是否全部更新)</p>
+<h1 id="是否插入数据的意思是：如果不存在update的记录（数据），是否要插入到集合中，默认是false，不插入，true表示插入"><a href="#是否插入数据的意思是：如果不存在update的记录（数据），是否要插入到集合中，默认是false，不插入，true表示插入" class="headerlink" title="是否插入数据的意思是：如果不存在update的记录（数据），是否要插入到集合中，默认是false，不插入，true表示插入"></a>是否插入数据的意思是：如果不存在update的记录（数据），是否要插入到集合中，默认是false，不插入，true表示插入</h1><blockquote>
+<p>db.py02tab.update({name:’IG.po’},{$set:{name:’IG.wxz’}})<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90d376d75b407f468b9422”), “name” : “Iack Ma”, “age” : 50 }<br>{ “_id” : 1, “name” : “IG.wxz”, “age” : 30 }</p>
+</blockquote>
+<hr>
+<h1 id="若有多个数据符合更新条件（不改变最后的参数multi情况下），只会更新1条（最先查询到的）"><a href="#若有多个数据符合更新条件（不改变最后的参数multi情况下），只会更新1条（最先查询到的）" class="headerlink" title="若有多个数据符合更新条件（不改变最后的参数multi情况下），只会更新1条（最先查询到的）"></a>若有多个数据符合更新条件（不改变最后的参数multi情况下），只会更新1条（最先查询到的）</h1><blockquote>
+<p>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90d376d75b407f468b9422”), “name” : “Iack Ma”, “age” : 50 }<br>{ “_id” : 1, “name” : “IG.wxz”, “age” : 30 }<br>{ “_id” : 2, “name” : “IG.wxz”, “age” : 30 }</p>
+</blockquote>
+<blockquote>
+<p>db.py02tab.update({name:’IG.wxz’},{$set:{name:’IG.po’}})<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90d376d75b407f468b9422”), “name” : “Iack Ma”, “age” : 50 }<br>{ “_id” : 1, “name” : “IG.po”, “age” : 30 }<br>{ “_id” : 2, “name” : “IG.wxz”, “age” : 30 }</p>
+</blockquote>
+<h1 id="将集合所有name为IG-wxz的数据改为IG-wjl"><a href="#将集合所有name为IG-wxz的数据改为IG-wjl" class="headerlink" title="将集合所有name为IG.wxz的数据改为IG.wjl"></a>将集合所有name为IG.wxz的数据改为IG.wjl</h1><blockquote>
+<p>db.py02tab.update({name:’IG.wxz’},{$set:{name:’IG.wjl’}},false,true)<br>WriteResult({ “nMatched” : 2, “nUpserted” : 0, “nModified” : 2 }</p>
+</blockquote>
+<blockquote>
+<p>post3={“name”:”Tony”,<br>… “age”:50}<br>{ “name” : “Tony”, “age” : 50 }<br>db.py02tab.insert(post3)<br>WriteResult({ “nInserted” : 1 })<br>db.py02tab.find()<br>{ “_id” : 3, “name” : “IG.wjl”, “age” : 30 }<br>{ “_id” : ObjectId(“5b90ddefd75b407f468b9423”), “name” : “Tony”, “age” : 50 }</p>
+</blockquote>
+<h1 id="更新（增加一个字段）"><a href="#更新（增加一个字段）" class="headerlink" title="更新（增加一个字段）"></a>更新（增加一个字段）</h1><blockquote>
+<p>post3.phone=’12345678901’<br>12345678901<br>db.py02tab.update({name:”Tony”},post3)<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })</p>
+</blockquote>
+<blockquote>
+<p>db.py02tab.find()<br>{ “_id” : 3, “name” : “IG.wjl”, “age” : 30 }<br>{ “_id” : ObjectId(“5b90ddefd75b407f468b9423”), “name” : “Tony”, “age” : 50, “ph<br>one” : “12345678901” }</p>
+<p>post5.friends={“goodfriends”:[“美国队长”,”绿巨人”]}<br>{ “goodfriends” : [ “美国队长”, “绿巨人” ] }<br>db.pyuser2.update({“name”:”tom”},post5)<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.pyuser2.find().pretty()<br>{<br>        “_id” : ObjectId(“5b90e7b0a1cb3ec538c5bb3b”),<br>        “name” : “tom”,<br>        “age” : 18,<br>        “phone” : “12345678901”,<br>        “friends” : {<br>                “goodfriends” : [<br>                        “美国队长”,<br>                        “绿巨人”<br>                ]<br>        }<br>}</p>
+</blockquote>
+<h1 id="在较深层次中增加一个字段"><a href="#在较深层次中增加一个字段" class="headerlink" title="在较深层次中增加一个字段"></a>在较深层次中增加一个字段</h1><blockquote>
+<p>post5.friends.badfriends=[“灭霸”]<br>[ “灭霸” ]<br>db.pyuser2.update({“name”:”tom”},post5)<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.pyuser2.find().pretty()<br>{<br>        “_id” : ObjectId(“5b90e7b0a1cb3ec538c5bb3b”),<br>        “name” : “tom”,<br>        “age” : 18,<br>        “phone” : “12345678901”,<br>        “friends” : {<br>                “goodfriends” : [<br>                        “美国队长”,<br>                        “绿巨人”<br>                ],<br>                “badfriends” : [<br>                        “灭霸”<br>                ]<br>        }<br>}</p>
+</blockquote>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/06/mongodb/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/27/database/" class="archive-article-date">
-  	<time datetime="2018-08-27T11:16:35.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-27</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/09/10/aboutgitee/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用git上传文件至码云的步骤
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/27/database/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql数据库</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/27/database/">mysql数据库</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/24/spider/" class="archive-article-date">
-  	<time datetime="2018-08-24T07:01:49.367Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/24/spider/">爬虫基础</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/06/object/" class="archive-article-date">
-  	<time datetime="2018-08-06T12:21:44.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/06/object/">面向对象</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/03/exception/" class="archive-article-date">
-  	<time datetime="2018-08-03T01:25:33.666Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/03/exception/">异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/01/module/" class="archive-article-date">
-  	<time datetime="2018-08-01T13:48:42.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/01/module/">包与模块</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/01/excelparsexml/" class="archive-article-date">
-  	<time datetime="2018-08-01T11:21:42.724Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/01/excelparsexml/">Python对Excel文件的操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/28/fileIo/" class="archive-article-date">
-  	<time datetime="2018-07-28T09:30:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/28/fileIo/">文件输入输出（IO）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/copy/" class="archive-article-date">
-  	<time datetime="2018-07-24T13:27:21.934Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/copy/">copy()(浅拷贝)和deepcopy()（深拷贝）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -467,8 +473,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

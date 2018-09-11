@@ -157,6 +157,284 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-aboutgitee" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/10/aboutgitee/">使用git上传文件至码云的步骤</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/10/aboutgitee/" class="archive-article-date">
+  	<time datetime="2018-09-10T10:43:21.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p><code>$ git init</code><br>Initialized empty Git repository in C:/Users/Administrator/Desktop/gitress/.git/</p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress (master)<br><code>$ ls -al</code><br>total 16<br>drwxr-xr-x 1 Administrator 197121 0 九月 10 14:38 ./<br>drwxr-xr-x 1 Administrator 197121 0 九月 10 14:38 ../<br>drwxr-xr-x 1 Administrator 197121 0 九月 10 14:38 .git/</p>
+<p>#在网页上打开码云，新建一个项目，复制“克隆/下载”下的https的网址，并粘贴在git clone命令后<br>Administrator@JM001 MINGW64 ~/Desktop/gitress (master)</p>
+<h1 id="将服务器上的文件clone到本地"><a href="#将服务器上的文件clone到本地" class="headerlink" title="将服务器上的文件clone到本地"></a>将服务器上的文件clone到本地</h1><p><code>$ git clone https://gitee.com/gemini0605/pyhomework.git</code><br>Cloning into ‘pyhomework’…<br>remote: Enumerating objects: 3, done.<br>remote: Counting objects: 100% (3/3), done.<br>remote: Compressing objects: 100% (2/2), done.<br>remote: Total 3 (delta 0), reused 0 (delta 0)<br>Unpacking objects: 100% (3/3), done.</p>
+<h1 id="查看当前文件夹"><a href="#查看当前文件夹" class="headerlink" title="查看当前文件夹"></a>查看当前文件夹</h1><p><code>$ ls</code><br>pyhomework/</p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress (master)</p>
+<h1 id="查看当前文件全路径"><a href="#查看当前文件全路径" class="headerlink" title="查看当前文件全路径"></a>查看当前文件全路径</h1><p><code>$ pwd</code><br>/c/Users/Administrator/Desktop/gitress</p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress (master)</p>
+<h1 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h1><p><code>$ cd pyhomework/</code></p>
+<h1 id="查看当前服务器的状态"><a href="#查看当前服务器的状态" class="headerlink" title="查看当前服务器的状态"></a>查看当前服务器的状态</h1><p><code>$ git pull</code><br>Already up to date.</p>
+<h1 id="查看本地状态（db3文件是服务器没有，而本地有的文件）"><a href="#查看本地状态（db3文件是服务器没有，而本地有的文件）" class="headerlink" title="查看本地状态（db3文件是服务器没有，而本地有的文件）"></a>查看本地状态（db3文件是服务器没有，而本地有的文件）</h1><p><code>$ git status</code><br>On branch master<br>Your branch is up to date with ‘origin/master’.</p>
+<p>Untracked files:<br>  (use “git add <file>…” to include in what will be committed)</file></p>
+<pre><code>db3/
+</code></pre><p>nothing added to commit but untracked files present (use “git add” to track)</p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress/pyhomework (master)</p>
+<h1 id="是指当前文件夹中的所有文件，add命令是将这些文件上传至缓存区"><a href="#是指当前文件夹中的所有文件，add命令是将这些文件上传至缓存区" class="headerlink" title=".是指当前文件夹中的所有文件，add命令是将这些文件上传至缓存区"></a>.是指当前文件夹中的所有文件，add命令是将这些文件上传至缓存区</h1><p><code>$ git add .</code></p>
+<p>Administrator@JM001 MINGW64 ~/Desktop/gitress/pyhomework (master)</p>
+<h1 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h1><p><code>$ git commit -m &quot;作业专用&quot;</code><br>[master 7d870ae] 作业专用<br> 5 files changed, 216 insertions(+)<br> create mode 100644 db3/.idea/db3.iml<br> create mode 100644 db3/.idea/misc.xml<br> create mode 100644 db3/.idea/modules.xml<br> create mode 100644 db3/.idea/workspace.xml<br> create mode 100644 db3/hello.py</p>
+<h1 id="将commit的文件push到服务器"><a href="#将commit的文件push到服务器" class="headerlink" title="将commit的文件push到服务器"></a>将commit的文件push到服务器</h1><p><code>$ git push</code><br>Username for ‘<a href="https://gitee.com&#39;" target="_blank" rel="noopener">https://gitee.com&#39;</a>: gemini0605</p>
+<p>Counting objects: 9, done.<br>Delta compression using up to 4 threads.<br>Compressing objects: 100% (8/8), done.<br>Writing objects: 100% (9/9), 3.37 KiB | 314.00 KiB/s, done.<br>Total 9 (delta 0), reused 0 (delta 0)<br>remote: Powered by Gitee.com<br>To <a href="https://gitee.com/gemini0605/pyhomework.git" target="_blank" rel="noopener">https://gitee.com/gemini0605/pyhomework.git</a><br>   764bb29..7d870ae  master -&gt; master</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/10/aboutgitee/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/06/mongodb/">MongoDB</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/06/mongodb/" class="archive-article-date">
+  	<time datetime="2018-09-06T03:50:33.538Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SQL-VS-NoSQL"><a href="#SQL-VS-NoSQL" class="headerlink" title="SQL VS NoSQL"></a>SQL VS NoSQL</h1><p>SQL:</p>
+<pre><code>关系型数据模型
+数据被存放在表中
+适用于每条记录（数据）都是相同类型并且具有相同属性的情况
+存储数据需要预定义
+添加新数据必须修改表结构
+ACID事务支持
+</code></pre><p>NoSQL：</p>
+<pre><code>非关系数据模型
+可以存储JSON、键值对
+灵活设置表结构
+混合存储数据模型（不影响其他数据）
+支持ACID事务
+一致性可以改变
+横向扩展
+</code></pre><p>#MongoDB 术语<br>1.文档（document）相当于传统数据库模型中的“行”，但是比“行”复杂（数据信息）<br>2.集合（collection） ：在MongoDB中表示一组文档，类似表，集合是没有模式的<br>没有模式就是可以混合插入不同的数据结构类型<br>3.数据库（database)</p>
+<p>#MongoDB 终端命令</p>
+<h2 id="mongodb服务"><a href="#mongodb服务" class="headerlink" title="mongodb服务"></a>mongodb服务</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">启动mongodb:net start mongodb</span><br><span class="line">关闭mongodb服务：net stop mongodb</span><br><span class="line">进入mongodb:mongo</span><br></pre></td></tr></table></figure>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>1.创建数据库:（若不存在，创建；存在，选中）<br><code>use mymongo</code><br>查看当前数据库：db<br>查看所有的数据库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; show dbs</span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br><span class="line">qz01db  0.000GB</span><br></pre></td></tr></table></figure></p>
+<p>2.删除数据库：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.dropDatabase()</span><br><span class="line">&#123; <span class="string">"ok"</span> : <span class="number">1</span> &#125;</span><br><span class="line">查看当前数据库状态：db.stats()</span><br><span class="line">&#123;</span><br><span class="line">        <span class="string">"db"</span> : <span class="string">"py06db"</span>,</span><br><span class="line">        <span class="string">"collections"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"views"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"objects"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"avgObjSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"dataSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"storageSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"numExtents"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"indexes"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"indexSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"fileSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"fsUsedSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"fsTotalSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"ok"</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.查看数据库的链接<br><code>db.getMongo()</code><br>connection to 127.0.0.1:27017</p>
+<h2 id="集合collection"><a href="#集合collection" class="headerlink" title="集合collection"></a>集合collection</h2><p>1.创建集合：<br><code>db.createCollection(&quot;mycol&quot;)</code><br>创建带参数的集合：<br><code>db.createCollection(&quot;mycol2&quot;,{capped:true,autoIndexId:true,size:6142800,max:10000})</code><br>当你插入一些文档时，MongoDB 会自动创建集合:<br><code>db.mycol3.insert({&quot;name&quot;:&quot;database&quot;})</code></p>
+<p>2.查看所有的集合： <code>show collections</code><br>3.查看表的所有命令<br><code>db.py06db.help()  #py06db表名</code></p>
+<h1 id="往集合中插入数据"><a href="#往集合中插入数据" class="headerlink" title="往集合中插入数据"></a>往集合中插入数据</h1><h2 id="向collection中插入一条数据"><a href="#向collection中插入一条数据" class="headerlink" title="向collection中插入一条数据"></a>向collection中插入一条数据</h2><p>db.collection.insert(var)</p>
+<p>定义一个字典类型的变量<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; post=&#123;<span class="string">"name"</span>:<span class="string">"Pony Ma"</span>, <span class="string">"age"</span>:<span class="number">45</span>, <span class="string">"sex"</span>:<span class="string">"M"</span>, <span class="string">"marry"</span>:true ,<span class="string">"date"</span>:new Date() &#125;</span><br><span class="line">&#123;</span><br><span class="line">        <span class="string">"name"</span> : <span class="string">"Pony Ma"</span>,</span><br><span class="line">        <span class="string">"age"</span> : <span class="number">45</span>,</span><br><span class="line">        <span class="string">"sex"</span> : <span class="string">"M"</span>,</span><br><span class="line">        <span class="string">"marry"</span> : true,</span><br><span class="line">        <span class="string">"date"</span> : ISODate(<span class="string">"2018-09-06T01:02:30.058Z"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 将变量post添加到集合pyuser</span></span><br><span class="line">&gt; db.pyuser.insert(post)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：当有多个文档时，insert只对第一个{}中包含的数据进行插入,但是不报错；如果想要插入多条数据，可以是一个列表中包含多个文档</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.py01db.insert(&#123;<span class="string">"name"</span>:<span class="string">'one'</span>&#125;,&#123;<span class="string">'name'</span>:<span class="string">'two'</span>&#125;,&#123;<span class="string">'name'</span>:<span class="string">'three'</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br><span class="line"><span class="comment"># 查看集合中的所有文档</span></span><br><span class="line">&gt; db.py01db.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5b90ce54d75b407f468b9419"</span>), <span class="string">"name"</span> : <span class="string">"one"</span> &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="insert与save的区别："><a href="#insert与save的区别：" class="headerlink" title="insert与save的区别："></a>insert与save的区别：</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.py02tab.insert(&#123;<span class="string">"name"</span>:<span class="string">"Pony Ma"</span>,<span class="string">"age"</span>:<span class="number">45</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5b90d2e1d75b407f468b9421"</span>), <span class="string">"name"</span> : <span class="string">"Pony Ma"</span>, <span class="string">"age"</span> : <span class="number">45</span> &#125;</span><br><span class="line">&gt; db.py02tab.save(&#123;<span class="string">'name'</span>:<span class="string">'Iack Ma'</span>,<span class="string">'age'</span>:<span class="number">50</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5b90d2e1d75b407f468b9421"</span>), <span class="string">"name"</span> : <span class="string">"Pony Ma"</span>, <span class="string">"age"</span> : <span class="number">45</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5b90d376d75b407f468b9422"</span>), <span class="string">"name"</span> : <span class="string">"Iack Ma"</span>, <span class="string">"age"</span> : <span class="number">50</span> &#125;</span><br><span class="line">&gt; db.py02tab.insert(&#123;<span class="string">"_id"</span>:<span class="number">1</span>,<span class="string">"name"</span>:<span class="string">"IG.wxz"</span>,<span class="string">"age"</span>:<span class="number">30</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : <span class="number">1</span>, <span class="string">"name"</span> : <span class="string">"IG.wxz"</span>, <span class="string">"age"</span> : <span class="number">30</span> &#125;</span><br><span class="line">&gt; db.py02tab.insert(&#123;<span class="string">"_id"</span>:<span class="number">1</span>,<span class="string">"name"</span>:<span class="string">"IG.wxz"</span>,<span class="string">"age"</span>:<span class="number">30</span>&#125;)</span><br><span class="line">WriteResult(&#123;</span><br><span class="line">        <span class="string">"nInserted"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"writeError"</span> : &#123;</span><br><span class="line">                <span class="string">"code"</span> : <span class="number">11000</span>,</span><br><span class="line">                <span class="string">"errmsg"</span> : <span class="string">"E11000 duplicate key error collection: py06db.py02ta</span></span><br><span class="line"><span class="string">b index: _id_ dup key: &#123; : 1.0 &#125;"</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&gt; db.py02tab.save(&#123;<span class="string">"_id"</span>:<span class="number">1</span>,<span class="string">'name'</span>:<span class="string">'IG.wxz'</span>,<span class="string">'age'</span>:<span class="number">30</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nMatched"</span> : <span class="number">1</span>, <span class="string">"nUpserted"</span> : <span class="number">0</span>, <span class="string">"nModified"</span> : <span class="number">0</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : <span class="number">1</span>, <span class="string">"name"</span> : <span class="string">"IG.wxz"</span>, <span class="string">"age"</span> : <span class="number">30</span> &#125;</span><br><span class="line">&gt; db.py02tab.save(&#123;<span class="string">"_id"</span>:<span class="number">1</span>,<span class="string">'name'</span>:<span class="string">'IG.po'</span>,<span class="string">'age'</span>:<span class="number">30</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nMatched"</span> : <span class="number">1</span>, <span class="string">"nUpserted"</span> : <span class="number">0</span>, <span class="string">"nModified"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.py02tab.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : <span class="number">1</span>, <span class="string">"name"</span> : <span class="string">"IG.po"</span>, <span class="string">"age"</span> : <span class="number">30</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>———————-查询————————</p>
+<h1 id="find（）中不填任何内容，表示查看集合中所有数据"><a href="#find（）中不填任何内容，表示查看集合中所有数据" class="headerlink" title="find（）中不填任何内容，表示查看集合中所有数据"></a>find（）中不填任何内容，表示查看集合中所有数据</h1><blockquote>
+<p>db.pyuser.find()<br>{ “_id” : ObjectId(“5b907d2cd75b407f468b9408”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:02:30.058Z”) }</p>
+</blockquote>
+<h1 id="将显示的内容格式化"><a href="#将显示的内容格式化" class="headerlink" title="将显示的内容格式化"></a>将显示的内容格式化</h1><blockquote>
+<p>db.pyuser.find().pretty()<br>{<br>        “_id” : ObjectId(“5b907d2cd75b407f468b9408”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:02:30.058Z”)<br>}</p>
+</blockquote>
+<h1 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h1><blockquote>
+<p>db.pyuser.distinct(‘name’)<br>[ “Pony Ma” ]</p>
+</blockquote>
+<h1 id="mongodb默认显示一页20条文档，想要查看其他的文档输入it命令"><a href="#mongodb默认显示一页20条文档，想要查看其他的文档输入it命令" class="headerlink" title="mongodb默认显示一页20条文档，想要查看其他的文档输入it命令"></a>mongodb默认显示一页20条文档，想要查看其他的文档输入it命令</h1><blockquote>
+<p>db.pyuser.find({age:{$lt:50}}).pretty()<br>{<br>        “_id” : ObjectId(“5b908930d75b407f468b940b”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:02:30.058Z”)<br>}</p>
+</blockquote>
+<h1 id="有条件的查询"><a href="#有条件的查询" class="headerlink" title="有条件的查询"></a>有条件的查询</h1><blockquote>
+<p>db.pyuser.find({age:45}).pretty()<br>{<br>        “_id” : ObjectId(“5b908930d75b407f468b940b”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:02:30.058Z”)<br>}</p>
+</blockquote>
+<h1 id="查询age大于40的数据"><a href="#查询age大于40的数据" class="headerlink" title="查询age大于40的数据"></a>查询age大于40的数据</h1><blockquote>
+<p>db.pyuser.find({age:{$gt:40}})<br>{ “_id” : ObjectId(“5b908930d75b407f468b940b”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:02:30.058Z”) }</p>
+</blockquote>
+<h1 id="使用正则表达式进行查询"><a href="#使用正则表达式进行查询" class="headerlink" title="使用正则表达式进行查询"></a>使用正则表达式进行查询</h1><blockquote>
+<p>db.pyuser.find({name:/Ma/})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:20:53.317Z”) }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:29:01.621Z”) }</p>
+</blockquote>
+<h1 id="使用正则查询name是P开头的文档"><a href="#使用正则查询name是P开头的文档" class="headerlink" title="使用正则查询name是P开头的文档"></a>使用正则查询name是P开头的文档</h1><blockquote>
+<p>db.pyuser.find({name:/^P/})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:20:53.317Z”) }<br>db.pyuser.find({name:/^J/})<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:29:01.621Z”) }</p>
+</blockquote>
+<h1 id="第一个-放置条件，第二个-中的1表示true-意思是只显示name字段；若name为0-显示除name字段的其他字段"><a href="#第一个-放置条件，第二个-中的1表示true-意思是只显示name字段；若name为0-显示除name字段的其他字段" class="headerlink" title="第一个{}放置条件，第二个{}中的1表示true,意思是只显示name字段；若name为0,显示除name字段的其他字段."></a>第一个{}放置条件，第二个{}中的1表示true,意思是只显示name字段；若name为0,显示除name字段的其他字段.</h1><blockquote>
+<p>db.pyuser.find({},{name:1})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma” }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma” }</p>
+</blockquote>
+<blockquote>
+<p>db.pyuser.find({},{name:0})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “age” : 45, “sex” : “M”, “marry”<br> : true, “date” : ISODate(“2018-09-06T02:20:53.317Z”) }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “age” : 50, “sex” : “M”, “marry”<br> : true, “date” : ISODate(“2018-09-06T02:29:01.621Z”) }</p>
+</blockquote>
+<h1 id="显示name-age两个字段"><a href="#显示name-age两个字段" class="headerlink" title="显示name,age两个字段"></a>显示name,age两个字段</h1><blockquote>
+<p>db.pyuser.find({},{name:1,age:1})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma”, “age” : 45 }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50 }</p>
+</blockquote>
+<p>满足条件的指定字段</p>
+<blockquote>
+<p>db.pyuser.find({age:{$gte:46}},{name:1,age:1})<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50 }</p>
+</blockquote>
+<h1 id="排序-1升序，-1降序（若对name进行排序，全是英文，按照ASCII码进行排序，中英文混合，升序中文会放在英文后）"><a href="#排序-1升序，-1降序（若对name进行排序，全是英文，按照ASCII码进行排序，中英文混合，升序中文会放在英文后）" class="headerlink" title="排序 1升序，-1降序（若对name进行排序，全是英文，按照ASCII码进行排序，中英文混合，升序中文会放在英文后）"></a>排序 1升序，-1降序（若对name进行排序，全是英文，按照ASCII码进行排序，中英文混合，升序中文会放在英文后）</h1><p> db.pyuser.find().sort({age:1})<br>{ “_id” : ObjectId(“5b90909ed75b407f468b9411”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:20:53.317Z”) }<br>{ “_id” : ObjectId(“5b9090f1d75b407f468b9412”), “name” : “Jack Ma”, “age” : 50,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T02:29:01.621Z”) }</p>
+<h1 id="显示前三条"><a href="#显示前三条" class="headerlink" title="显示前三条"></a>显示前三条</h1><blockquote>
+<p>db.pyuser.find().limit(3)<br>当字段名不相同时，不同的字段名为null，no field等价于0，尤其在排序时</p>
+</blockquote>
+<h1 id="跳过前3条显示后面的内容"><a href="#跳过前3条显示后面的内容" class="headerlink" title="跳过前3条显示后面的内容"></a>跳过前3条显示后面的内容</h1><blockquote>
+<p>db.pyuser.find().skip(3)</p>
+</blockquote>
+<h1 id="取456的文档（行）"><a href="#取456的文档（行）" class="headerlink" title="取456的文档（行）"></a>取456的文档（行）</h1><blockquote>
+<p>db.pyuser.find().skip(3).limit(3)</p>
+</blockquote>
+<h1 id="查询age为50-或age为40的文档"><a href="#查询age为50-或age为40的文档" class="headerlink" title="查询age为50 或age为40的文档"></a>查询age为50 或age为40的文档</h1><blockquote>
+<p>db.pyuser.find({$or:[{age:50},{age:40}]})<br>{ “_id” : ObjectId(“5b90a013d75b407f468b9414”), “name” : “Jack Ma”, “age” : 50,<br>“sex” : “M”, “marry” : false, “date” : ISODate(“2018-09-06T03:33:30.045Z”) }</p>
+</blockquote>
+<p># </p>
+<blockquote>
+<p>db.pyuser.totalIndexSize()<br>36864</p>
+</blockquote>
+<h1 id="表中的文档数"><a href="#表中的文档数" class="headerlink" title="表中的文档数"></a>表中的文档数</h1><blockquote>
+<p>db.pyuser.count()<br>3</p>
+</blockquote>
+<h1 id="表中age-45的文档数"><a href="#表中age-45的文档数" class="headerlink" title="表中age=45的文档数"></a>表中age=45的文档数</h1><blockquote>
+<p>db.pyuser.find({age:45}).count()<br>0</p>
+</blockquote>
+<h1 id="exists常用于过滤-集合中含有marry字段的个数"><a href="#exists常用于过滤-集合中含有marry字段的个数" class="headerlink" title="exists常用于过滤  集合中含有marry字段的个数"></a>exists常用于过滤  集合中含有marry字段的个数</h1><blockquote>
+<p>db.pyuser.find({marry:{$exists:true}}).count()<br>2</p>
+</blockquote>
+<p>—————–创建带参数的集合———————-</p>
+<blockquote>
+<p>db.createCollection(‘py01db’,{size:10240,max:3})<br>{ “ok” : 1 }</p>
+</blockquote>
+<h1 id="创建带有参数的集合capped为true-max才有作用"><a href="#创建带有参数的集合capped为true-max才有作用" class="headerlink" title="创建带有参数的集合capped为true,max才有作用"></a>创建带有参数的集合capped为true,max才有作用</h1><blockquote>
+<p>db.createCollection(‘py01tab’,{capped:true,size:1024,max:3})<br>{ “ok” : 1 }<br>db.py01tab.insert({‘name’:’one’})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({‘name’:’two’})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({‘name’:’three’})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d162d75b407f468b941d”), “name” : “one” }<br>{ “_id” : ObjectId(“5b90d16bd75b407f468b941e”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d171d75b407f468b941f”), “name” : “three” }</p>
+</blockquote>
+<blockquote>
+<p>db.py01tab.insert({‘name’:’four’})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d16bd75b407f468b941e”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d171d75b407f468b941f”), “name” : “three” }<br>{ “_id” : ObjectId(“5b90d196d75b407f468b9420”), “name” : “four” }</p>
+</blockquote>
+<p>————– 删除集合———————–</p>
+<blockquote>
+<p>db.py01db.drop()<br>true</p>
+</blockquote>
+<p>——————————更新—————————–</p>
+<p>update(查询条件，要更新的数据，是否插入数据，multi是否全部更新)</p>
+<h1 id="是否插入数据的意思是：如果不存在update的记录（数据），是否要插入到集合中，默认是false，不插入，true表示插入"><a href="#是否插入数据的意思是：如果不存在update的记录（数据），是否要插入到集合中，默认是false，不插入，true表示插入" class="headerlink" title="是否插入数据的意思是：如果不存在update的记录（数据），是否要插入到集合中，默认是false，不插入，true表示插入"></a>是否插入数据的意思是：如果不存在update的记录（数据），是否要插入到集合中，默认是false，不插入，true表示插入</h1><blockquote>
+<p>db.py02tab.update({name:’IG.po’},{$set:{name:’IG.wxz’}})<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90d376d75b407f468b9422”), “name” : “Iack Ma”, “age” : 50 }<br>{ “_id” : 1, “name” : “IG.wxz”, “age” : 30 }</p>
+</blockquote>
+<hr>
+<h1 id="若有多个数据符合更新条件（不改变最后的参数multi情况下），只会更新1条（最先查询到的）"><a href="#若有多个数据符合更新条件（不改变最后的参数multi情况下），只会更新1条（最先查询到的）" class="headerlink" title="若有多个数据符合更新条件（不改变最后的参数multi情况下），只会更新1条（最先查询到的）"></a>若有多个数据符合更新条件（不改变最后的参数multi情况下），只会更新1条（最先查询到的）</h1><blockquote>
+<p>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90d376d75b407f468b9422”), “name” : “Iack Ma”, “age” : 50 }<br>{ “_id” : 1, “name” : “IG.wxz”, “age” : 30 }<br>{ “_id” : 2, “name” : “IG.wxz”, “age” : 30 }</p>
+</blockquote>
+<blockquote>
+<p>db.py02tab.update({name:’IG.wxz’},{$set:{name:’IG.po’}})<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90d376d75b407f468b9422”), “name” : “Iack Ma”, “age” : 50 }<br>{ “_id” : 1, “name” : “IG.po”, “age” : 30 }<br>{ “_id” : 2, “name” : “IG.wxz”, “age” : 30 }</p>
+</blockquote>
+<h1 id="将集合所有name为IG-wxz的数据改为IG-wjl"><a href="#将集合所有name为IG-wxz的数据改为IG-wjl" class="headerlink" title="将集合所有name为IG.wxz的数据改为IG.wjl"></a>将集合所有name为IG.wxz的数据改为IG.wjl</h1><blockquote>
+<p>db.py02tab.update({name:’IG.wxz’},{$set:{name:’IG.wjl’}},false,true)<br>WriteResult({ “nMatched” : 2, “nUpserted” : 0, “nModified” : 2 }</p>
+</blockquote>
+<blockquote>
+<p>post3={“name”:”Tony”,<br>… “age”:50}<br>{ “name” : “Tony”, “age” : 50 }<br>db.py02tab.insert(post3)<br>WriteResult({ “nInserted” : 1 })<br>db.py02tab.find()<br>{ “_id” : 3, “name” : “IG.wjl”, “age” : 30 }<br>{ “_id” : ObjectId(“5b90ddefd75b407f468b9423”), “name” : “Tony”, “age” : 50 }</p>
+</blockquote>
+<h1 id="更新（增加一个字段）"><a href="#更新（增加一个字段）" class="headerlink" title="更新（增加一个字段）"></a>更新（增加一个字段）</h1><blockquote>
+<p>post3.phone=’12345678901’<br>12345678901<br>db.py02tab.update({name:”Tony”},post3)<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })</p>
+</blockquote>
+<blockquote>
+<p>db.py02tab.find()<br>{ “_id” : 3, “name” : “IG.wjl”, “age” : 30 }<br>{ “_id” : ObjectId(“5b90ddefd75b407f468b9423”), “name” : “Tony”, “age” : 50, “ph<br>one” : “12345678901” }</p>
+<p>post5.friends={“goodfriends”:[“美国队长”,”绿巨人”]}<br>{ “goodfriends” : [ “美国队长”, “绿巨人” ] }<br>db.pyuser2.update({“name”:”tom”},post5)<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.pyuser2.find().pretty()<br>{<br>        “_id” : ObjectId(“5b90e7b0a1cb3ec538c5bb3b”),<br>        “name” : “tom”,<br>        “age” : 18,<br>        “phone” : “12345678901”,<br>        “friends” : {<br>                “goodfriends” : [<br>                        “美国队长”,<br>                        “绿巨人”<br>                ]<br>        }<br>}</p>
+</blockquote>
+<h1 id="在较深层次中增加一个字段"><a href="#在较深层次中增加一个字段" class="headerlink" title="在较深层次中增加一个字段"></a>在较深层次中增加一个字段</h1><blockquote>
+<p>post5.friends.badfriends=[“灭霸”]<br>[ “灭霸” ]<br>db.pyuser2.update({“name”:”tom”},post5)<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.pyuser2.find().pretty()<br>{<br>        “_id” : ObjectId(“5b90e7b0a1cb3ec538c5bb3b”),<br>        “name” : “tom”,<br>        “age” : 18,<br>        “phone” : “12345678901”,<br>        “friends” : {<br>                “goodfriends” : [<br>                        “美国队长”,<br>                        “绿巨人”<br>                ],<br>                “badfriends” : [<br>                        “灭霸”<br>                ]<br>        }<br>}</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/06/mongodb/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-database" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -177,7 +455,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、数据库语言"><a href="#一、数据库语言" class="headerlink" title="一、数据库语言"></a>一、数据库语言</h2><h3 id="1、分类"><a href="#1、分类" class="headerlink" title="1、分类"></a>1、分类</h3><p>数据库定义语言   DDL（create database/table，drop database/table，alter database/table）<br>数据库操纵语言   DML (insert、delete、update、select)<br>数据库控制语言   DCL（grant、revoke）<br>注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>数据库（Database）是按照数据结构来组织、存储和管理数据的仓库，</p>
+<blockquote>
+<p>关系数据库管理系统(Relational Database Management System)的<em>特点</em>：<br>1.数据以表格的形式出现<br>2.每行为各种记录名称<br>3.每列为记录名称所对应的数据域<br>4.许多的行和列组成一张表单<br>5.若干的表单组成database</p>
+</blockquote>
+<h2 id="一、数据库语言"><a href="#一、数据库语言" class="headerlink" title="一、数据库语言"></a>一、数据库语言</h2><h3 id="1、分类"><a href="#1、分类" class="headerlink" title="1、分类"></a>1、分类</h3><p>数据库定义语言   DDL（create database/table，drop database/table，alter database/table）<br>数据库操纵语言   DML (insert、delete、update、select)<br>数据库控制语言   DCL（grant、revoke）<br>注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。</p>
 <h3 id="2、数据定义语言"><a href="#2、数据定义语言" class="headerlink" title="2、数据定义语言"></a>2、数据定义语言</h3><p>1）、创建数据库<br><code>create database 数据库名；</code><br>2）、删除数据库<br><code>drop database 数据库名；</code><br>3）、打开数据库<br><code>use 数据库名；</code><br>4）创建数据表<br><code>create table 表名(列名 数据类型(长度),列名 数据类型（长度）,......) default charset=utf8</code><br>注意，如果创建表的时候，没有指定字符集，那么该表将默认采用其所在数据库的字符集。通常我们建议指定缺省的字符集。<br>5)、查看数据表的字符集情况<br><code>show variables like &#39;character%&#39;;</code><br>修改字符集<br><code>alter table 表名 default character set utf8;</code><br>6）查看表结构<br><code>desc 表名</code><br>(7)查看建表语句<br><code>show create table 表名;</code></p>
 <h3 id="8）、数据库字段类型"><a href="#8）、数据库字段类型" class="headerlink" title="8）、数据库字段类型"></a>8）、数据库字段类型</h3><p><strong>字符类型</strong>：<br>char(长度)：定长的字符类型，一旦声明了长度，即使定义的字段数据不能达到最大长度，也会按照最大长度进行所占字节的分配。取值范围：0-255<br>varchar(长度)： 变长的字符类型，声明长度后，如果字段数据的长度达不到最大长度，则会根据实际长度给出数据的长度。取值范围：0-2^16-1</p>
 <p><strong>数值类型</strong>：<br>int(长度)：给出指定的字段数据长度。如果没有明确指定长度，则采用默认长度11。所占字节4个字节。</p>
@@ -788,190 +1070,6 @@ show()
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/24/copy/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-function" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/24/function/">函数</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/24/function/" class="archive-article-date">
-  	<time datetime="2018-07-24T13:13:13.948Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、自定义函数</p>
-<h3 id="1、函数的定义"><a href="#1、函数的定义" class="headerlink" title="1、函数的定义"></a>1、函数的定义</h3><p>函数的格式：<br>def 函数名([参数列表]):<br>    执行代码</p>
-<p>其中，函数名的命名方式与变量名的要求相同，即只能是数字、字符、下划线三者构成，同时不能由数字开头。<br>另外，函数的参数根据情况，可以有参，也可以无参。同时，参数的个数，可以是1到N个。最后，调用函数时，一定要保证该函数已经被定义。调用的函数名与定义的函数名一致。</p>
-<h3 id="2、函数的调用"><a href="#2、函数的调用" class="headerlink" title="2、函数的调用"></a>2、函数的调用</h3><p>函数在外部调用时，直接写函数名以及函数参数即可，不需要将函数体写出来。同时，函数是否有返回值，由其函数体最后一句代码是否为return来决定的。如果由return语句，那么就意味着该函数有返回值，如果没有返回值就意味着返回值为None。</p>
-<blockquote>
-<p>注意：函数使用return作为返回值语句，该命令通常放在函数的最后一句，保证函数相关的代码都执行完毕后才返回，如果后面还有其他程序，则不会被执行。</p>
-</blockquote>
-<h3 id="3、函数的参数"><a href="#3、函数的参数" class="headerlink" title="3、函数的参数"></a>3、函数的参数</h3><p>概念：函数在定义时声明的参数，我们称为形参（形式参数）。</p>
-<blockquote>
-<p>形参的作用，主要是用来表明参数顺序、类型和个数。并不代表具体内容。<br>我们在调用函数的时候，根据形参的规定（顺序、类型、个数），传递进来实际的内容。我们称为实参。</p>
-</blockquote>
-<p>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(name,age)</span>:</span>   <span class="comment"># 定义函数时声明的形参：name,age</span></span><br><span class="line">    print(name,age)</span><br><span class="line"></span><br><span class="line">display(<span class="string">'tom'</span>,<span class="number">22</span>)        <span class="comment">#调用函数时实际传递的参数值：tom, 22</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="1）必须的参数"><a href="#1）必须的参数" class="headerlink" title="1）必须的参数"></a>1）必须的参数</h4><p>我们在函数定义时，显示声明在函数的参数列表中的参数，这些参数一旦被声明，函数在调用时，必须按照所声明的顺序、个数和数据类型，来传递实际的参数内容。</p>
-<h3 id="2）关键字参数"><a href="#2）关键字参数" class="headerlink" title="2）关键字参数"></a>2）关键字参数</h3><p>我们在定义函数时，声明了函数的参数后，在调用函数时我们不仅传递实际的参数内容，同时还将参数名字与之对应，这样保证传递进来的参数如果没有按照函数定义时规定的顺序，也能够正确传递进来。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(name, age)</span>:</span></span><br><span class="line">    print(<span class="string">'我是&#123;0&#125;，我&#123;1&#125;了'</span>.format(name, age))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">display(age=<span class="number">22</span>, name=<span class="string">'lmz'</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-默认参数"><a href="#3-默认参数" class="headerlink" title="3)默认参数"></a>3)默认参数</h3><p>我们在定义函数时，声明函数的参数，同时可以给这些参数进行赋值，在调用该函数时，如果没有给对应参数传递实参，那么python会默认使用定义函数时所声明的默认参数值。</p>
-<h3 id="4）可变参数"><a href="#4）可变参数" class="headerlink" title="4）可变参数"></a>4）可变参数</h3><p>普通可变参数：我们在定义函数时，因为参数过多或者不确定具体参数列表的个数，我们还可以采用可变参数来实现。可变参数表示从0到N个参数，采用<strong>*参数名</strong><br>注意，此时可变参数类型，为<strong>tuple元组类型。</strong><br>关键字可变参数：我们在定义函数时，通过使用<strong>**参数名</strong>，来表示0到N个参数，在外部调用函数时，将这些可变参数组装成一个<strong>字典。</strong><br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, password, **kw)</span>:</span></span><br><span class="line">    print(<span class="string">'用户名&#123;0&#125;，密码&#123;1&#125;，其他内容&#123;2&#125;'</span>.format(name,password,kw))</span><br><span class="line"></span><br><span class="line">person(<span class="string">'tom'</span>,<span class="string">'123456'</span>)</span><br><span class="line">person(<span class="string">'simth'</span>, <span class="string">'12345'</span>,sex=<span class="string">'男'</span>, address=<span class="string">'郑州'</span>)</span><br></pre></td></tr></table></figure></p>
-<p><code>输出结果：用户名tom，密码123456，其他内容{}</code><br><code>用户名simth，密码12345，其他内容{&#39;sex&#39;: &#39;男&#39;, &#39;address&#39;: &#39;郑州&#39;}</code></p>
-<p>特殊用法：*<br>在函数定义中，如果单独使用一个*号，意味着该*后面的参数，为关键字参数声明时必须使用的名字。在调用该函数时，关键字参数的名字要与函数定义中*号后面的参数名称一致。例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, password, *, city, sex)</span>:</span></span><br><span class="line">    print(<span class="string">'用户名&#123;0&#125;，密码&#123;1&#125;，其他内容&#123;2&#125;&#123;3&#125;'</span>.format(name, password, city, sex))</span><br><span class="line"></span><br><span class="line"><span class="comment"># person('simth', '12345',sex='男', city='郑州')</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="4、局部变量与全局变量"><a href="#4、局部变量与全局变量" class="headerlink" title="4、局部变量与全局变量"></a>4、局部变量与全局变量</h3><p>1）Python中，函数在调用的时候Python才会给函数一个内存地址，用来执行函数内部的相关代码。<br>2)Python程序在运行时，首先会将程序最外部的变量载入内容，并给其分配相关的内存空间。我们成这种变量为全局变量。<br>3）函数中声明的变量，只有在函数被执行时，才会被分配内存空间进行执行。我们称这种变量为局部变量。<br>4）Python程序执行的过程中，执行函数时首先会检查其函数内部的局部变量是否存在，如果存在就调用它，如果不存在就从外部全局变量中进行调用，如果仍然没有发现相关内容，则报错。<br>5）<strong>globals()与locals()</strong><br>在Python中，通过globals()观察全局作用域中内容，包括：内置函数、自定义函数、全局变量；通过locals()观察局部作用域中的内容，包括：局部变量，嵌套函数（内部函数）inner<br>6）当函数中出现嵌套情况时，最内层函数执行调用变量，会采用“就近原则”即先查找自身范围内的变量，如果没有找到，则向上查找，直到程序最外部结束。</p>
-<p>7)<strong>global与nonlocal</strong><br>global用来修饰局部变量时，表示该变量将作为全局变量来使用。即不仅在函数中可以被调用，同时在文件最外部也可以被调用。<br>nonlocal用来修饰嵌套函数内部的变量，对父级作用域（外层函数）中的变量进行引用和修改，那么从该层(包括父级)以下都将调用该变量的值。注意，该关键字只能影响其直接父级函数。<br>使用global关键字修饰的变量之前可以并不存在<br>而使用nonlocal关键字修饰的变量在嵌套作用域中必须已经存在。</p>
-<blockquote>
-<p>总结：<br>在函数中定义的变量，我们成为局部变量。包括在函数内部定义的变量、作为参数传递进来的变量。局部变量起作用的范围，我们称为局部作用域。因为Python在调用局部变量时，需要给它分配内存地址，我们称为这个地址为局部命名空间。<br>在文件最外层定义的变量，我们成为全局变量，可以在文件中的任意位置进行调用。全局变量起作用的范围，我们称为全局作用域。Python在载入文件时，就需要给全局变量分配内存地址，这个地址我们称为全局命名空间。</p>
-</blockquote>
-<p><strong>Python运行时处理变量的步骤：</strong><br>1、从Python解释器开始执行之后，就在内存中开辟里一个空间，每当遇到一个变量的时候，就把变量名和值之间对应的关系记录下来，但是当遇到函数定义的时候，解释器只是象征性的将函数名读入内存，表示知道这个函数存在了，至于函数内部的变量和逻辑，解释器根本不关心。<br>2、函数执行时，函数中的变量会储存在新开辟出来的内存中，<strong>函数中的变量只能在函数内部使用</strong>，并且会随着函数执行完毕，这块内存中的所有内容也会被清空</p>
-<h3 id="5、函数嵌套"><a href="#5、函数嵌套" class="headerlink" title="5、函数嵌套"></a>5、函数嵌套</h3><p>根据Python中，对函数的载入和调用特点。我们可以清楚看到，当Python运行相关文件时，如果遇到函数时，会先将其名字载入到内存中（即为函数名指定一个内存地址）。<br>因此我们在使用函数名时，可以有以下三种情况：</p>
-<h4 id="1）将函数名赋值给变量"><a href="#1）将函数名赋值给变量" class="headerlink" title="1）将函数名赋值给变量"></a>1）将函数名赋值给变量</h4><p>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">   print(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line">a = f1</span><br></pre></td></tr></table></figure></p>
-<p>这是变量a中的值就是f1()函数名的内存地址。</p>
-<h4 id="2）将函数名作为容器的元素"><a href="#2）将函数名作为容器的元素" class="headerlink" title="2）将函数名作为容器的元素"></a>2）将函数名作为容器的元素</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">   print(<span class="string">'ok'</span>)</span><br><span class="line">ls = [<span class="number">1</span>,<span class="number">2</span>,f1]</span><br></pre></td></tr></table></figure>
-<p>注意，此时存入到列表ls中的f1，它的值仍然是该函数名对应的内存地址</p>
-<h4 id="3）将函数名作为另外一个函数的参数，进行传递"><a href="#3）将函数名作为另外一个函数的参数，进行传递" class="headerlink" title="3）将函数名作为另外一个函数的参数，进行传递"></a>3）将函数名作为另外一个函数的参数，进行传递</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">   print(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">(x)</span>:</span></span><br><span class="line">   x()</span><br><span class="line">f2(f1)</span><br></pre></td></tr></table></figure>
-<p>其执行结果为OK，这种方式类似与函数的普通嵌套,代码如下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">      print(<span class="string">'ok'</span>)</span><br><span class="line">   f1()</span><br><span class="line">f2()</span><br></pre></td></tr></table></figure></p>
-<h3 id="6、闭包"><a href="#6、闭包" class="headerlink" title="6、闭包"></a>6、闭包</h3><p>1）闭包格式<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'我是外部函数'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">'我是闭包函数'</span>)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">f = outer()</span><br><span class="line">f()</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>通过对例子的观察，我们发现<strong>闭包函数的写法有如下特点：</strong><br>1、闭包函数作为内部函数，嵌套在外部函数中<br>2、闭包函数会作为外部函数的返回值，进行返回。返回闭包函数时，只返回函数名，不带括号。<br>3、外部调用时，首先要执行外部函数，然后将结果赋值给一个变量，此时该变量对应了闭包函数。<br>4、我们可以通过<strong>closure</strong>内部函数可以观察到，闭包函数的存在。前提是，闭包函数要与外部函数进行数据传递或调用。</p>
-</blockquote>
-<p>总结：闭包使用的数据，必须是本身定义或外部函数中定义的相关变量，通常需要调用外部函数的数据，形成一个封闭的函数结构。不能与外部数据（全局变量）发生交流。</p>
-<h4 id="2）闭包的应用—装饰器"><a href="#2）闭包的应用—装饰器" class="headerlink" title="2）闭包的应用—装饰器"></a>2）闭包的应用—装饰器</h4><p>1、概念：装饰器本身仍然是一个函数。是我们队闭包应用的一种具体实现。<br>2、作用：装饰器可以在不改变函数本身功能的情况下，为函数添加额外的功能。诸如：日志、测试、性能检测等。装饰器同样也是返回一个函数对象。<br>3、用法：<br>使用格式：@+装饰器名称<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">(f)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(*var)</span>:</span></span><br><span class="line">        start_time = time.time()</span><br><span class="line">        f(*var)</span><br><span class="line">        time.sleep(<span class="number">0.3</span>)</span><br><span class="line">        end_time = time.time()</span><br><span class="line">        print(<span class="string">'此函数执行时间为&#123;0&#125;'</span>.format(str(end_time-start_time)))</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">@outer      # 此处就是装饰器的声明，这种方法我们成为语法糖</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'hello world'</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="7、高阶函数"><a href="#7、高阶函数" class="headerlink" title="7、高阶函数"></a>7、高阶函数</h3><h4 id="1）匿名函数"><a href="#1）匿名函数" class="headerlink" title="1）匿名函数"></a>1）匿名函数</h4><p>使用lambda关键字进行修饰，没有显式声明函数的名字。格式如下：<br><code>lambda 参数：表达式（返回值）</code><br>注意，在使用匿名函数时，因为其自身的情况限制，匿名函数并不能执行比较复杂的业务逻辑，即函数内的代码不能过多。lambda本身是一个表达式</p>
-<h4 id="2）map函数（映射函数）"><a href="#2）map函数（映射函数）" class="headerlink" title="2）map函数（映射函数）"></a>2）map函数（映射函数）</h4><p>函数格式：map(func,iterable)<br><strong>返回值</strong>：map 对象（<strong>迭代器</strong>）<br>说明：map函数主要作用是，将指定函数与序列中的元素进行映射，并完成函数中功能的批量操作，返回值为一个迭代器。我们可以使用for循环或next()函数进行遍历。通常情况下，如果映射的函数较为简单，我们就不单独声明函数，而是采用匿名函数来实现，这样也能提高运行效率。</p>
-<h4 id="3）reduce函数（归纳函数）"><a href="#3）reduce函数（归纳函数）" class="headerlink" title="3）reduce函数（归纳函数）"></a>3）reduce函数（归纳函数）</h4><p>函数格式：reduce(func,iterator)<br>返回值：返回函数计算结果，具体类型根据函数的返回值来定<br>说明：reduce函数中的func，一定要设为两个参数，用来接收迭代器返回的值。操作顺序为首先接收第一、第二个值，进行运算；运算结果再与第三个值进行运行，以此类推，直到迭代器迭代完全部数据。<br>需要引入包from functools import reduce</p>
-<h4 id="4）filter函数（过滤函数）"><a href="#4）filter函数（过滤函数）" class="headerlink" title="4）filter函数（过滤函数）"></a>4）filter函数（过滤函数）</h4><p>函数格式：filter(func,iterable)<br>返回值：返回一个迭代器<br>说明：过滤函数与映射函数类似，都需要将函数作用于序列中的每个元素，根据函数判断True或False，返回相关元素。</p>
-<h3 id="8、递归"><a href="#8、递归" class="headerlink" title="8、递归"></a>8、递归</h3><p>递归概念：就是使用自身函数对自身进行调用，每调用一次将当前次的<strong>运行结果保存到函数的堆栈中</strong>，以副本形式保存，一直到最后完成全部调用。然后逐一向外将当期函数的结果返回并退出到其调用的位置。<br>在Python中，通常推荐使用迭代，递归本身对内存的消耗和运行效率低下的问题较少使用。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/24/function/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-iterator" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/iterator/">迭代器和生成器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/19/iterator/" class="archive-article-date">
-  	<time datetime="2018-07-19T12:48:02.940Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="迭代器（Iterator）"><a href="#迭代器（Iterator）" class="headerlink" title="迭代器（Iterator）"></a>迭代器（Iterator）</h3><h4 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h4><p>迭代器访问元素，是从第一个元素开始，依次访问后续元素直到结束。其中迭代器只能向前不能回退。<br>其包含两个方法iter()和next():</p>
-<blockquote>
-<p>iter()用来创建一个迭代器，next()用来访问下一个元素。</p>
-</blockquote>
-<p>目前我们所学的字符串、列表、元组都可以创建迭代器，那么他们也是可迭代化的对象。</p>
-<blockquote>
-<p>迭代器两个步骤：<br>1、当调用next()函数，会将迭代器当前位置状态进行改变<br>2、会将下一个元素进行返回</p>
-</blockquote>
-<p><strong>迭代器的延迟作用</strong>：迭代器生成的元素并不是在迭代器声明时，就准备好了的。通常时在调用迭代器需要提供该元素时生成的，也就是说只有在我们需要的时候迭代器才产生相关元素，不需要时并不会主动的生成相关元素。我们可以把迭代器看成一个容器，到我们需要时使用next()方法返回容器中的下一个值。<br>迭代器实现了工厂模式的对象，它在你每次访问下一个值的时候给你返回。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.有一个可迭代对象</span></span><br><span class="line">list1 = [<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="string">'welcome'</span>]</span><br><span class="line"><span class="comment"># 2. 通过iter()方法将可迭代对象变成一个迭代器</span></span><br><span class="line">new_iter = iter(list1)</span><br><span class="line"><span class="comment"># 3.使用next()方法 顺序取值</span></span><br><span class="line">print(<span class="string">'我是通过next（）方法取出的值：'</span>, next(new_iter))</span><br><span class="line"><span class="comment"># 也可以通过循环取出所有的值。(因为迭代器是可迭代化的)</span></span><br><span class="line"><span class="comment"># 注意：已经被取出的值，无法再取到，因为迭代器只能向后，不能向前</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> new_iter:</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># 我是通过next（）方法取出的值： hello</span></span><br><span class="line"><span class="comment"># world</span></span><br><span class="line"><span class="comment"># welcome</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>可迭代化（iterable）</strong>：表明相关的对象可以创建迭代器对象，同时他们自身都是可以进行for数据遍历的。我们可以使用isinstance()来判断对象是否为可迭代化</p>
-<p><strong>instance()函数</strong>：<br>函数格式：isinstance(对象，类型)<br>返回值：布尔值<br>结果：如果指定的对象属于指定的类型，那么返回True，反之返回False<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line">string = <span class="string">'hello'</span></span><br><span class="line">print(isinstance(string, Iterable))  =&gt; True</span><br></pre></td></tr></table></figure></p>
-<p><strong>enumerate()函数</strong><br>函数格式：enumerate(iterable)<br>返回值：生成一个枚举对象<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">enum = enumberate([<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> enum:</span><br><span class="line">    print(i)</span><br><span class="line">    </span><br><span class="line">(<span class="number">0</span>, <span class="string">'one'</span>)</span><br><span class="line">(<span class="number">1</span>, <span class="string">'two'</span>)</span><br><span class="line">(<span class="number">2</span>, <span class="string">'three'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i,value <span class="keyword">in</span> enum:</span><br><span class="line">    print(i, value)</span><br><span class="line">   </span><br><span class="line"><span class="number">0</span> one</span><br><span class="line"><span class="number">1</span> two</span><br><span class="line"><span class="number">2</span> three</span><br></pre></td></tr></table></figure></p>
-<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><h4 id="1、创建方式"><a href="#1、创建方式" class="headerlink" title="1、创建方式"></a>1、创建方式</h4><p>第一种，使用列表推导式，将[]改为()，生成一个generator对象<br>第二种，使用函数方式，采用<strong>yield关键字</strong>来实现<br>2、使用<br>生成器我们通常可以认为一种特殊的迭代器，但是它不需要像迭代器一样去实现<strong>iter</strong>,<strong>next</strong>方法。只需要使用yield关键字，该关键字可以在每次调用生成器函数时起到暂停作用，并将其值进行返回。同时还会记录当前运行值的状态。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getlist</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(getlist(<span class="number">10</span>))</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> getlist(<span class="number">10</span>):</span><br><span class="line">    print(item, end=<span class="string">' '</span>)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># &lt;generator object getlist at 0x0000000002142CA8&gt;</span></span><br><span class="line"><span class="comment"># 0 1 2 3 4 5 6 7 8 9</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">ge=getlist(<span class="number">10</span>)</span><br><span class="line">print(next(ge))  <span class="comment"># 注意：只能实例化后调用，否则只会取第一个值</span></span><br><span class="line">print(next(ge))</span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
-<p><strong>count(start,step)</strong>:返回一个count对象<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> count</span><br><span class="line">counter = count(start=<span class="number">1</span>, step=<span class="number">2</span>)</span><br><span class="line">print(next(counter))</span><br><span class="line">print(next(counter))</span><br><span class="line">print(next(counter))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line"><span class="comment"># 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># count()函数实际上就是一个生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(start, step)</span>:</span></span><br><span class="line">    x = start</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">yield</span> x</span><br><span class="line">        x += step</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">coun = count(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">print(next(coun))   <span class="comment"># 2</span></span><br><span class="line">print(next(coun))   <span class="comment"># 5</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>总结：迭代器和生成器<br>1、容器是一系列的元素集合，str、list、set、dict对象都可以看作是容器，容器都可以进行迭代（即用在while或for循环），凡是这样的容器我们都称为可迭代化对象（Iterable）。<br>2、可迭代化对象都实现了<strong>iter</strong>方法，该方法返回一个迭代器对象。<br>3、迭代器都拥有一个状态字段，用于记录下次迭代返回值。它实现了<strong>next</strong>和<strong>iter</strong>方法，迭代器不会一次性把所有的元素都加载到内存中，而是在需要的时候才生成返回结果。<br>4、生成器是一种特殊的迭代器，它的返回值不是通过return来返回的，而是通过yield来返回的。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/19/iterator/">展开全文 >></a>
         </p>
       
 

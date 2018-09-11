@@ -157,6 +157,190 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-function" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/function/">函数</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/24/function/" class="archive-article-date">
+  	<time datetime="2018-07-24T13:13:13.948Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、自定义函数</p>
+<h3 id="1、函数的定义"><a href="#1、函数的定义" class="headerlink" title="1、函数的定义"></a>1、函数的定义</h3><p>函数的格式：<br>def 函数名([参数列表]):<br>    执行代码</p>
+<p>其中，函数名的命名方式与变量名的要求相同，即只能是数字、字符、下划线三者构成，同时不能由数字开头。<br>另外，函数的参数根据情况，可以有参，也可以无参。同时，参数的个数，可以是1到N个。最后，调用函数时，一定要保证该函数已经被定义。调用的函数名与定义的函数名一致。</p>
+<h3 id="2、函数的调用"><a href="#2、函数的调用" class="headerlink" title="2、函数的调用"></a>2、函数的调用</h3><p>函数在外部调用时，直接写函数名以及函数参数即可，不需要将函数体写出来。同时，函数是否有返回值，由其函数体最后一句代码是否为return来决定的。如果由return语句，那么就意味着该函数有返回值，如果没有返回值就意味着返回值为None。</p>
+<blockquote>
+<p>注意：函数使用return作为返回值语句，该命令通常放在函数的最后一句，保证函数相关的代码都执行完毕后才返回，如果后面还有其他程序，则不会被执行。</p>
+</blockquote>
+<h3 id="3、函数的参数"><a href="#3、函数的参数" class="headerlink" title="3、函数的参数"></a>3、函数的参数</h3><p>概念：函数在定义时声明的参数，我们称为形参（形式参数）。</p>
+<blockquote>
+<p>形参的作用，主要是用来表明参数顺序、类型和个数。并不代表具体内容。<br>我们在调用函数的时候，根据形参的规定（顺序、类型、个数），传递进来实际的内容。我们称为实参。</p>
+</blockquote>
+<p>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(name,age)</span>:</span>   <span class="comment"># 定义函数时声明的形参：name,age</span></span><br><span class="line">    print(name,age)</span><br><span class="line"></span><br><span class="line">display(<span class="string">'tom'</span>,<span class="number">22</span>)        <span class="comment">#调用函数时实际传递的参数值：tom, 22</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="1）必须的参数"><a href="#1）必须的参数" class="headerlink" title="1）必须的参数"></a>1）必须的参数</h4><p>我们在函数定义时，显示声明在函数的参数列表中的参数，这些参数一旦被声明，函数在调用时，必须按照所声明的顺序、个数和数据类型，来传递实际的参数内容。</p>
+<h3 id="2）关键字参数"><a href="#2）关键字参数" class="headerlink" title="2）关键字参数"></a>2）关键字参数</h3><p>我们在定义函数时，声明了函数的参数后，在调用函数时我们不仅传递实际的参数内容，同时还将参数名字与之对应，这样保证传递进来的参数如果没有按照函数定义时规定的顺序，也能够正确传递进来。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(name, age)</span>:</span></span><br><span class="line">    print(<span class="string">'我是&#123;0&#125;，我&#123;1&#125;了'</span>.format(name, age))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">display(age=<span class="number">22</span>, name=<span class="string">'lmz'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-默认参数"><a href="#3-默认参数" class="headerlink" title="3)默认参数"></a>3)默认参数</h3><p>我们在定义函数时，声明函数的参数，同时可以给这些参数进行赋值，在调用该函数时，如果没有给对应参数传递实参，那么python会默认使用定义函数时所声明的默认参数值。</p>
+<h3 id="4）可变参数"><a href="#4）可变参数" class="headerlink" title="4）可变参数"></a>4）可变参数</h3><p>普通可变参数：我们在定义函数时，因为参数过多或者不确定具体参数列表的个数，我们还可以采用可变参数来实现。可变参数表示从0到N个参数，采用<strong>*参数名</strong><br>注意，此时可变参数类型，为<strong>tuple元组类型。</strong><br>关键字可变参数：我们在定义函数时，通过使用<strong>**参数名</strong>，来表示0到N个参数，在外部调用函数时，将这些可变参数组装成一个<strong>字典。</strong><br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, password, **kw)</span>:</span></span><br><span class="line">    print(<span class="string">'用户名&#123;0&#125;，密码&#123;1&#125;，其他内容&#123;2&#125;'</span>.format(name,password,kw))</span><br><span class="line"></span><br><span class="line">person(<span class="string">'tom'</span>,<span class="string">'123456'</span>)</span><br><span class="line">person(<span class="string">'simth'</span>, <span class="string">'12345'</span>,sex=<span class="string">'男'</span>, address=<span class="string">'郑州'</span>)</span><br></pre></td></tr></table></figure></p>
+<p><code>输出结果：用户名tom，密码123456，其他内容{}</code><br><code>用户名simth，密码12345，其他内容{&#39;sex&#39;: &#39;男&#39;, &#39;address&#39;: &#39;郑州&#39;}</code></p>
+<p>特殊用法：*<br>在函数定义中，如果单独使用一个*号，意味着该*后面的参数，为关键字参数声明时必须使用的名字。在调用该函数时，关键字参数的名字要与函数定义中*号后面的参数名称一致。例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, password, *, city, sex)</span>:</span></span><br><span class="line">    print(<span class="string">'用户名&#123;0&#125;，密码&#123;1&#125;，其他内容&#123;2&#125;&#123;3&#125;'</span>.format(name, password, city, sex))</span><br><span class="line"></span><br><span class="line"><span class="comment"># person('simth', '12345',sex='男', city='郑州')</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="4、局部变量与全局变量"><a href="#4、局部变量与全局变量" class="headerlink" title="4、局部变量与全局变量"></a>4、局部变量与全局变量</h3><p>1）Python中，函数在调用的时候Python才会给函数一个内存地址，用来执行函数内部的相关代码。<br>2)Python程序在运行时，首先会将程序最外部的变量载入内容，并给其分配相关的内存空间。我们成这种变量为全局变量。<br>3）函数中声明的变量，只有在函数被执行时，才会被分配内存空间进行执行。我们称这种变量为局部变量。<br>4）Python程序执行的过程中，执行函数时首先会检查其函数内部的局部变量是否存在，如果存在就调用它，如果不存在就从外部全局变量中进行调用，如果仍然没有发现相关内容，则报错。<br>5）<strong>globals()与locals()</strong><br>在Python中，通过globals()观察全局作用域中内容，包括：内置函数、自定义函数、全局变量；通过locals()观察局部作用域中的内容，包括：局部变量，嵌套函数（内部函数）inner<br>6）当函数中出现嵌套情况时，最内层函数执行调用变量，会采用“就近原则”即先查找自身范围内的变量，如果没有找到，则向上查找，直到程序最外部结束。</p>
+<p>7)<strong>global与nonlocal</strong><br>global用来修饰局部变量时，表示该变量将作为全局变量来使用。即不仅在函数中可以被调用，同时在文件最外部也可以被调用。<br>nonlocal用来修饰嵌套函数内部的变量，对父级作用域（外层函数）中的变量进行引用和修改，那么从该层(包括父级)以下都将调用该变量的值。注意，该关键字只能影响其直接父级函数。<br>使用global关键字修饰的变量之前可以并不存在<br>而使用nonlocal关键字修饰的变量在嵌套作用域中必须已经存在。</p>
+<blockquote>
+<p>总结：<br>在函数中定义的变量，我们成为局部变量。包括在函数内部定义的变量、作为参数传递进来的变量。局部变量起作用的范围，我们称为局部作用域。因为Python在调用局部变量时，需要给它分配内存地址，我们称为这个地址为局部命名空间。<br>在文件最外层定义的变量，我们成为全局变量，可以在文件中的任意位置进行调用。全局变量起作用的范围，我们称为全局作用域。Python在载入文件时，就需要给全局变量分配内存地址，这个地址我们称为全局命名空间。</p>
+</blockquote>
+<p><strong>Python运行时处理变量的步骤：</strong><br>1、从Python解释器开始执行之后，就在内存中开辟里一个空间，每当遇到一个变量的时候，就把变量名和值之间对应的关系记录下来，但是当遇到函数定义的时候，解释器只是象征性的将函数名读入内存，表示知道这个函数存在了，至于函数内部的变量和逻辑，解释器根本不关心。<br>2、函数执行时，函数中的变量会储存在新开辟出来的内存中，<strong>函数中的变量只能在函数内部使用</strong>，并且会随着函数执行完毕，这块内存中的所有内容也会被清空</p>
+<h3 id="5、函数嵌套"><a href="#5、函数嵌套" class="headerlink" title="5、函数嵌套"></a>5、函数嵌套</h3><p>根据Python中，对函数的载入和调用特点。我们可以清楚看到，当Python运行相关文件时，如果遇到函数时，会先将其名字载入到内存中（即为函数名指定一个内存地址）。<br>因此我们在使用函数名时，可以有以下三种情况：</p>
+<h4 id="1）将函数名赋值给变量"><a href="#1）将函数名赋值给变量" class="headerlink" title="1）将函数名赋值给变量"></a>1）将函数名赋值给变量</h4><p>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">   print(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line">a = f1</span><br></pre></td></tr></table></figure></p>
+<p>这是变量a中的值就是f1()函数名的内存地址。</p>
+<h4 id="2）将函数名作为容器的元素"><a href="#2）将函数名作为容器的元素" class="headerlink" title="2）将函数名作为容器的元素"></a>2）将函数名作为容器的元素</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">   print(<span class="string">'ok'</span>)</span><br><span class="line">ls = [<span class="number">1</span>,<span class="number">2</span>,f1]</span><br></pre></td></tr></table></figure>
+<p>注意，此时存入到列表ls中的f1，它的值仍然是该函数名对应的内存地址</p>
+<h4 id="3）将函数名作为另外一个函数的参数，进行传递"><a href="#3）将函数名作为另外一个函数的参数，进行传递" class="headerlink" title="3）将函数名作为另外一个函数的参数，进行传递"></a>3）将函数名作为另外一个函数的参数，进行传递</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">   print(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">(x)</span>:</span></span><br><span class="line">   x()</span><br><span class="line">f2(f1)</span><br></pre></td></tr></table></figure>
+<p>其执行结果为OK，这种方式类似与函数的普通嵌套,代码如下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">      print(<span class="string">'ok'</span>)</span><br><span class="line">   f1()</span><br><span class="line">f2()</span><br></pre></td></tr></table></figure></p>
+<h3 id="6、闭包"><a href="#6、闭包" class="headerlink" title="6、闭包"></a>6、闭包</h3><p>1）闭包格式<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'我是外部函数'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">'我是闭包函数'</span>)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">f = outer()</span><br><span class="line">f()</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>通过对例子的观察，我们发现<strong>闭包函数的写法有如下特点：</strong><br>1、闭包函数作为内部函数，嵌套在外部函数中<br>2、闭包函数会作为外部函数的返回值，进行返回。返回闭包函数时，只返回函数名，不带括号。<br>3、外部调用时，首先要执行外部函数，然后将结果赋值给一个变量，此时该变量对应了闭包函数。<br>4、我们可以通过<strong>closure</strong>内部函数可以观察到，闭包函数的存在。前提是，闭包函数要与外部函数进行数据传递或调用。</p>
+</blockquote>
+<p>总结：闭包使用的数据，必须是本身定义或外部函数中定义的相关变量，通常需要调用外部函数的数据，形成一个封闭的函数结构。不能与外部数据（全局变量）发生交流。</p>
+<h4 id="2）闭包的应用—装饰器"><a href="#2）闭包的应用—装饰器" class="headerlink" title="2）闭包的应用—装饰器"></a>2）闭包的应用—装饰器</h4><p>1、概念：装饰器本身仍然是一个函数。是我们队闭包应用的一种具体实现。<br>2、作用：装饰器可以在不改变函数本身功能的情况下，为函数添加额外的功能。诸如：日志、测试、性能检测等。装饰器同样也是返回一个函数对象。<br>3、用法：<br>使用格式：@+装饰器名称<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">(f)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(*var)</span>:</span></span><br><span class="line">        start_time = time.time()</span><br><span class="line">        f(*var)</span><br><span class="line">        time.sleep(<span class="number">0.3</span>)</span><br><span class="line">        end_time = time.time()</span><br><span class="line">        print(<span class="string">'此函数执行时间为&#123;0&#125;'</span>.format(str(end_time-start_time)))</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">@outer      # 此处就是装饰器的声明，这种方法我们成为语法糖</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'hello world'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="7、高阶函数"><a href="#7、高阶函数" class="headerlink" title="7、高阶函数"></a>7、高阶函数</h3><h4 id="1）匿名函数"><a href="#1）匿名函数" class="headerlink" title="1）匿名函数"></a>1）匿名函数</h4><p>使用lambda关键字进行修饰，没有显式声明函数的名字。格式如下：<br><code>lambda 参数：表达式（返回值）</code><br>注意，在使用匿名函数时，因为其自身的情况限制，匿名函数并不能执行比较复杂的业务逻辑，即函数内的代码不能过多。lambda本身是一个表达式</p>
+<h4 id="2）map函数（映射函数）"><a href="#2）map函数（映射函数）" class="headerlink" title="2）map函数（映射函数）"></a>2）map函数（映射函数）</h4><p>函数格式：map(func,iterable)<br><strong>返回值</strong>：map 对象（<strong>迭代器</strong>）<br>说明：map函数主要作用是，将指定函数与序列中的元素进行映射，并完成函数中功能的批量操作，返回值为一个迭代器。我们可以使用for循环或next()函数进行遍历。通常情况下，如果映射的函数较为简单，我们就不单独声明函数，而是采用匿名函数来实现，这样也能提高运行效率。</p>
+<h4 id="3）reduce函数（归纳函数）"><a href="#3）reduce函数（归纳函数）" class="headerlink" title="3）reduce函数（归纳函数）"></a>3）reduce函数（归纳函数）</h4><p>函数格式：reduce(func,iterator)<br>返回值：返回函数计算结果，具体类型根据函数的返回值来定<br>说明：reduce函数中的func，一定要设为两个参数，用来接收迭代器返回的值。操作顺序为首先接收第一、第二个值，进行运算；运算结果再与第三个值进行运行，以此类推，直到迭代器迭代完全部数据。<br>需要引入包from functools import reduce</p>
+<h4 id="4）filter函数（过滤函数）"><a href="#4）filter函数（过滤函数）" class="headerlink" title="4）filter函数（过滤函数）"></a>4）filter函数（过滤函数）</h4><p>函数格式：filter(func,iterable)<br>返回值：返回一个迭代器<br>说明：过滤函数与映射函数类似，都需要将函数作用于序列中的每个元素，根据函数判断True或False，返回相关元素。</p>
+<h3 id="8、递归"><a href="#8、递归" class="headerlink" title="8、递归"></a>8、递归</h3><p>递归概念：就是使用自身函数对自身进行调用，每调用一次将当前次的<strong>运行结果保存到函数的堆栈中</strong>，以副本形式保存，一直到最后完成全部调用。然后逐一向外将当期函数的结果返回并退出到其调用的位置。<br>在Python中，通常推荐使用迭代，递归本身对内存的消耗和运行效率低下的问题较少使用。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/24/function/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-iterator" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/19/iterator/">迭代器和生成器</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/19/iterator/" class="archive-article-date">
+  	<time datetime="2018-07-19T12:48:02.940Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="迭代器（Iterator）"><a href="#迭代器（Iterator）" class="headerlink" title="迭代器（Iterator）"></a>迭代器（Iterator）</h3><h4 id="1）概念："><a href="#1）概念：" class="headerlink" title="1）概念："></a>1）概念：</h4><p>迭代器访问元素，是从第一个元素开始，依次访问后续元素直到结束。其中迭代器只能向前不能回退。<br>其包含两个方法iter()和next():</p>
+<blockquote>
+<p>iter()用来创建一个迭代器，next()用来访问下一个元素。</p>
+</blockquote>
+<p>目前我们所学的字符串、列表、元组都可以创建迭代器，那么他们也是可迭代化的对象。</p>
+<blockquote>
+<p>迭代器两个步骤：<br>1、当调用next()函数，会将迭代器当前位置状态进行改变<br>2、会将下一个元素进行返回</p>
+</blockquote>
+<p><strong>迭代器的延迟作用</strong>：迭代器生成的元素并不是在迭代器声明时，就准备好了的。通常时在调用迭代器需要提供该元素时生成的，也就是说只有在我们需要的时候迭代器才产生相关元素，不需要时并不会主动的生成相关元素。我们可以把迭代器看成一个容器，到我们需要时使用next()方法返回容器中的下一个值。<br>迭代器实现了工厂模式的对象，它在你每次访问下一个值的时候给你返回。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.有一个可迭代对象</span></span><br><span class="line">list1 = [<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="string">'welcome'</span>]</span><br><span class="line"><span class="comment"># 2. 通过iter()方法将可迭代对象变成一个迭代器</span></span><br><span class="line">new_iter = iter(list1)</span><br><span class="line"><span class="comment"># 3.使用next()方法 顺序取值</span></span><br><span class="line">print(<span class="string">'我是通过next（）方法取出的值：'</span>, next(new_iter))</span><br><span class="line"><span class="comment"># 也可以通过循环取出所有的值。(因为迭代器是可迭代化的)</span></span><br><span class="line"><span class="comment"># 注意：已经被取出的值，无法再取到，因为迭代器只能向后，不能向前</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> new_iter:</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># 我是通过next（）方法取出的值： hello</span></span><br><span class="line"><span class="comment"># world</span></span><br><span class="line"><span class="comment"># welcome</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>可迭代化（iterable）</strong>：表明相关的对象可以创建迭代器对象，同时他们自身都是可以进行for数据遍历的。我们可以使用isinstance()来判断对象是否为可迭代化</p>
+<p><strong>instance()函数</strong>：<br>函数格式：isinstance(对象，类型)<br>返回值：布尔值<br>结果：如果指定的对象属于指定的类型，那么返回True，反之返回False<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line">string = <span class="string">'hello'</span></span><br><span class="line">print(isinstance(string, Iterable))  =&gt; True</span><br></pre></td></tr></table></figure></p>
+<p><strong>enumerate()函数</strong><br>函数格式：enumerate(iterable)<br>返回值：生成一个枚举对象<br>例如：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">enum = enumberate([<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> enum:</span><br><span class="line">    print(i)</span><br><span class="line">    </span><br><span class="line">(<span class="number">0</span>, <span class="string">'one'</span>)</span><br><span class="line">(<span class="number">1</span>, <span class="string">'two'</span>)</span><br><span class="line">(<span class="number">2</span>, <span class="string">'three'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i,value <span class="keyword">in</span> enum:</span><br><span class="line">    print(i, value)</span><br><span class="line">   </span><br><span class="line"><span class="number">0</span> one</span><br><span class="line"><span class="number">1</span> two</span><br><span class="line"><span class="number">2</span> three</span><br></pre></td></tr></table></figure></p>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><h4 id="1、创建方式"><a href="#1、创建方式" class="headerlink" title="1、创建方式"></a>1、创建方式</h4><p>第一种，使用列表推导式，将[]改为()，生成一个generator对象<br>第二种，使用函数方式，采用<strong>yield关键字</strong>来实现<br>2、使用<br>生成器我们通常可以认为一种特殊的迭代器，但是它不需要像迭代器一样去实现<strong>iter</strong>,<strong>next</strong>方法。只需要使用yield关键字，该关键字可以在每次调用生成器函数时起到暂停作用，并将其值进行返回。同时还会记录当前运行值的状态。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getlist</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(getlist(<span class="number">10</span>))</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> getlist(<span class="number">10</span>):</span><br><span class="line">    print(item, end=<span class="string">' '</span>)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># &lt;generator object getlist at 0x0000000002142CA8&gt;</span></span><br><span class="line"><span class="comment"># 0 1 2 3 4 5 6 7 8 9</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">ge=getlist(<span class="number">10</span>)</span><br><span class="line">print(next(ge))  <span class="comment"># 注意：只能实例化后调用，否则只会取第一个值</span></span><br><span class="line">print(next(ge))</span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
+<p><strong>count(start,step)</strong>:返回一个count对象<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> count</span><br><span class="line">counter = count(start=<span class="number">1</span>, step=<span class="number">2</span>)</span><br><span class="line">print(next(counter))</span><br><span class="line">print(next(counter))</span><br><span class="line">print(next(counter))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line"><span class="comment"># 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># count()函数实际上就是一个生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(start, step)</span>:</span></span><br><span class="line">    x = start</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">yield</span> x</span><br><span class="line">        x += step</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">coun = count(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">print(next(coun))   <span class="comment"># 2</span></span><br><span class="line">print(next(coun))   <span class="comment"># 5</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>总结：迭代器和生成器<br>1、容器是一系列的元素集合，str、list、set、dict对象都可以看作是容器，容器都可以进行迭代（即用在while或for循环），凡是这样的容器我们都称为可迭代化对象（Iterable）。<br>2、可迭代化对象都实现了<strong>iter</strong>方法，该方法返回一个迭代器对象。<br>3、迭代器都拥有一个状态字段，用于记录下次迭代返回值。它实现了<strong>next</strong>和<strong>iter</strong>方法，迭代器不会一次性把所有的元素都加载到内存中，而是在需要的时候才生成返回结果。<br>4、生成器是一种特殊的迭代器，它的返回值不是通过return来返回的，而是通过yield来返回的。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/19/iterator/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-sort" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
